@@ -14,7 +14,7 @@ class FormDataItem extends DataItem{
 		if ($this->skip) return "";
 		$str="";
 		for ($i = 0; $i < count($this->config->data); $i++) {
-			$str .= "<".$this->config->data[$i]['db_name']."><![CDATA[".$this->data[$this->config->data[$i]['db_name']]."]]></".$this->config->data[$i]['db_name'].">";
+			$str .= "<".$this->config->data[$i]['name']."><![CDATA[".$this->data[$this->config->data[$i]['name']]."]]></".$this->config->data[$i]['name'].">";
 		}
 		return $str;
 	}
