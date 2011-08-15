@@ -18,6 +18,13 @@ class SQLSrvDBDataWrapper extends DBDataWrapper{
 		else
 			$res = sqlsrv_query($this->connection,$sql);
 		
+		if ($res === false){
+			$errors = sqlsrv_errors();
+			$message = Array();
+			foreach($errors as $error)
+				$message[]=$error[$i]["SQLSTATE"].$error[$i]["code'"].$error[$i]["message"];
+			throw new Exception("SQLSrv operation failed\n".implode("\n\n", $message));
+		}
 		
 		if ($this->insert_operation){
 			sqlsrv_next_result($res);
