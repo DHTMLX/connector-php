@@ -216,7 +216,7 @@ class DataRequestConfig{
 			incoming sql string
 	*/
 	public function parse_sql($sql){
-		$sql= preg_replace("/[ \n\t]+limit[\n ,0-9]/i","",$sql);
+		$sql= preg_replace("/[ \n\t]+limit[\n\t ,0-9]*$/i","",$sql);
 		
 		$data = preg_split("/[ \n\t]+\\_from\\_/i",$sql,2);
 		if (count($data)!=2)
