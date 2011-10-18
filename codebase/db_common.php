@@ -222,7 +222,7 @@ class DataRequestConfig{
 		if (count($data)!=2)
 			$data = preg_split("/[ \n\t]+from/i",$sql,2);
 		$this->fieldset = preg_replace("/^[\s]*select/i","",$data[0],1);
-		
+		if (count($data) == 1) return;
 	  	$table_data = preg_split("/[ \n\t]+where/i",$data[1],2);
 	  	/*
 		  		if sql code contains group_by we will place all sql query in the FROM 
@@ -719,6 +719,8 @@ abstract class DBDataWrapper extends DataWrapper{
 			sql string for select operation
 	*/
 	protected function select_query($select,$from,$where,$sort,$start,$count){
+		if (!$from)
+			return $select;
 		$sql="SELECT ".$select." FROM ".$from;
 		if ($where) $sql.=" WHERE ".$where;
 		if ($sort) $sql.=" ORDER BY ".$sort;
