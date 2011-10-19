@@ -721,6 +721,7 @@ abstract class DBDataWrapper extends DataWrapper{
 	protected function select_query($select,$from,$where,$sort,$start,$count){
 		if (!$from)
 			return $select;
+			
 		$sql="SELECT ".$select." FROM ".$from;
 		if ($where) $sql.=" WHERE ".$where;
 		if ($sort) $sql.=" ORDER BY ".$sort;
