@@ -222,7 +222,16 @@ class DataRequestConfig{
 		if (count($data)!=2)
 			$data = preg_split("/[ \n\t]+from/i",$sql,2);
 		$this->fieldset = preg_replace("/^[\s]*select/i","",$data[0],1);
-		if (count($data) == 1) return;
+
+		//Ignore next type of calls
+			//direct call to stored procedure without FROM
+		if ((count($data) == 1) ||
+			//UNION select
+			preg_match("#[ \n\r\t]union[ \n\t\r]#i", $sql)){
+				$this->fieldset = $sql;
+				return;
+		}
+
 	  	$table_data = preg_split("/[ \n\t]+where/i",$data[1],2);
 	  	/*
 		  		if sql code contains group_by we will place all sql query in the FROM 
