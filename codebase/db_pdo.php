@@ -15,12 +15,18 @@ class PDODBDataWrapper extends DBDataWrapper{
 		LogMaster::log($sql);
 		
 		$res=$this->connection->query($sql);
-		if ($res===false) throw new Exception("PDO - sql execution failed\n".$this->connection->errorInfo());
+		if ($res===false) {
+			$message = $this->connection->errorInfo();
+			throw new Exception("PDO - sql execution failed\n".$message[2]);
+		}
 		
 		return new PDOResultSet($res);
 	}
 
 	protected function select_query($select,$from,$where,$sort,$start,$count){
+		if (!$from)
+			return $select;
+			
 		$sql="SELECT ".$select." FROM ".$from;
 		if ($where) $sql.=" WHERE ".$where;
 		if ($sort) $sql.=" ORDER BY ".$sort;
