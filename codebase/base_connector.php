@@ -230,7 +230,7 @@ class DataItem{
 		@return 
 			escaped string
 	*/
-	protected function xmlentities($string) { 
+	public function xmlentities($string) { 
    		return str_replace( array( '&', '"', "'", '<', '>', '’' ), array( '&amp;' , '&quot;', '&apos;' , '&lt;' , '&gt;', '&apos;' ), $string);
 	}
 	
