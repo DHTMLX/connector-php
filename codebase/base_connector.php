@@ -387,6 +387,12 @@ class Connector {
 		$this->request->parse_sql($sql);
 		return $this->render();
 	}
+
+	public function render_complex_sql($sql,$id,$fields,$extra=false,$relation_id=false){
+		$this->config->init($id,$fields,$extra,$relation_id);
+		$this->request->parse_sql($sql, true);
+		return $this->render();
+	}	
 	
 	/*! render already configured connector
 		

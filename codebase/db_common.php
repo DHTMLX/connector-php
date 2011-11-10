@@ -215,7 +215,12 @@ class DataRequestConfig{
 		@param sql
 			incoming sql string
 	*/
-	public function parse_sql($sql){
+	public function parse_sql($sql, $as_is = false){
+		if ($as_is){
+			$this->fieldset = $sql;
+			return;
+		}
+
 		$sql= preg_replace("/[ \n\t]+limit[\n\t ,0-9]*$/i","",$sql);
 		
 		$data = preg_split("/[ \n\t]+\\_from\\_/i",$sql,2);
@@ -224,7 +229,7 @@ class DataRequestConfig{
 		$this->fieldset = preg_replace("/^[\s]*select/i","",$data[0],1);
 
 		//Ignore next type of calls
-			//direct call to stored procedure without FROM
+		//direct call to stored procedure without FROM
 		if ((count($data) == 1) ||
 			//UNION select
 			preg_match("#[ \n\r\t]union[ \n\t\r]#i", $sql)){
