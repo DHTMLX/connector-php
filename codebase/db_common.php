@@ -215,14 +215,28 @@ class DataRequestConfig{
 		@param sql
 			incoming sql string
 	*/
-	public function parse_sql($sql){
-		$sql= preg_replace("/[ \n\t]+limit[\n ,0-9]/i","",$sql);
+	public function parse_sql($sql, $as_is = false){
+		if ($as_is){
+			$this->fieldset = $sql;
+			return;
+		}
+
+		$sql= preg_replace("/[ \n\t]+limit[\n\t ,0-9]*$/i","",$sql);
 		
 		$data = preg_split("/[ \n\t]+\\_from\\_/i",$sql,2);
 		if (count($data)!=2)
 			$data = preg_split("/[ \n\t]+from/i",$sql,2);
 		$this->fieldset = preg_replace("/^[\s]*select/i","",$data[0],1);
-		
+
+		//Ignore next type of calls
+		//direct call to stored procedure without FROM
+		if ((count($data) == 1) ||
+			//UNION select
+			preg_match("#[ \n\r\t]union[ \n\t\r]#i", $sql)){
+				$this->fieldset = $sql;
+				return;
+		}
+
 	  	$table_data = preg_split("/[ \n\t]+where/i",$data[1],2);
 	  	/*
 		  		if sql code contains group_by we will place all sql query in the FROM 
@@ -719,6 +733,9 @@ abstract class DBDataWrapper extends DataWrapper{
 			sql string for select operation
 	*/
 	protected function select_query($select,$from,$where,$sort,$start,$count){
+		if (!$from)
+			return $select;
+			
 		$sql="SELECT ".$select." FROM ".$from;
 		if ($where) $sql.=" WHERE ".$where;
 		if ($sort) $sql.=" ORDER BY ".$sort;

@@ -60,6 +60,9 @@ class SQLSrvDBDataWrapper extends DBDataWrapper{
 	}		
 	
 	protected function select_query($select,$from,$where,$sort,$start,$count){
+		if (!$from)
+			return $select;
+			
 		$sql="SELECT " ;
 		if ($count)
 			$sql.=" TOP ".($count+$start);
