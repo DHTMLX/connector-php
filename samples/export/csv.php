@@ -11,6 +11,9 @@
 	$convert->excel();
 	
 	$grid = new GridConnector($res);
-	$grid->set_config(new GridConfiguration());
+	$config = new GridConfiguration();
+	
+	$grid = new GridConnector($res);
+	$grid->set_config($config);
 	$grid->render_table("grid50");
 ?>

@@ -10,6 +10,9 @@
 	$convert = new ConvertService("http://dhtmlxgrid.appspot.com/export/pdf");
 	
 	$grid = new GridConnector($res);
-	$grid->set_config(new GridConfiguration());
+	$config = new GridConfiguration();
+	
+	$config->set_convert_mode(true);
+	$grid->set_config($config);
 	$grid->render_table("grid50");
 ?>

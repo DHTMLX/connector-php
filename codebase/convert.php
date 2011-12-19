@@ -50,7 +50,7 @@ class ConvertService{
 		curl_setopt($handle, CURLOPT_POST, true);
 		curl_setopt($handle, CURLOPT_HEADER, false);
 		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($handle, CURLOPT_POSTFIELDS, "grid_xml=".urlencode(str_replace("<rows>","<rows profile='color'>",str_replace("</head>", "</columns></head>", str_replace("<head>", "<head><columns>",$out)))));
+		curl_setopt($handle, CURLOPT_POSTFIELDS, "grid_xml=".urlencode(str_replace("<rows>","<rows profile='color'>", $out)));
 		
 		
 		$out->reset();
