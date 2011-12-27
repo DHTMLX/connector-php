@@ -354,7 +354,6 @@ class GridConfiguration{
 			$str .= $this->headerColors[$i] ? ' color="'.$this->headerColors[$i].'"' : '';
 			$str .= $this->headerHidden[$i] ? ' hidden="'.$this->headerHidden[$i].'"' : '';
 			$str .= $this->headerFormat[$i] ? ' format="'.$this->headerFormat[$i].'"' : '';
-			echo $rspan[0][$i]."<br>";
 			$str .= $cspan[0][$i] ? ' colspan="'.($cspan[0][$i] + 1).'"' : '';
 			$str .= $rspan[0][$i] ? ' rowspan="'.($rspan[0][$i] + 1).'"' : '';
 			$str .= '>'.$this->headerNames[$i].'</column>';
@@ -390,7 +389,6 @@ class GridConfiguration{
 				$str .= "<columns>";
 				for ($j = 0; $j < count($head[$i]); $j++) {
 					$str .= '<column';
-					echo $rspan[$i][$j]."<br>";
 					$str .= $cspan[$i][$j] ? ' colspan="'.($cspan[$i][$j] + 1).'"' : '';
 					$str .= $rspan[$i][$j] ? ' rowspan="'.($rspan[$i][$j] + 1).'"' : '';
 					$str .= '>'.$head[$i][$j].'</column>';
