@@ -117,6 +117,9 @@ class DataConnector extends Connector{
 			
 			parent::parse_request();
 		}
+	
+		if (isset($_GET["start"]) && isset($_GET["count"]))
+			$this->request->set_limit($_GET["start"],$_GET["count"]);
 	}
 	
 	/*! renders self as  xml, starting part
@@ -138,6 +141,13 @@ class JSONDataConnector extends DataConnector{
 		$start = "[\n";
 		$end = substr($this->render_set($res),0,-2)."\n]";
 		
+		if ($this->dload){
+			$start = "{ \"data\":".$start.$end;
+			if ($pos=$this->request->get_start())
+				$end = ", \"pos\":".$pos." }";
+			else
+				$end = ", \"pos\":0, \"total_count\":".$this->sql->get_size($this->request)." }";
+		}
 		$out = new OutputWriter($start, $end);
 		$out->set_type("json");
 		$this->event->trigger("beforeOutput", $this, $out);
