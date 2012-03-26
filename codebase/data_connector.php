@@ -174,7 +174,7 @@ class JSONCommonDataItem extends DataItem{
 }
 
 class TreeCommonDataItem extends CommonDataItem{
-	private $kids=-1;
+	protected $kids=-1;
 
 	function to_xml_start(){
 		$str="<item id='".$this->get_id()."' ";
@@ -329,6 +329,7 @@ class JSONTreeCommonDataItem extends TreeCommonDataItem{
 			$extra = $this->config->text[$i]["name"];
 			$data[$extra]=$this->data[$extra];
 		}
+
 		if ($this->kids === true)
 			$data["dhx_kids"] = 1;
 
