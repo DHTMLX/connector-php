@@ -195,8 +195,8 @@ class DataUpdate{
 
 	/*! adds action version in output XML as userdata
 	*/
-	public function version_output() {
-			echo $this->get_version();
+	public function version_output($conn, $out) {
+		$out->add($this->get_version());
 	}
 
 
