@@ -200,6 +200,7 @@ class TreeCommonDataItem extends CommonDataItem{
 
 
 class TreeDataConnector extends DataConnector{
+	protected $id_swap = array();
 	public function __construct($res,$type=false,$item_type=false,$data_type=false){
 		if (!$item_type) $item_type="TreeCommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
