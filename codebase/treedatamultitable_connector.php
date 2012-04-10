@@ -7,8 +7,8 @@ require_once("tree_connector.php");
 
 class TreeDataMultitableConnector extends TreeDataConnector{
 
-	private $level = 0;
-	private $max_level = null;
+	protected $level = 0;
+	protected $max_level = null;
 
 	public function __construct($res,$type=false,$item_type=false,$data_type=false){
 		$data_type="TreeDataProcessor";
@@ -131,6 +131,14 @@ class TreeDataMultitableConnector extends TreeDataConnector{
 	}
 
 
+	protected function is_max_level() {
+		if (($this->max_level !== null) && ($this->level >= $this->max_level))
+			return true;
+		return false;
+		
+	}
+	
+
 	/*! remove level prefix from id, parent id and set new id before processing
 		@param action
 			DataAction object
@@ -159,5 +167,59 @@ class TreeDataMultitableConnector extends TreeDataConnector{
 	}
 
 }
+
+
+
+
+
+
+class JSONTreeDataMultitableConnector extends TreeDataMultitableConnector{
+
+	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+		if (!$item_type) $item_type="JSONTreeCommonDataItem";
+		if (!$data_type) $data_type="CommonDataProcessor";
+		parent::__construct($res,$type,$item_type,$data_type);
+
+		$this->event->attach("beforeProcessing", Array($this, 'id_translate_before'));
+		$this->event->attach("afterProcessing", Array($this, 'id_translate_after'));
+	}
+
+	protected function render_set($res){
+		$output=array();
+		$index=0;
+		while ($data=$this->sql->get_next($res)){
+			$data[$this->config->id['name']] = $this->level_id($data[$this->config->id['name']]);
+			$data = new $this->names["item_class"]($data,$this->config,$index);
+			$this->event->trigger("beforeRender",$data);
+
+			if ($this->is_max_level()) {
+				$data->set_kids(false);
+			} else {
+				if ($data->has_kids()===-1)
+					$data->set_kids(true);
+			}
+			$record = $data->to_xml_start($output);
+			$output[] = $record;
+			$index++;
+		}
+		return $output;
+	}
+
+	protected function output_as_xml($res){
+		$data = array();
+		$data["parent"] = isset($_GET['parent']) ? $_GET['parent'] : '0';
+		$data["data"] = $this->render_set($res);
+
+		$out = new OutputWriter(json_encode($data), "");
+		$out->set_type("json");
+		$this->event->trigger("beforeOutput", $this, $out);
+		$out->output("", true, $this->encoding);
+	}
+
+	public function xml_start(){
+		return '';
+	}
+}
+
 
 ?>
