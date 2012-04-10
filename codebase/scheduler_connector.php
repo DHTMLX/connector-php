@@ -122,4 +122,91 @@ class SchedulerDataProcessor extends DataProcessor{
 	}
 }
 
+
+class JSONSchedulerDataItem extends SchedulerDataItem{
+	/*! return self as XML string
+	*/
+	function to_xml(){
+		if ($this->skip) return "";
+		
+		$obj = array();
+		$obj['id'] = $this->get_id();
+		$obj['start_date'] = $this->data[$this->config->text[0]["name"]];
+		$obj['end_date'] = $this->data[$this->config->text[1]["name"]];
+		$obj['text'] = $this->data[$this->config->text[2]["name"]];
+		for ($i=3; $i<sizeof($this->config->text); $i++){
+			$extra = $this->config->text[$i]["name"];
+			$obj[$extra]=$this->data[$extra];
+		}
+		return $obj;
+	}
+}
+
+
+class JSONSchedulerConnector extends SchedulerConnector {
+	
+	protected $data_separator = ",";
+
+	/*! constructor
+		
+		Here initilization of all Masters occurs, execution timer initialized
+		@param res 
+			db connection resource
+		@param type
+			string , which hold type of database ( MySQL or Postgre ), optional, instead of short DB name, full name of DataWrapper-based class can be provided
+		@param item_type
+			name of class, which will be used for item rendering, optional, DataItem will be used by default
+		@param data_type
+			name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default. 
+	*/	
+	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+		if (!$item_type) $item_type="JSONSchedulerDataItem";
+		if (!$data_type) $data_type="SchedulerDataProcessor";
+		parent::__construct($res,$type,$item_type,$data_type);
+	}
+	
+	/*! render from DB resultset
+		@param res
+			DB resultset 
+		process commands, output requested data as XML
+	*/
+	protected function render_set($res){
+		$output=array();
+		$index=0;
+		$this->event->trigger("beforeRenderSet",$this,$res,$this->config);
+		while ($data=$this->sql->get_next($res)){
+			$data = new $this->names["item_class"]($data,$this->config,$index);
+			if ($data->get_id()===false)
+				$data->set_id($this->uuid());
+			$this->event->trigger("beforeRender",$data);
+			$output[]=$data->to_xml();
+			$index++;
+		}
+		return json_encode($output);
+	}
+	
+	protected function xml_start() {
+		return "";
+	}
+
+	protected function xml_end() {
+		return "";
+	}
+	
+	/*! output fetched data as XML
+		@param res
+			DB resultset 
+	*/
+	protected function output_as_xml($res){
+		$data=$this->xml_start();
+		$data.=$this->render_set($res);
+		$data.=$this->xml_end();
+
+		$out = new OutputWriter($data, "");
+		$out->set_type("json");
+		$this->event->trigger("beforeOutput", $this, $out);
+		$out->output("", true, $this->encoding);
+	}
+}
+
 ?>

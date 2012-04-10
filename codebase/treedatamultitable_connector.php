@@ -72,7 +72,7 @@ class TreeDataMultitableConnector extends TreeDataConnector{
 			$data = new $this->names["item_class"]($data,$this->config,$index);
 			$this->event->trigger("beforeRender",$data);
 
-			if (($this->max_level !== null)&&($this->level == $this->max_level)) {
+			if ($this->is_max_level()) {
 				$data->set_kids(false);
 			} else {
 				if ($data->has_kids()===-1)
@@ -179,9 +179,6 @@ class JSONTreeDataMultitableConnector extends TreeDataMultitableConnector{
 		if (!$item_type) $item_type="JSONTreeCommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
 		parent::__construct($res,$type,$item_type,$data_type);
-
-		$this->event->attach("beforeProcessing", Array($this, 'id_translate_before'));
-		$this->event->attach("afterProcessing", Array($this, 'id_translate_after'));
 	}
 
 	protected function render_set($res){
