@@ -31,7 +31,7 @@ class SchedulerDataItem extends DataItem{
 class SchedulerConnector extends Connector{
 	
 	protected $extra_output="";//!< extra info which need to be sent to client side
-	private $options=array();//!< hash of OptionsConnector 
+	protected $options=array();//!< hash of OptionsConnector 
 	
 			
 	/*! assign options collection to the column
@@ -186,13 +186,54 @@ class JSONSchedulerConnector extends SchedulerConnector {
 	}
 	
 	protected function xml_start() {
-		return "";
+		return '{ "data":';
 	}
 
 	protected function xml_end() {
-		return "";
+		$this->fill_collections();
+		return ', "collections": {'.$this->extra_output.'} }';
 	}
-	
+
+
+	/*! assign options collection to the column
+		
+		@param name 
+			name of the column
+		@param options
+			array or connector object
+	*/
+	public function set_options($name,$options){
+		if (is_array($options)){
+			$str=array();
+			foreach($options as $k => $v)
+				$str[]='{"id":"'.$this->xmlentities($k).'", "value":"'.$this->xmlentities($v).'"}';
+			$options=implode(",",$str);
+		}
+		$this->options[$name]=$options;
+	}
+
+
+	/*! generates xml description for options collections
+		
+		@param list 
+			comma separated list of column names, for which options need to be generated
+	*/
+	protected function fill_collections(){
+		$options = array();
+		foreach ($this->options as $k=>$v) { 
+			$name = $k;
+			$option="\"{$name}\":[";
+			if (!is_string($this->options[$name]))
+				$option.=substr($this->options[$name]->render(),0,-2);
+			else
+				$option.=$this->options[$name];
+			$option.="]";
+			$options[] = $option;
+		}
+		$this->extra_output .= implode($this->data_separator, $options);
+	}
+
+
 	/*! output fetched data as XML
 		@param res
 			DB resultset 
