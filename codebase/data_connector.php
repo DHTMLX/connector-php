@@ -115,6 +115,9 @@ class DataConnector extends Connector{
 				$this->editing = true;
 			}
 		} else {
+			if (isset($_GET["dhx_colls"]))
+				$this->fill_collections($_GET["dhx_colls"]);
+
 			if (isset($_GET['editing']) && isset($_POST['ids']))
 				$this->editing = true;			
 			
@@ -139,11 +142,62 @@ class JSONDataConnector extends DataConnector{
 		$this->data_separator = ",\n";
 		parent::__construct($res,$type,$item_type,$data_type);
 	}
-	
+
+	/*! assign options collection to the column
+		
+		@param name 
+			name of the column
+		@param options
+			array or connector object
+	*/
+	public function set_options($name,$options){
+		if (is_array($options)){
+			$str=array();
+			foreach($options as $k => $v)
+				$str[]='{"id":"'.$this->xmlentities($k).'", "value":"'.$this->xmlentities($v).'"}';
+			$options=implode(",",$str);
+		}
+		$this->options[$name]=$options;
+	}
+
+
+	protected function fill_collections($list){
+		$names=explode(",",$list);
+		$options=array();
+		for ($i=0; $i < sizeof($names); $i++) { 
+			$name = $this->resolve_parameter($names[$i]);
+			if (!array_key_exists($name,$this->options)){
+				$this->options[$name] = new JSONDistinctOptionsConnector($this->get_connection(),$this->names["db_class"]);
+				$c = new DataConfig($this->config);
+				$r = new DataRequestConfig($this->request);
+				$c->minimize($name);
+				
+				$this->options[$name]->render_connector($c,$r);
+			} 
+
+			$option="\"{$name}\":[";
+			if (!is_string($this->options[$name]))
+				$option.=substr($this->options[$name]->render(),0,-2);
+			else
+				$option.=$this->options[$name];
+			$option.="]";
+			$options[] = $option;
+		}
+		$this->extra_output .= implode(",", $options);
+	}
+
+	protected function resolve_parameter($name){
+		if (intval($name).""==$name)
+			return $this->config->text[intval($name)]["db_name"];
+		return $name;
+	}
+
 	protected function output_as_xml($res){
 		$start = "[\n";
-		$end = substr($this->render_set($res),0,-2)."\n]";
-		
+		$end = substr($this->render_set($res),0,-2);
+		$end .= "\n]";
+		$end .= ', "collections": {'.$this->extra_output.'}';
+
 		if ($this->dload){
 			$start = "{ \"data\":".$start.$end;
 			if ($pos=$this->request->get_start())
@@ -172,6 +226,50 @@ class JSONCommonDataItem extends DataItem{
 		return json_encode($data);
 	}
 }
+
+
+/*! wrapper around options collection, used for comboboxes and filters
+**/
+class JSONOptionsConnector extends JSONDataConnector{
+	protected $init_flag=false;//!< used to prevent rendering while initialization
+	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+		if (!$item_type) $item_type="JSONCommonDataItem";
+		if (!$data_type) $data_type=""; //has not sense, options not editable
+		parent::__construct($res,$type,$item_type,$data_type);
+	}
+	/*! render self
+		process commands, return data as XML, not output data to stdout, ignore parameters in incoming request
+		@return
+			data as XML string
+	*/	
+	public function render(){
+		if (!$this->init_flag){
+			$this->init_flag=true;
+			return "";
+		}
+		$res = $this->sql->select($this->request);
+		return $this->render_set($res);
+	}
+}
+
+
+class JSONDistinctOptionsConnector extends JSONOptionsConnector{
+	/*! render self
+		process commands, return data as XML, not output data to stdout, ignore parameters in incoming request
+		@return
+			data as XML string
+	*/	
+	public function render(){
+		if (!$this->init_flag){
+			$this->init_flag=true;
+			return "";
+		}
+		$res = $this->sql->get_variants($this->config->text[0]["db_name"],$this->request);
+		return $this->render_set($res);
+	}
+}
+
+
 
 class TreeCommonDataItem extends CommonDataItem{
 	protected $kids=-1;
