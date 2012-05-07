@@ -90,7 +90,13 @@ class DataConnector extends Connector{
 	public function __construct($res,$type=false,$item_type=false,$data_type=false){
 		if (!$item_type) $item_type="CommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
+		$section = array();
 		parent::__construct($res,$type,$item_type,$data_type);
+	}
+
+	protected $sections;
+	public function add_section($name, $string){
+		$this->sections[$name] = $string;
 	}
 
 	protected function parse_request_mode(){
@@ -128,28 +134,45 @@ class DataConnector extends Connector{
 	/*! renders self as  xml, starting part
 	*/
 	protected function xml_start(){
-		return "<data>";
+		$start = "<data>";
+		foreach($this->sections as $k=>$v)
+			$start .= "<".$k.">".$v."</".$k.">\n";
+		return $start;
 	}	
 };
 
 class JSONDataConnector extends DataConnector{
+
 	public function __construct($res,$type=false,$item_type=false,$data_type=false){
 		if (!$item_type) $item_type="JSONCommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
 		$this->data_separator = ",\n";
 		parent::__construct($res,$type,$item_type,$data_type);
 	}
-	
+
 	protected function output_as_xml($res){
 		$start = "[\n";
 		$end = substr($this->render_set($res),0,-2)."\n]";
-		
-		if ($this->dload){
+
+		$is_sections = sizeof($this->sections) && $this->is_first_call();
+		if ($this->dload || $is_sections){
 			$start = "{ \"data\":".$start.$end;
-			if ($pos=$this->request->get_start())
-				$end = ", \"pos\":".$pos." }";
-			else
-				$end = ", \"pos\":0, \"total_count\":".$this->sql->get_size($this->request)." }";
+			$end="";
+
+			if ($is_sections){
+				//extra sections
+				foreach($this->sections as $k=>$v)
+					$end.= ", ".$k.":".$v;
+			}
+
+			if ($this->dload){
+				//info for dyn. loadin
+				if ($pos=$this->request->get_start())
+					$end .= ", \"pos\":".$pos." }";
+				else
+					$end .= ", \"pos\":0, \"total_count\":".$this->sql->get_size($this->request)." }";
+			} else 
+				$end .= " }";
 		}
 		$out = new OutputWriter($start, $end);
 		$out->set_type("json");
