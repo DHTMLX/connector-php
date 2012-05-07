@@ -84,19 +84,19 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 		if (!isset($_GET['id'])) {
 			if (isset($_POST['ids'])) {
 				$ids = explode(",",$_POST["ids"]);
-				$id = $this->parseId($ids[0]);
+				$id = $this->parse_id($ids[0]);
 				$this->level--;
 			}
 			$this->request->set_relation(false);
 		} else {
-			$id = $this->parseId($_GET['id']);
+			$id = $this->parse_id($_GET['id']);
 			$_GET['id'] = $id;
 		}
 		return $this->level;
 	}
 
 
-	public function parseId($id, $set_level = true) {
+	public function parse_id($id, $set_level = true) {
 		$result = Array();
 		preg_match('/^(.+)((#)|(%23))/', $id, $result);
 		if ($set_level === true) {
@@ -105,6 +105,11 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 		preg_match('/^(.+)((#)|(%23))(.*)$/', $id, $result);
 		$id = $result[5];
 		return $id;
+	}
+
+
+	public function level_id($id) {
+		return $this->level.'#'.$id;
 	}
 
 
@@ -124,12 +129,12 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 	public function id_translate_before($action) {
 		$this->request->set_relation(false);
 		$id = $action->get_id();
-		$id = $this->parseId($id, false);
+		$id = $this->parse_id($id, false);
 		$action->set_id($id);
 		$action->set_value('gr_id', $id);
 		$action->set_new_id($id);
 		$pid = $action->get_value($this->config->relation_id['db_name']);
-		$pid = $this->parseId($pid, false);
+		$pid = $this->parse_id($pid, false);
 		$action->set_value($this->config->relation_id['db_name'], $pid);
 	}
 
@@ -140,9 +145,9 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 	*/
 	public function id_translate_after($action) {
 		$id = $action->get_id();
-		$action->set_id(($this->level).'%23'.$id);
+		$action->set_id($this->level_id($id));
 		$id = $action->get_new_id();
-		$action->success(($this->level).'%23'.$id);
+		$action->success($this->level_id($id));
 	}
 
 }

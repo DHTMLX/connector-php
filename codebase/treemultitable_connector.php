@@ -54,7 +54,7 @@ class TreeMultitableConnector extends TreeConnector{
 		$index=0;
 		$records = Array();
 		while ($data=$this->sql->get_next($res)){
-			$data[$this->config->id['name']] = $this->level.'#'.$data[$this->config->id['name']];
+			$data[$this->config->id['name']] = $this->level_id($data[$this->config->id['name']]);
 			$data = new $this->names["item_class"]($data,$this->config,$index);
 			$this->event->trigger("beforeRender",$data);
 			if (($this->max_level !== null)&&($this->level == $this->max_level)) {
@@ -83,19 +83,19 @@ class TreeMultitableConnector extends TreeConnector{
 		if (!isset($_GET['id'])) {
 			if (isset($_POST['ids'])) {
 				$ids = explode(",",$_POST["ids"]);
-				$id = $this->parseId($ids[0]);
+				$id = $this->parse_id($ids[0]);
 				$this->level--;
 			}
 			$this->request->set_relation(false);
 		} else {
-			$id = $this->parseId($_GET['id']);
+			$id = $this->parse_id($_GET['id']);
 			$_GET['id'] = $id;
 		}
 		return $this->level;
 	}
 
 
-	public function parseId($id, $set_level = true) {
+	public function parse_id($id, $set_level = true) {
 		$result = Array();
 		preg_match('/^(.+)#/', $id, $result);
 		if ($set_level === true) {
@@ -108,6 +108,11 @@ class TreeMultitableConnector extends TreeConnector{
 			$id = '';
 		}
 		return $id;
+	}
+
+
+	public function level_id($id) {
+		return $this->level.'#'.$id;
 	}
 
 
@@ -126,12 +131,12 @@ class TreeMultitableConnector extends TreeConnector{
 	*/
 	public function id_translate_before($action) {
 		$id = $action->get_id();
-		$id = $this->parseId($id, false);
+		$id = $this->parse_id($id, false);
 		$action->set_id($id);
 		$action->set_value('tr_id', $id);
 		$action->set_new_id($id);
 		$pid = $action->get_value($this->config->relation_id['db_name']);
-		$pid = $this->parseId($pid, false);
+		$pid = $this->parse_id($pid, false);
 		$action->set_value($this->config->relation_id['db_name'], $pid);
 	}
 
@@ -142,9 +147,9 @@ class TreeMultitableConnector extends TreeConnector{
 	*/
 	public function id_translate_after($action) {
 		$id = $action->get_id();
-		$action->set_id(($this->level).'#'.$id);
+		$action->set_id($this->level_id($id));
 		$id = $action->get_new_id();
-		$action->success(($this->level).'#'.$id);
+		$action->success($this->level_id($id));
 	}
 
 }
