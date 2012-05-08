@@ -315,7 +315,7 @@ class Connector {
 		if (!class_exists($this->names["db_class"],false))
 			throw new Exception("DB class not found: ".$this->names["db_class"]);
 		$this->sql = new $this->names["db_class"]($db,$this->config);
-		$this->render = new $this->names["render_class"]();
+		$this->render = new $this->names["render_class"]($this);
 		
 		$this->db=$db;//saved for options connectors, if any
 		
@@ -419,6 +419,7 @@ class Connector {
 		EventMaster::trigger_static("connectorInit",$this);
 		
 		$this->parse_request();
+		$this->set_relation();
 		
 		if ($this->live_update !== false && $this->updating!==false) {
 			$this->live_update->get_updates();
@@ -426,8 +427,7 @@ class Connector {
 			if ($this->editing){
 				$dp = new $this->names["data_class"]($this,$this->config,$this->request);
 				$dp->process($this->config,$this->request);
-			}
-			else {
+			} else {
 				if (!$this->access->check("read")){
 					LogMaster::log("Access control: read operation blocked");
 					echo "Access denied";
@@ -441,12 +441,25 @@ class Connector {
 				$this->event->trigger("beforeFilter",$wrap);
 				$wrap->store();
 				
-				$this->output_as_xml( $this->sql->select($this->request) );
+				$this->output_as_xml($this->get_resource());
 			}
 		}
 		$this->end_run();
 	}
-	
+
+
+	/*! empty call which used for tree-logic
+	 *  to prevent code duplicating
+	 */
+	protected function set_relation() {}
+
+	/*! gets resource for rendering
+	 */
+	protected function get_resource() {
+		return $this->sql->select($this->request);
+	}
+
+
 	/*! prevent SQL injection through column names
 		replace dangerous chars in field names
 		@param str 
@@ -555,7 +568,7 @@ class Connector {
 		process commands, output requested data as XML
 	*/
 	protected function render_set($res){
-		return $this->render->render_set($res, $this, $this->names["item_class"], $this->dload, $this->data_separator);
+		return $this->render->render_set($res, $this->names["item_class"], $this->dload, $this->data_separator);
 	}
 	
 	/*! output fetched data as XML

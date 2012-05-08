@@ -112,7 +112,8 @@ class GridDataItem extends DataItem{
 				foreach ($cattrs as $k => $v)
 					$str.=" ".$k."='".$this->xmlentities($v)."'";
 			}
-			$str.="><![CDATA[".$this->data[$name]."]]></cell>";
+			$value = isset($this->data[$name]) ? $this->data[$name] : '';
+			$str.="><![CDATA[".$value."]]></cell>";
 		}
 		foreach ($this->userdata as $key => $value)
 			$str.="<userdata name='".$key."'><![CDATA[".$value."]]></userdata>";
