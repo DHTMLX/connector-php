@@ -86,11 +86,14 @@ class SchedulerConnector extends Connector{
 			name of class, which will be used for item rendering, optional, DataItem will be used by default
 		@param data_type
 			name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default. 
+	 * @param render_type
+			name of class which will be used for rendering.
 	*/	
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="SchedulerDataItem";
 		if (!$data_type) $data_type="SchedulerDataProcessor";
-		parent::__construct($res,$type,$item_type,$data_type);
+		if (!$render_type) $render_type="RenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 	}
 
 	//parse GET scoope, all operations with incoming request must be done here
@@ -159,32 +162,13 @@ class JSONSchedulerConnector extends SchedulerConnector {
 		@param data_type
 			name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default. 
 	*/	
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="JSONSchedulerDataItem";
 		if (!$data_type) $data_type="SchedulerDataProcessor";
-		parent::__construct($res,$type,$item_type,$data_type);
+		if (!$render_type) $render_type="JSONRenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 	}
-	
-	/*! render from DB resultset
-		@param res
-			DB resultset 
-		process commands, output requested data as XML
-	*/
-	protected function render_set($res){
-		$output=array();
-		$index=0;
-		$this->event->trigger("beforeRenderSet",$this,$res,$this->config);
-		while ($data=$this->sql->get_next($res)){
-			$data = new $this->names["item_class"]($data,$this->config,$index);
-			if ($data->get_id()===false)
-				$data->set_id($this->uuid());
-			$this->event->trigger("beforeRender",$data);
-			$output[]=$data->to_xml();
-			$index++;
-		}
-		return json_encode($output);
-	}
-	
+
 	protected function xml_start() {
 		return '{ "data":';
 	}

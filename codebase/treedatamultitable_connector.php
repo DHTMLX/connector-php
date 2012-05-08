@@ -10,9 +10,10 @@ class TreeDataMultitableConnector extends TreeDataConnector{
 	protected $level = 0;
 	protected $max_level = null;
 
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
-		$data_type="TreeDataProcessor";
-		parent::__construct($res,$type,$item_type,$data_type);
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
+		if (!$data_type) $data_type="TreeDataProcessor";
+		if (!$render_type) $render_type="MultitableRenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 		$this->event->attach("beforeProcessing", Array($this, 'id_translate_before'));
 		$this->event->attach("afterProcessing", Array($this, 'id_translate_after'));
 	}
@@ -64,27 +65,6 @@ class TreeDataMultitableConnector extends TreeDataConnector{
 		$this->end_run();
 	}
 
-	protected function render_set($res){
-		$output="";
-		$index=0;
-		while ($data=$this->sql->get_next($res)){
-			$data[$this->config->id['name']] = $this->level_id($data[$this->config->id['name']]);
-			$data = new $this->names["item_class"]($data,$this->config,$index);
-			$this->event->trigger("beforeRender",$data);
-
-			if ($this->is_max_level()) {
-				$data->set_kids(false);
-			} else {
-				if ($data->has_kids()===-1)
-					$data->set_kids(true);
-			}
-			$output.=$data->to_xml_start();
-			$output.=$data->to_xml_end();
-			$index++;
-		}
-		return $output;
-	}
-
 	public function xml_start(){
 		if (isset($_GET['parent'])) {
 			return "<data parent='".$_GET['parent']."'>";
@@ -131,13 +111,19 @@ class TreeDataMultitableConnector extends TreeDataConnector{
 	}
 
 
-	protected function is_max_level() {
+	/*! gets maximum level of tree data
+	*/
+	public function getMaxLevel() {
+		return $this->max_level;
+	}
+
+
+	public function is_max_level() {
 		if (($this->max_level !== null) && ($this->level >= $this->max_level))
 			return true;
 		return false;
-		
 	}
-	
+
 
 	/*! remove level prefix from id, parent id and set new id before processing
 		@param action
@@ -178,28 +164,8 @@ class JSONTreeDataMultitableConnector extends TreeDataMultitableConnector{
 	public function __construct($res,$type=false,$item_type=false,$data_type=false){
 		if (!$item_type) $item_type="JSONTreeCommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
-		parent::__construct($res,$type,$item_type,$data_type);
-	}
-
-	protected function render_set($res){
-		$output=array();
-		$index=0;
-		while ($data=$this->sql->get_next($res)){
-			$data[$this->config->id['name']] = $this->level_id($data[$this->config->id['name']]);
-			$data = new $this->names["item_class"]($data,$this->config,$index);
-			$this->event->trigger("beforeRender",$data);
-
-			if ($this->is_max_level()) {
-				$data->set_kids(false);
-			} else {
-				if ($data->has_kids()===-1)
-					$data->set_kids(true);
-			}
-			$record = $data->to_xml_start($output);
-			$output[] = $record;
-			$index++;
-		}
-		return $output;
+		if (!$render_type) $render_type="JSONMultitableRenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 	}
 
 	protected function output_as_xml($res){

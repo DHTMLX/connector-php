@@ -10,9 +10,10 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 	private $level = 0;
 	private $max_level = null;
 
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		$data_type="TreeGridMultitableDataProcessor";
-		parent::__construct($res,$type,$item_type,$data_type);
+		if (!$render_type) $render_type="MultitableRenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 		$this->event->attach("beforeProcessing", Array($this, 'id_translate_before'));
 		$this->event->attach("afterProcessing", Array($this, 'id_translate_after'));
 	}
@@ -49,28 +50,6 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 	}
 
 
-	protected function render_set($res){
-		$output="";
-		$index=0;
-		$records = Array();
-		while ($data=$this->sql->get_next($res)){
-			$data[$this->config->id['name']] = $this->level.'%23'.$data[$this->config->id['name']];
-			$data = new $this->names["item_class"]($data,$this->config,$index);
-			$this->event->trigger("beforeRender",$data);
-			if (($this->max_level !== null)&&($this->level == $this->max_level)) {
-				$data->set_kids(false);
-			} else {
-				if ($data->has_kids()===-1)
-					$data->set_kids(true);
-			}
-			$output.=$data->to_xml_start();
-			$output.=$data->to_xml_end();
-			$index++;
-		}
-		return $output;
-	}
-
-
 	public function xml_start(){
 		if (isset($_GET['id'])) {
 			return "<rows parent='".($this->level - 1).'%23'.$_GET['id']."'>";
@@ -81,6 +60,7 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 
 
 	public function get_level() {
+		if ($this->level) return $this->level;
 		if (!isset($_GET['id'])) {
 			if (isset($_POST['ids'])) {
 				$ids = explode(",",$_POST["ids"]);
@@ -109,7 +89,7 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 
 
 	public function level_id($id) {
-		return $this->level.'#'.$id;
+		return $this->level.'%23'.$id;
 	}
 
 
@@ -119,6 +99,13 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 	*/
 	public function setMaxLevel($max_level) {
 		$this->max_level = $max_level;
+	}
+
+
+	/*! gets maximum level of tree
+	*/
+	public function getMaxLevel() {
+		return $this->max_level;
 	}
 
 

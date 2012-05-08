@@ -6,6 +6,7 @@
 require_once("tools.php");
 require_once("db_common.php");
 require_once("dataprocessor.php");
+require_once("strategy.php");
 require_once("update.php");
 
 //enable buffering to catch and ignore any custom output before XML generation
@@ -290,18 +291,20 @@ class Connector {
 		@param data_type
 			name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default. 
 	*/	
-	public function __construct($db,$type=false, $item_type=false, $data_type=false){
+	public function __construct($db,$type=false, $item_type=false, $data_type=false, $render_type = false){
 		$this->exec_time=microtime(true);
 
 		if (!$type) $type="MySQL";
 		if (class_exists($type."DBDataWrapper",false)) $type.="DBDataWrapper";
 		if (!$item_type) $item_type="DataItem";
 		if (!$data_type) $data_type="DataProcessor";
+		if (!$render_type) $render_type="RenderStrategy";
 		
 		$this->names=array(
 			"db_class"=>$type,
 			"item_class"=>$item_type,
 			"data_class"=>$data_type,
+			"render_class"=>$render_type
 		);
 		
 		$this->config = new DataConfig();
@@ -312,6 +315,7 @@ class Connector {
 		if (!class_exists($this->names["db_class"],false))
 			throw new Exception("DB class not found: ".$this->names["db_class"]);
 		$this->sql = new $this->names["db_class"]($db,$this->config);
+		$this->render = new $this->names["render_class"]();
 		
 		$this->db=$db;//saved for options connectors, if any
 		
@@ -332,7 +336,7 @@ class Connector {
 	}
 	
 	public function get_request(){
-		return new DataRequestConfig($this->config);
+		return new DataRequestConfig($this->request);
 	}
 
 
@@ -551,18 +555,7 @@ class Connector {
 		process commands, output requested data as XML
 	*/
 	protected function render_set($res){
-		$output="";
-		$index=0;
-		$this->event->trigger("beforeRenderSet",$this,$res,$this->config);
-		while ($data=$this->sql->get_next($res)){
-			$data = new $this->names["item_class"]($data,$this->config,$index);
-			if ($data->get_id()===false)
-				$data->set_id($this->uuid());
-			$this->event->trigger("beforeRender",$data);
-			$output.=$data->to_xml().$this->data_separator;
-			$index++;
-		}
-		return $output;
+		return $this->render->render_set($res, $this, $this->names["item_class"], $this->dload, $this->data_separator);
 	}
 	
 	/*! output fetched data as XML

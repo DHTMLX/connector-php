@@ -66,10 +66,11 @@ class TreeGridConnector extends GridConnector{
 		@param data_type
 			name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default. 
 	*/	
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="TreeGridDataItem";
 		if (!$data_type) $data_type="TreeGridDataProcessor";
-		parent::__construct($res,$type,$item_type,$data_type);
+		if (!$render_type) $render_type="TreeRenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 	
 		$this->event->attach("afterInsert",array($this,"parent_id_correction_a"));
 		$this->event->attach("beforeProcessing",array($this,"parent_id_correction_b"));
@@ -106,32 +107,8 @@ class TreeGridConnector extends GridConnector{
 			
 		$this->request->set_limit(0,0); //netralize default reaction on dyn. loading mode
 	}
-	
-	/*! process treegrid specific options in incoming request
-	*/	
-	protected function render_set($res){
-		$output="";
-		$index=0;
-		while ($data=$this->sql->get_next($res)){
-			$data = new $this->names["item_class"]($data,$this->config,$index);
-			$this->event->trigger("beforeRender",$data);
-		//there is no info about child elements, 
-		//if we are using dyn. loading - assume that it has,
-		//in normal mode juse exec sub-render routine			
-			if ($data->has_kids()===-1 && $this->dload)
-					$data->set_kids(true);
-			$output.=$data->to_xml_start();
-			if ($data->has_kids()===-1 || ( $data->has_kids()==true && !$this->dload)){
-				$sub_request = new DataRequestConfig($this->request);
-				$sub_request->set_relation($data->get_id());
-				$output.=$this->render_set($this->sql->select($sub_request));
-			}
-			$output.=$data->to_xml_end();
-			$index++;
-		}
-		return $output;
-	}	
-	
+
+
 	/*! renders self as  xml, starting part
 	*/	
 	protected function xml_start(){

@@ -9,9 +9,15 @@ class TreeGroupConnector extends TreeConnector{
 
 	private $id_postfix = '__{group_param}';
 
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
-		parent::__construct($res,$type,$item_type,$data_type);
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
+		if (!$render_type) $render_type="GroupRenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 		$this->event->attach("beforeProcessing", Array($this, 'check_id'));
+	}
+
+
+	public function get_id_postfix() {
+		return $this->id_postfix;
 	}
 
 
@@ -55,38 +61,9 @@ class TreeGroupConnector extends TreeConnector{
 		$this->end_run();
 	}
 
-	protected function render_set($res){
-		$output="";
-		$index=0;
-		$records = Array();
-		while ($data=$this->sql->get_next($res)){
-			if (isset($data[$this->config->id['name']])) {
-				$has_kids = false;
-			} else {
-				$data[$this->config->id['name']] = $data['value'].$this->id_postfix;
-				$data[$this->config->text[0]['name']] = $data['value'];
-				$has_kids = true;
-			}
-			$data = new $this->names["item_class"]($data,$this->config,$index);
-			$this->event->trigger("beforeRender",$data);
-			if ($has_kids === false) {
-				$data->set_kids(false);
-			}
 
-			if ($data->has_kids()===-1 && $this->dload)
-					$data->set_kids(true);
-			$output.=$data->to_xml_start();
-			if (($data->has_kids()===-1 || ( $data->has_kids()==true && !$this->dload))&&($has_kids == true)){
-				$sub_request = new DataRequestConfig($this->request);
-				$sub_request->set_relation(str_replace($this->id_postfix, "", $data->get_id()));
-				$output.=$this->render_set($this->sql->select($sub_request));
-			}
-			$output.=$data->to_xml_end();
-			$index++;
-		}
-		return $output;
-	}
-
+	/*! renders self as  xml, starting part
+	*/
 	public function xml_start(){
 		if (isset($_GET['id'])) {
 			return "<tree id='".$_GET['id'].$this->id_postfix."'>";

@@ -87,10 +87,11 @@ class DataConnector extends Connector{
 		@param data_type
 			name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default. 
 	*/	
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="CommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
-		parent::__construct($res,$type,$item_type,$data_type);
+		if (!$render_type) $render_type="RenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 	}
 
 	protected function parse_request_mode(){
@@ -299,10 +300,11 @@ class TreeCommonDataItem extends CommonDataItem{
 
 class TreeDataConnector extends DataConnector{
 	protected $id_swap = array();
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="TreeCommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
-		parent::__construct($res,$type,$item_type,$data_type);
+		if (!$render_type) $render_type="TreeRenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 
 		$this->event->attach("afterInsert",array($this,"parent_id_correction_a"));
 		$this->event->attach("beforeProcessing",array($this,"parent_id_correction_b"));
@@ -341,73 +343,25 @@ class TreeDataConnector extends DataConnector{
 			$this->request->set_relation("0");
 	}
 
-	protected function render_set($res){
-		$output="";
-		$index=0;
-		while ($data=$this->sql->get_next($res)){
-			$data = new $this->names["item_class"]($data,$this->config,$index);
-			$this->event->trigger("beforeRender",$data);
-		//there is no info about child elements, 
-		//if we are using dyn. loading - assume that it has,
-		//in normal mode just exec sub-render routine			
-			if ($data->has_kids()===-1 && $this->dload)
-					$data->set_kids(true);
-			$output.=$data->to_xml_start();
-			if ($data->has_kids()===-1 || ( $data->has_kids()==true && !$this->dload)){
-				$sub_request = new DataRequestConfig($this->request);
-				$sub_request->set_relation($data->get_id());
-				$output.=$this->render_set($this->sql->select($sub_request));
-			}
-			$output.=$data->to_xml_end();
-			$index++;
-		}
-		return $output;
-	}
-
 }
 
 
 class JSONTreeDataConnector extends TreeDataConnector{
 
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type){
 		if (!$item_type) $item_type="JSONTreeCommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
-		parent::__construct($res,$type,$item_type,$data_type);
+		if (!$render_type) $render_type="JSONTreeRenderStrategy";
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 
 		$this->event->attach("afterInsert",array($this,"parent_id_correction_a"));
 		$this->event->attach("beforeProcessing",array($this,"parent_id_correction_b"));
 	}
 
-	protected function render_set($res){
-		$output=array();
-		$index=0;
-		while ($data=$this->sql->get_next($res)){
-			$data = new $this->names["item_class"]($data,$this->config,$index);
-			$this->event->trigger("beforeRender",$data);
-		//there is no info about child elements, 
-		//if we are using dyn. loading - assume that it has,
-		//in normal mode just exec sub-render routine			
-			if ($data->has_kids()===-1 && $this->dload)
-					$data->set_kids(true);
-			$record = &$data->to_xml_start();
-			if ($data->has_kids()===-1 || ( $data->has_kids()==true && !$this->dload)){
-				$sub_request = new DataRequestConfig($this->request);
-				$sub_request->set_relation($data->get_id());
-				$temp = &$this->render_set($this->sql->select($sub_request));
-				if (sizeof($temp))
-					$record["data"] = $temp;
-			}
-			$output[] = $record;
-			$index++;
-		}
-		return $output;
-	}	
-
 	protected function output_as_xml($res){
 		$data = array();
 		$data["parent"] = $this->request->get_relation();
 		$data["data"] = $this->render_set($res);
-
 		$out = new OutputWriter(json_encode($data), "");
 		$out->set_type("json");
 		$this->event->trigger("beforeOutput", $this, $out);
