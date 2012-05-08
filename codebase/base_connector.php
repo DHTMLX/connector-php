@@ -369,7 +369,7 @@ class Connector {
 		$this->request->set_source($table);
 	}
 	
-	protected function uuid(){
+	public function uuid(){
 		return time()."x".$this->id_seed++;
 	}
 	
