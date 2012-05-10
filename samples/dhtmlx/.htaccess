@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+Options +Indexes
+RewriteEngine On
+RewriteBase /
+RewriteRule ^(.*)$ suite_pro/$1 [QSA]
