@@ -58,6 +58,14 @@ class JSONRenderStrategy {
 
 class TreeRenderStrategy extends RenderStrategy {
 
+	protected $id_swap = array();
+
+	public function __construct($conn) {
+		parent::__construct($conn);
+		$conn->event->attach("afterInsert",array($this,"parent_id_correction_a"));
+		$conn->event->attach("beforeProcessing",array($this,"parent_id_correction_b"));
+	}
+
 	public function render_set($res, $name, $dload, $sep){
 		$output="";
 		$index=0;
@@ -82,6 +90,25 @@ class TreeRenderStrategy extends RenderStrategy {
 		return $output;
 	}
 
+	/*! store info about ID changes during insert operation
+		@param dataAction 
+			data action object during insert operation
+	*/
+	public function parent_id_correction_a($dataAction){
+		$this->id_swap[$dataAction->get_id()]=$dataAction->get_new_id();
+	}
+
+	/*! update ID if it was affected by previous operation
+		@param dataAction 
+			data action object, before any processing operation
+	*/
+	public function parent_id_correction_b($dataAction){
+		$relation = $this->conn->get_config()->relation_id["db_name"];
+		$value = $dataAction->get_value($relation);
+
+		if (array_key_exists($value,$this->id_swap))
+			$dataAction->set_value($relation,$this->id_swap[$value]);
+	}
 }
 
 
@@ -117,10 +144,17 @@ class JSONTreeRenderStrategy extends RenderStrategy {
 }
 
 
-class MultitableRenderStrategy extends RenderStrategy {
+class MultitableTreeRenderStrategy extends TreeRenderStrategy {
 
 	private $level = 0;
 	private $max_level = null;
+	protected $sep = "#";
+	
+	public function __construct($conn) {
+		parent::__construct($conn);
+		$conn->event->attach("beforeProcessing", Array($this, 'id_translate_before'));
+		$conn->event->attach("afterProcessing", Array($this, 'id_translate_after'));
+	}
 
 	public function render_set($res, $name, $dload, $sep){
 		$output="";
@@ -146,7 +180,7 @@ class MultitableRenderStrategy extends RenderStrategy {
 
 
 	public function level_id($id, $level = null) {
-		return ($level === null ? $this->level : $level).'%23'.$id;
+		return ($level === null ? $this->level : $level).$this->sep.$id;
 	}
 
 
@@ -178,9 +212,9 @@ class MultitableRenderStrategy extends RenderStrategy {
 	}
 
 
-	public function get_level() {
+	public function get_level($parent_name) {
 		if ($this->level) return $this->level;
-		if (!isset($_GET['id'])) {
+		if (!isset($_GET[$parent_name])) {
 			if (isset($_POST['ids'])) {
 				$ids = explode(",",$_POST["ids"]);
 				$id = $this->parse_id($ids[0]);
@@ -188,42 +222,38 @@ class MultitableRenderStrategy extends RenderStrategy {
 			}
 			$this->conn->get_request()->set_relation(false);
 		} else {
-			$id = $this->parse_id($_GET['id']);
-			$_GET['id'] = $id;
+			$id = $this->parse_id($_GET[$parent_name]);
+			$_GET[$parent_name] = $id;
 		}
 		return $this->level;
 	}
 
 
 	public function is_max_level() {
-		if (($this->max_level !== null) && ($this->level() >= $this->max_level))
+		if (($this->max_level !== null) && ($this->level >= $this->max_level))
 			return true;
 		return false;
 	}
-	
 	public function set_max_level($max_level) {
 		$this->max_level = $max_level;
 	}
-
 	public function parse_id($id, $set_level = true) {
-		$result = Array();
-		preg_match('/^(.+)((#)|(%23))/', $id, $result);
-		if ($set_level === true) {
-			$this->level = isset($result[1]) ? $result[1] + 1 : 0;
-		}
-		preg_match('/^(.+)(#|%23)(.*)$/', $id, $result);
-		if (isset($result[3])) {
-			$id = $result[3];
+		$parts = explode($this->sep, urldecode($id));
+		if (count($parts) === 2) {
+			$level = $parts[0] + 1;
+			$id = $parts[1];
 		} else {
+			$level = 0;
 			$id = '';
 		}
+		if ($set_level) $this->level = $level;
 		return $id;
 	}
-	
+
 }
 
 
-class JSONMultitableRenderStrategy extends MultitableRenderStrategy {
+class JSONMultitableTreeRenderStrategy extends MultitableTreeRenderStrategy {
 
 	public function render_set($res, $name, $dload, $sep){
 		$output=array();
@@ -231,7 +261,7 @@ class JSONMultitableRenderStrategy extends MultitableRenderStrategy {
 		$conn = $this->conn;
 		$config = $conn->get_config();
 		while ($data=$conn->sql->get_next($res)){
-			$data[$config->id['name']] = $conn->level_id($data[$config->id['name']]);
+			$data[$config->id['name']] = $this->level_id($data[$config->id['name']]);
 			$data = new $name($data,$config,$index);
 			$conn->event->trigger("beforeRender",$data);
 

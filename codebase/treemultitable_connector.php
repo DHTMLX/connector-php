@@ -7,13 +7,12 @@ require_once("tree_connector.php");
 
 class TreeMultitableConnector extends TreeConnector{
 
-	private $max_level = null;
+	protected $parent_name = 'id';
+
 	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$data_type) $data_type="TreeDataProcessor";
-		if (!$render_type) $render_type="MultitableRenderStrategy";
+		if (!$render_type) $render_type="MultitableTreeRenderStrategy";
 		parent::__construct($res,$type,$item_type,$data_type,$render_type);
-		$this->event->attach("beforeProcessing", Array($this->render, 'id_translate_before'));
-		$this->event->attach("afterProcessing", Array($this->render, 'id_translate_after'));
 	}
 
 	public function render(){
@@ -23,18 +22,13 @@ class TreeMultitableConnector extends TreeConnector{
 
 	/*! sets relation for rendering */
 	protected function set_relation() {
-		if (!isset($_GET['id']))
+		if (!isset($_GET[$this->parent_name]))
 			$this->request->set_relation(false);
 	}
 
-	/*! gets resource for rendering */
-	protected function get_resource() {
-		return $this->sql->select($this->request);
-	}
-
 	public function xml_start(){
-		if (isset($_GET['id'])) {
-			return "<tree id='".($this->render->level_id($_GET['id'], $this->render->get_level() - 1))."'>";
+		if (isset($_GET[$this->parent_name])) {
+			return "<tree id='".($this->render->level_id($_GET[$this->parent_name], $this->render->get_level() - 1))."'>";
 		} else {
 			return "<tree id='0'>";
 		}
@@ -49,7 +43,7 @@ class TreeMultitableConnector extends TreeConnector{
 	}
 
 	public function get_level() {
-		return $this->render->get_level();
+		return $this->render->get_level($this->parent_name);
 	}
 	
 }

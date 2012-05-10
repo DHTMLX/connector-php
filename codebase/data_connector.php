@@ -299,50 +299,46 @@ class TreeCommonDataItem extends CommonDataItem{
 
 
 class TreeDataConnector extends DataConnector{
-	protected $id_swap = array();
+	protected $parent_name = 'parent';
+
+	/*! constructor
+		
+		Here initilization of all Masters occurs, execution timer initialized
+		@param res 
+			db connection resource
+		@param type
+			string , which hold type of database ( MySQL or Postgre ), optional, instead of short DB name, full name of DataWrapper-based class can be provided
+		@param item_type
+			name of class, which will be used for item rendering, optional, DataItem will be used by default
+		@param data_type
+			name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default. 
+	 *	@param render_type
+	 *		name of class which will provides data rendering
+	*/	
 	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="TreeCommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
 		if (!$render_type) $render_type="TreeRenderStrategy";
 		parent::__construct($res,$type,$item_type,$data_type,$render_type);
-
-		$this->event->attach("afterInsert",array($this,"parent_id_correction_a"));
-		$this->event->attach("beforeProcessing",array($this,"parent_id_correction_b"));
-	}
-
-	protected function xml_start(){
-		return "<data parent='".$this->request->get_relation()."'>";
-	}	
-
-	/*! store info about ID changes during insert operation
-		@param dataAction 
-			data action object during insert operation
-	*/
-	public function parent_id_correction_a($dataAction){
-		$this->id_swap[$dataAction->get_id()]=$dataAction->get_new_id();
-	}
-	/*! update ID if it was affected by previous operation
-		@param dataAction 
-			data action object, before any processing operation
-	*/
-	public function parent_id_correction_b($dataAction){
-		$relation = $this->config->relation_id["db_name"];
-		$value = $dataAction->get_value($relation);
-		
-		if (array_key_exists($value,$this->id_swap))
-			$dataAction->set_value($relation,$this->id_swap[$value]);
 	}
 
 	//parse GET scoope, all operations with incoming request must be done here
 	protected function parse_request(){
 		parent::parse_request();
 
-		if (isset($_GET["parent"]))
-			$this->request->set_relation($_GET["parent"]);
+		if (isset($_GET[$this->parent_name]))
+			$this->request->set_relation($_GET[$this->parent_name]);
 		else
 			$this->request->set_relation("0");
+
+		$this->request->set_limit(0,0); //netralize default reaction on dyn. loading mode
 	}
 
+	/*! renders self as  xml, starting part
+	*/
+	protected function xml_start(){
+		return "<data parent='".$this->request->get_relation()."'>";
+	}	
 }
 
 
@@ -353,9 +349,6 @@ class JSONTreeDataConnector extends TreeDataConnector{
 		if (!$data_type) $data_type="CommonDataProcessor";
 		if (!$render_type) $render_type="JSONTreeRenderStrategy";
 		parent::__construct($res,$type,$item_type,$data_type,$render_type);
-
-		$this->event->attach("afterInsert",array($this,"parent_id_correction_a"));
-		$this->event->attach("beforeProcessing",array($this,"parent_id_correction_b"));
 	}
 
 	protected function output_as_xml($res){

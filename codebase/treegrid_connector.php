@@ -52,8 +52,8 @@ class TreeGridDataItem extends GridDataItem{
 /*! Connector for dhtmlxTreeGrid
 **/
 class TreeGridConnector extends GridConnector{
-	private $id_swap = array();
-	
+	protected $parent_name = 'id';
+
 	/*! constructor
 		
 		Here initilization of all Masters occurs, execution timer initialized
@@ -65,49 +65,27 @@ class TreeGridConnector extends GridConnector{
 			name of class, which will be used for item rendering, optional, DataItem will be used by default
 		@param data_type
 			name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default. 
+	 *	@param render_type
+	 *		name of class which will provides data rendering
 	*/	
 	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="TreeGridDataItem";
 		if (!$data_type) $data_type="TreeGridDataProcessor";
 		if (!$render_type) $render_type="TreeRenderStrategy";
 		parent::__construct($res,$type,$item_type,$data_type,$render_type);
-	
-		$this->event->attach("afterInsert",array($this,"parent_id_correction_a"));
-		$this->event->attach("beforeProcessing",array($this,"parent_id_correction_b"));
 	}
 
-	/*! store info about ID changes during insert operation
-		@param dataAction 
-			data action object during insert operation
-	*/	
-	public function parent_id_correction_a($dataAction){
-		$this->id_swap[$dataAction->get_id()]=$dataAction->get_new_id();
-	}
-	/*! update ID if it was affected by previous operation
-		@param dataAction 
-			data action object, before any processing operation
-	*/
-	public function parent_id_correction_b($dataAction){
-		$relation = $this->config->relation_id["db_name"];
-		$value = $dataAction->get_value($relation);
-		
-		if (array_key_exists($value,$this->id_swap))
-			$dataAction->set_value($relation,$this->id_swap[$value]);
-	}
-		
-	/*! process treegrid specific options in incoming request
-	*/
+	/*! process treegrid specific options in incoming request */
 	public function parse_request(){
 		parent::parse_request();
-		
-		if (isset($_GET["id"]))
-			$this->request->set_relation($_GET["id"]);
+
+		if (isset($_GET[$this->parent_name]))
+			$this->request->set_relation($_GET[$this->parent_name]);
 		else
 			$this->request->set_relation("0");
-			
+
 		$this->request->set_limit(0,0); //netralize default reaction on dyn. loading mode
 	}
-
 
 	/*! renders self as  xml, starting part
 	*/	
