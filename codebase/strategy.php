@@ -119,16 +119,19 @@ class JSONTreeRenderStrategy extends RenderStrategy {
 
 class MultitableRenderStrategy extends RenderStrategy {
 
+	private $level = 0;
+	private $max_level = null;
+
 	public function render_set($res, $name, $dload, $sep){
 		$output="";
 		$index=0;
 		$conn = $this->conn;
 		$config = $conn->get_config();
 		while ($data=$conn->sql->get_next($res)){
-			$data[$config->id['name']] = $conn->level_id($data[$config->id['name']]);
+			$data[$config->id['name']] = $this->level_id($data[$config->id['name']]);
 			$data = new $name($data,$config,$index);
 			$conn->event->trigger("beforeRender",$data);
-			if (($conn->getMaxLevel() !== null)&&($conn->get_level() == $conn->getMaxLevel())) {
+			if (($this->max_level !== null)&&($conn->get_level() == $this->max_level)) {
 				$data->set_kids(false);
 			} else {
 				if ($data->has_kids()===-1)
@@ -141,6 +144,82 @@ class MultitableRenderStrategy extends RenderStrategy {
 		return $output;
 	}
 
+
+	public function level_id($id, $level = null) {
+		return ($level === null ? $this->level : $level).'%23'.$id;
+	}
+
+
+	/*! remove level prefix from id, parent id and set new id before processing
+		@param action
+			DataAction object
+	*/
+	public function id_translate_before($action) {
+		$id = $action->get_id();
+		$id = $this->parse_id($id, false);
+		$action->set_id($id);
+		$action->set_value('tr_id', $id);
+		$action->set_new_id($id);
+		$pid = $action->get_value($this->conn->get_config()->relation_id['db_name']);
+		$pid = $this->parse_id($pid, false);
+		$action->set_value($this->conn->get_config()->relation_id['db_name'], $pid);
+	}
+
+
+	/*! add level prefix in id and new id after processing
+		@param action
+			DataAction object
+	*/
+	public function id_translate_after($action) {
+		$id = $action->get_id();
+		$action->set_id($this->level_id($id));
+		$id = $action->get_new_id();
+		$action->success($this->level_id($id));
+	}
+
+
+	public function get_level() {
+		if ($this->level) return $this->level;
+		if (!isset($_GET['id'])) {
+			if (isset($_POST['ids'])) {
+				$ids = explode(",",$_POST["ids"]);
+				$id = $this->parse_id($ids[0]);
+				$this->level--;
+			}
+			$this->conn->get_request()->set_relation(false);
+		} else {
+			$id = $this->parse_id($_GET['id']);
+			$_GET['id'] = $id;
+		}
+		return $this->level;
+	}
+
+
+	public function is_max_level() {
+		if (($this->max_level !== null) && ($this->level() >= $this->max_level))
+			return true;
+		return false;
+	}
+	
+	public function set_max_level($max_level) {
+		$this->max_level = $max_level;
+	}
+
+	public function parse_id($id, $set_level = true) {
+		$result = Array();
+		preg_match('/^(.+)((#)|(%23))/', $id, $result);
+		if ($set_level === true) {
+			$this->level = isset($result[1]) ? $result[1] + 1 : 0;
+		}
+		preg_match('/^(.+)(#|%23)(.*)$/', $id, $result);
+		if (isset($result[3])) {
+			$id = $result[3];
+		} else {
+			$id = '';
+		}
+		return $id;
+	}
+	
 }
 
 
@@ -156,7 +235,7 @@ class JSONMultitableRenderStrategy extends MultitableRenderStrategy {
 			$data = new $name($data,$config,$index);
 			$conn->event->trigger("beforeRender",$data);
 
-			if ($conn->is_max_level()) {
+			if ($this->is_max_level()) {
 				$data->set_kids(false);
 			} else {
 				if ($data->has_kids()===-1)
