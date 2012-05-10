@@ -156,6 +156,10 @@ class MultitableTreeRenderStrategy extends TreeRenderStrategy {
 		$conn->event->attach("afterProcessing", Array($this, 'id_translate_after'));
 	}
 
+	public function set_separator($sep) {
+		$this->sep = $sep;
+	}
+	
 	public function render_set($res, $name, $dload, $sep){
 		$output="";
 		$index=0;
@@ -238,7 +242,7 @@ class MultitableTreeRenderStrategy extends TreeRenderStrategy {
 		$this->max_level = $max_level;
 	}
 	public function parse_id($id, $set_level = true) {
-		$parts = explode($this->sep, urldecode($id));
+		$parts = explode('#', urldecode($id));
 		if (count($parts) === 2) {
 			$level = $parts[0] + 1;
 			$id = $parts[1];
@@ -284,6 +288,12 @@ class JSONMultitableTreeRenderStrategy extends MultitableTreeRenderStrategy {
 class GroupRenderStrategy extends RenderStrategy {
 
 	private $id_postfix = '__{group_param}';
+
+	public function __construct($conn) {
+		parent::__construct($conn);
+		$conn->event->attach("beforeProcessing", Array($this, 'check_id'));
+		$conn->event->attach("onInit", Array($this, 'replace_postfix'));
+	}
 
 	public function render_set($res, $name, $dload, $sep){
 		$output="";

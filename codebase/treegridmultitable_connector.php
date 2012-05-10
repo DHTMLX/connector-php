@@ -7,11 +7,11 @@ require_once("treegrid_connector.php");
 
 class TreeGridMultitableConnector extends TreeGridConnector{
 
-	private $max_level = null;
 	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		$data_type="TreeGridMultitableDataProcessor";
 		if (!$render_type) $render_type="MultitableTreeRenderStrategy";
 		parent::__construct($res,$type,$item_type,$data_type,$render_type);
+		$this->render->set_separator("%23");
 	}
 
 	public function render(){
@@ -29,7 +29,7 @@ class TreeGridMultitableConnector extends TreeGridConnector{
 		if (isset($_GET['id'])) {
 			return "<rows parent='".$this->render->level_id($_GET['id'], $this->render->get_level() - 1)."'>";
 		} else {
-			return "<rows parent=''>";
+			return "<rows parent='0'>";
 		}
 	}
 
