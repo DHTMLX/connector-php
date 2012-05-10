@@ -10,6 +10,7 @@
 
 
 <script src="../dhtmlx/dhtmlx.js" type="text/javascript" charset="utf-8"></script>
+<script src="../dhtmlx/dhtmlxdataprocessor.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../codebase/connector.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="../dhtmlx/dhtmlx.css" type="text/css" charset="utf-8">
 
@@ -20,10 +21,13 @@
 
 <script type="text/javascript" charset="utf-8">
 	tree=new dhtmlXTreeObject("treeboxbox_tree","100%","100%",0);
-    tree.setImagePath("../dhtmlx/tree/");
+	tree.setImagePath("../dhtmlx/tree/");
+	tree.setXMLAutoLoading("09_tree_multitable_connector.php");
+	tree.enableItemEditor(true);
+	tree.loadXML("09_tree_multitable_connector.php");
 
-	tree.setXMLAutoLoading("09_tree_multitable_connector.php");    
-    tree.loadXML("09_tree_multitable_connector.php");
+	var dp = new dataProcessor("09_tree_multitable_connector.php");
+	dp.init(tree);
 </script>
 
 <div class='code'><code><span style="color: #000000">
