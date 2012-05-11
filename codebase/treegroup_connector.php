@@ -10,14 +10,12 @@ class TreeGroupConnector extends TreeConnector{
 	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$render_type) $render_type="GroupRenderStrategy";
 		parent::__construct($res,$type,$item_type,$data_type,$render_type);
-		$this->event->attach("beforeProcessing", Array($this->render, 'check_id'));
-		$this->event->attach("onInit", Array($this->render, 'replace_postfix'));
 	}
 
 	/*! if not isset $_GET[id] then it's top level
 	 */
 	protected function set_relation() {
-		if (!isset($_GET['id'])) $this->request->set_relation(false);
+		if (!isset($_GET[$this->parent_name])) $this->request->set_relation(false);
 	}
 
 	/*! if it's first level then distinct level
@@ -25,7 +23,7 @@ class TreeGroupConnector extends TreeConnector{
 	 */
 	protected function get_resource() {
 		$resource = null;
-		if (isset($_GET['id']))
+		if (isset($_GET[$this->parent_name]))
 			$resource = $this->sql->select($this->request);
 		else
 			$resource = $this->sql->get_variants($this->config->relation_id['name'], $this->request);
@@ -36,8 +34,8 @@ class TreeGroupConnector extends TreeConnector{
 	/*! renders self as xml, starting part
 	*/
 	public function xml_start(){
-		if (isset($_GET['id'])) {
-			return "<tree id='".$_GET['id'].$this->render->get_postfix()."'>";
+		if (isset($_GET[$this->parent_name])) {
+			return "<tree id='".$_GET[$this->parent_name].$this->render->get_postfix()."'>";
 		} else {
 			return "<tree id='0'>";
 		}
