@@ -113,7 +113,7 @@ class TreeRenderStrategy extends RenderStrategy {
 
 
 
-class JSONTreeRenderStrategy extends RenderStrategy {
+class JSONTreeRenderStrategy extends TreeRenderStrategy {
 
 	public function render_set($res, $name, $dload, $sep){
 		$output=array();
