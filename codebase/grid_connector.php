@@ -267,7 +267,8 @@ class GridDataProcessor extends DataProcessor{
 		if ($data == "gr_id") return $this->config->id["name"];
 		$parts=explode("c",$data);
 		if ($parts[0]=="" && ((string)intval($parts[1]))==$parts[1])
-			return $this->config->text[intval($parts[1])]["name"];
+			if (sizeof($this->config->text)>intval($parts[1]))
+				return $this->config->text[intval($parts[1])]["name"];
 		return $data;
 	}
 }
