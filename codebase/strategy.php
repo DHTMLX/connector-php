@@ -31,7 +31,7 @@ class RenderStrategy {
 
 }
 
-class JSONRenderStrategy {
+class JSONRenderStrategy extends RenderStrategy {
 
 	/*! render from DB resultset
 		@param res
