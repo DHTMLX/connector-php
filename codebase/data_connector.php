@@ -240,7 +240,7 @@ class JSONCommonDataItem extends DataItem{
 	function to_xml(){
 		if ($this->skip) return "";
 		
-		$data = array( "id" => $this->get_id() );
+		$data = array();
 		for ($i=0; $i<sizeof($this->config->text); $i++){
 			$extra = $this->config->text[$i]["name"];
 			$data[$extra]=$this->data[$extra];
