@@ -1,5 +1,4 @@
 <?php
-	include ('../../codebase/data_connector.php');
 	include ('../../codebase/scheduler_connector.php');
 	include ('../config.php');
 	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);

@@ -4,6 +4,7 @@
 	@license GPL, see license.txt
 */
 require_once("base_connector.php");
+require_once("data_connector.php");
 
 /*! DataItem class for Scheduler component
 **/
