@@ -175,7 +175,10 @@ class JSONSchedulerConnector extends SchedulerConnector {
 
 	protected function xml_end() {
 		$this->fill_collections();
-		return ', "collections": {'.$this->extra_output.'} }';
+		if (empty($this->extra_output))
+			return ' }';
+		else
+			return ', "collections": {'.$this->extra_output.'} }';
 	}
 
 
