@@ -14,14 +14,12 @@ require_once("grid_config.php");
 class GridDataItem extends DataItem{
 	protected $row_attrs;//!< hash of row attributes
 	protected $cell_attrs;//!< hash of cell attributes
-	protected $userdata;
 	
 	function __construct($data,$name,$index=0){
 		parent::__construct($data,$name,$index);
 		
 		$this->row_attrs=array();
 		$this->cell_attrs=array();
-		$this->userdata=array();
 	}
 	/*! set color of row
 		
@@ -73,17 +71,6 @@ class GridDataItem extends DataItem{
 		$this->cell_attrs[$name][$attr]=$value;
 	}
 	
-	/*! set userdata section for the item
-		
-		@param name
-			name of userdata
-		@param value
-			value of userdata
-	*/
-	function set_userdata($name, $value){
-		$this->userdata[$name]=$value;
-	}
-		
 	/*! set custom row attribute
 		
 		@param attr
@@ -115,8 +102,9 @@ class GridDataItem extends DataItem{
 			$value = isset($this->data[$name]) ? $this->data[$name] : '';
 			$str.="><![CDATA[".$value."]]></cell>";
 		}
-		foreach ($this->userdata as $key => $value)
-			$str.="<userdata name='".$key."'><![CDATA[".$value."]]></userdata>";
+		if ($this->userdata !== false)
+			foreach ($this->userdata as $key => $value)
+				$str.="<userdata name='".$key."'><![CDATA[".$value."]]></userdata>";
 			
 		return $str;
 	}

@@ -24,7 +24,6 @@ class TreeDataItem extends DataItem{
 		$this->im2=false;
 		$this->check=false;
 		$this->attrs = array();
-		$this->userdata = array();
 	}
 	/*! get id of parent record
 		
@@ -102,16 +101,6 @@ class TreeDataItem extends DataItem{
 		}
 	}
 	
-	/*! set userdata section for the item
-		
-		@param name
-			name of userdata
-		@param value
-			value of userdata
-	*/
-	function set_userdata($name, $value){
-		$this->userdata[$name]=$value;
-	}
 	
 	/*! assign image for tree's item
 		
@@ -141,8 +130,9 @@ class TreeDataItem extends DataItem{
 		foreach ($this->attrs as $key => $value)
 			$str1.=$key."='".$this->xmlentities($value)."' ";
 		$str1.=">";
-		foreach ($this->userdata as $key => $value)
-			$str1.="<userdata name='".$key."'><![CDATA[".$value."]]></userdata>";
+		if ($this->userdata !== false)
+			foreach ($this->userdata as $key => $value)
+				$str1.="<userdata name='".$key."'><![CDATA[".$value."]]></userdata>";
 			
 		return $str1;
 	}

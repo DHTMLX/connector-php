@@ -71,6 +71,11 @@ class CommonDataItem extends DataItem{
 			$name=$this->config->text[$i]["name"];
 			$str.=" ".$name."='".$this->xmlentities($this->data[$name])."'";
 		}
+
+		if ($this->userdata !== false)
+			foreach ($this->userdata as $key => $value)
+				$str.=" ".$key."='".$this->xmlentities($value)."'";
+
 		return $str.">";
 	}
 }
@@ -267,6 +272,11 @@ class JSONCommonDataItem extends DataItem{
 			$extra = $this->config->text[$i]["name"];
 			$data[$extra]=$this->data[$extra];
 		}
+		
+		if ($this->userdata !== false)
+			foreach ($this->userdata as $key => $value)
+				$data["key"]=$value;
+
 		return json_encode($data);
 	}
 }
@@ -325,6 +335,10 @@ class TreeCommonDataItem extends CommonDataItem{
 			$str.=" ".$name."='".$this->xmlentities($this->data[$name])."'";
 		}
 		
+		if ($this->userdata !== false)
+			foreach ($this->userdata as $key => $value)
+				$str.=" ".$key."='".$this->xmlentities($value)."'";
+
 		if ($this->kids === true)
 			$str .=" dhx_kids='1'";
 		
@@ -418,6 +432,10 @@ class JSONTreeCommonDataItem extends TreeCommonDataItem{
 			$extra = $this->config->text[$i]["name"];
 			$data[$extra]=$this->data[$extra];
 		}
+
+		if ($this->userdata !== false)
+			foreach ($this->userdata as $key => $value)
+				$data["key"]=$value;
 
 		if ($this->kids === true)
 			$data["dhx_kids"] = 1;

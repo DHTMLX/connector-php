@@ -151,6 +151,8 @@ class DataItem{
 	protected $config;//!< DataConfig instance
 	protected $index;//!< index of element
 	protected $skip;//!< flag , which set if element need to be skiped during rendering
+	protected $userdata;
+
 	/*! constructor
 		
 		@param data
@@ -165,6 +167,15 @@ class DataItem{
 		$this->data=$data;
 		$this->index=$index;
 		$this->skip=false;
+		$this->userdata=false;
+	}
+
+	//set userdata for the item
+	function set_userdata($name, $value){
+		if ($this->userdata === false)
+			$this->userdata = array();
+
+		$this->userdata[$name]=$value;
 	}
 	/*! get named value
 		
@@ -243,6 +254,12 @@ class DataItem{
 			$name=$this->config->data[$i]["name"];
 			$str.=" ".$name."='".$this->xmlentities($this->data[$name])."'";
 		}
+		//output custom data
+		if ($this->userdata !== false)
+			foreach ($this->userdata as $key => $value){
+				$str.=" ".$key."='".$this->xmlentities($value)."'";
+			}
+
 		return $str.">";
 	}
 	/*! return ending tag for XML string
