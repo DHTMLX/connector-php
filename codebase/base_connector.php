@@ -283,6 +283,9 @@ class Connector {
 	protected $names;//!< hash of names for used classes
 	protected $encoding="utf-8";//!< assigned encoding (UTF-8 by default) 
 	protected $editing=false;//!< flag of edit mode ( response for dataprocessor )
+
+	protected $model=false;
+
 	private $updating=false;//!< flag of update mode ( response for data-update )
 	private $db; //!< db connection resource
 	protected $dload;//!< flag of dyn. loading mode
@@ -354,6 +357,14 @@ class Connector {
 	
 	public function get_request(){
 		return new DataRequestConfig($this->request);
+	}
+
+
+	//model is a class, which will be used for all data operations
+	//we expect that it has next methods get, update, insert, delete
+	//if method was not defined - we will use default logic
+	public function useModel($model){
+		$this->model = $model;
 	}
 
 
@@ -458,7 +469,11 @@ class Connector {
 				$this->event->trigger("beforeFilter",$wrap);
 				$wrap->store();
 				
-				$this->output_as_xml($this->get_resource());
+
+				if ($this->model && method_exists($this->model, "get"))
+					$this->output_as_xml( call_user_func(array($this->model, "get"), $this->request));
+				else
+					$this->output_as_xml($this->get_resource());
 			}
 		}
 		$this->end_run();

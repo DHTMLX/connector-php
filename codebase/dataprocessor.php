@@ -12,7 +12,8 @@ class DataProcessor{
 	protected $connector;//!< Connector instance
 	protected $config;//!< DataConfig instance
 	protected $request;//!< DataRequestConfig instance
-	
+	static public $action_param ="!nativeeditor_status";
+
 	/*! constructor
 		
 		@param connector 
@@ -67,9 +68,9 @@ class DataProcessor{
 	}
 	
 	protected function get_operation($rid){
-		if (!isset($_POST[$rid."_!nativeeditor_status"]))
+		if (!isset($_POST[$rid."_".DataProcessor::$action_param]))
 			throw new Exception("Status of record [{$rid}] not found in incoming request");
-		return $_POST[$rid."_!nativeeditor_status"];
+		return $_POST[$rid."_".DataProcessor::$action_param];
 	}
 	/*! process incoming request ( save|update|delete )
 	*/
@@ -203,10 +204,16 @@ class DataProcessor{
 			}
 			else{
 				$action->sync_config($this->config);
-				$method=array($this->connector->sql,$mode);
-				if (!is_callable($method))
-					throw new Exception("Unknown dataprocessing action: ".$mode);
-				call_user_func($method,$action,$this->request);
+				if ($this->connector->model && method_exists($this->connector->model, $mode)){
+					call_user_func(array($this->connector->model, $mode), $action);
+					LogMaster::log("Model object process action: ".$mode);
+				}
+				if (!$action->is_ready()){
+					$method=array($this->connector->sql,$mode);
+					if (!is_callable($method))
+						throw new Exception("Unknown dataprocessing action: ".$mode);
+					call_user_func($method,$action,$this->request);
+				}
 			}
 		}
 		$this->connector->event->trigger("after".$mode,$action);
