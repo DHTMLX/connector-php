@@ -5,6 +5,9 @@
 */
 /*! Base DataProcessor handling
 **/
+
+require_once("xss_filter.php");
+
 class DataProcessor{
 	protected $connector;//!< Connector instance
 	protected $config;//!< DataConfig instance
@@ -52,7 +55,7 @@ class DataProcessor{
 			if (sizeof($details)==1) continue;
 			
 			$name=$this->name_data($details[1]);
-			$data[$details[0]][$name]=$value;
+			$data[$details[0]][$name]=ConnectorSecurity::filter($value);
 		}
 			
 		return $data;

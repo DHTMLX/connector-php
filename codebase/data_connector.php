@@ -9,8 +9,13 @@ class CommonDataProcessor extends DataProcessor{
 	protected function get_post_values($ids){
 		if (isset($_GET['action'])){
 			$data = array();
-			if (isset($_POST["id"]))
-				$data[$_POST["id"]] = $_POST;
+			if (isset($_POST["id"])){
+				$dataset = array();
+				foreach($_POST as $key=>$value)
+					$dataset[$key] = ConnectorSecurity::filter($value);
+
+				$data[$_POST["id"]] = $dataset;
+			}
 			else
 				$data["dummy_id"] = $_POST;
 			return $data;
