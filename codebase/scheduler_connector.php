@@ -24,7 +24,7 @@ class SchedulerDataItem extends DataItem{
 		}
 		if ($this->userdata !== false)
 			foreach ($this->userdata as $key => $value)
-				$str.="<".$key."'><![CDATA[".$value."]]></".$key.">";
+				$str.="<".$key."><![CDATA[".$value."]]></".$key.">";
 
 		return $str."</event>";
 	}
