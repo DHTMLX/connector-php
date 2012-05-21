@@ -142,7 +142,7 @@ define("DHX_SECURITY_TRUSTED", 3);
 
 class ConnectorSecurity{
     static public $xss = DHX_SECURITY_SAFETEXT;
-    static public $csrf = false;
+    static public $security_key = false;
 
     static private $filterClass = null;
     static function filter($value, $mode = false){
@@ -160,4 +160,36 @@ class ConnectorSecurity{
         }
         throw new Error("Invalid security mode:"+$mode);
     }
+
+    static function CSRF_detected(){
+        LogMaster::log("[SECURITY] Possible CSRF attack detected", array(
+            "referer" => $_SERVER["HTTP_REFERER"],
+            "remote" => $_SERVER["REMOTE_ADDR"]
+        ));
+        LogMaster::log("Request data", $_POST);
+        die();
+    }
+    static function checkCSRF($edit){
+        @session_start();
+
+        if (ConnectorSecurity::$security_key){
+            if ($edit=== true){
+                if (!isset($_POST['dhx_security']))
+                    return ConnectorSecurity::CSRF_detected();
+                $master_key = $_SESSION['dhx_security'];
+                $update_key = $_POST['dhx_security'];
+                if ($master_key != $update_key)
+                    return ConnectorSecurity::CSRF_detected();
+
+                return "";
+            }
+            //data loading
+            if (!array_key_exists("dhx_security",$_SESSION)){
+                $_SESSION["dhx_security"] = md5(uniqid());
+            }
+
+            return $_SESSION["dhx_security"];
+        }
+    }
+
 }

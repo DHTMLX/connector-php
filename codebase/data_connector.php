@@ -95,14 +95,23 @@ class DataConnector extends Connector{
 	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="CommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
-		$section = array();
+
+		$this->sections = array();
+		$this->attributes = array();
+
 		if (!$render_type) $render_type="RenderStrategy";
 		parent::__construct($res,$type,$item_type,$data_type,$render_type);
+
 	}
 
 	protected $sections;
 	public function add_section($name, $string){
 		$this->sections[$name] = $string;
+	}
+
+	protected $attributes;
+	public function add_top_attribute($name, $string){
+		$this->attributes[$name] = $string;
 	}
 
 	protected function parse_request_mode(){
@@ -138,12 +147,20 @@ class DataConnector extends Connector{
 	
 		if (isset($_GET["start"]) && isset($_GET["count"]))
 			$this->request->set_limit($_GET["start"],$_GET["count"]);
+
+		$key = ConnectorSecurity::checkCSRF($this->editing);
+		if ($key !== "")
+			$this->add_top_attribute("dhx_security", $key);
 	}
 	
 	/*! renders self as  xml, starting part
 	*/
 	protected function xml_start(){
-		$start = "<data>";
+		$start = "<data";
+		foreach($this->attributes as $k=>$v)
+			$start .= " ".$k."='".$v."'";
+		$start.= ">";
+
 		foreach($this->sections as $k=>$v)
 			$start .= "<".$k.">".$v."</".$k.">\n";
 		return $start;
