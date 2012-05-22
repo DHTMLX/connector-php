@@ -569,7 +569,7 @@ class Connector {
 		process commands, output requested data as XML
 	*/
 	protected function render_set($res){
-		return $this->render->render_set($res, $this->names["item_class"], $this->dload, $this->data_separator);
+		return $this->render->render_set($res, $this->names["item_class"], $this->dload, $this->data_separator, $this->config);
 	}
 	
 	/*! output fetched data as XML

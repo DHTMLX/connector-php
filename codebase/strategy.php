@@ -13,13 +13,13 @@ class RenderStrategy {
 			DB resultset 
 		process commands, output requested data as XML
 	*/
-	public function render_set($res, $name, $dload, $sep){
+	public function render_set($res, $name, $dload, $sep, $config){
 		$output="";
 		$index=0;
 		$conn = $this->conn;
-		$conn->event->trigger("beforeRenderSet",$conn,$res,$conn->get_config());
+		$conn->event->trigger("beforeRenderSet",$conn,$res,$config);
 		while ($data=$conn->sql->get_next($res)){
-			$data = new $name($data,$conn->get_config(),$index);
+			$data = new $name($data,$config,$index);
 			if ($data->get_id()===false)
 				$data->set_id($conn->uuid());
 			$conn->event->trigger("beforeRender",$data);
@@ -38,13 +38,13 @@ class JSONRenderStrategy extends RenderStrategy {
 			DB resultset 
 		process commands, output requested data as json
 	*/
-	public function render_set($res, $name, $dload, $sep){
+	public function render_set($res, $name, $dload, $sep, $config){
 		$output=array();
 		$index=0;
 		$conn = $this->conn;
-		$conn->event->trigger("beforeRenderSet",$conn,$res,$conn->get_config());
+		$conn->event->trigger("beforeRenderSet",$conn,$res,$config);
 		while ($data=$conn->sql->get_next($res)){
-			$data = new $name($data,$conn->get_config(),$index);
+			$data = new $name($data,$config,$index);
 			if ($data->get_id()===false)
 				$data->set_id($conn->uuid());
 			$conn->event->trigger("beforeRender",$data);
@@ -66,12 +66,12 @@ class TreeRenderStrategy extends RenderStrategy {
 		$conn->event->attach("beforeProcessing",array($this,"parent_id_correction_b"));
 	}
 
-	public function render_set($res, $name, $dload, $sep){
+	public function render_set($res, $name, $dload, $sep, $config){
 		$output="";
 		$index=0;
 		$conn = $this->conn;
 		while ($data=$conn->sql->get_next($res)){
-			$data = new $name($data,$conn->get_config(),$index);
+			$data = new $name($data,$config,$index);
 			$conn->event->trigger("beforeRender",$data);
 			//there is no info about child elements,
 			//if we are using dyn. loading - assume that it has,
@@ -115,12 +115,12 @@ class TreeRenderStrategy extends RenderStrategy {
 
 class JSONTreeRenderStrategy extends TreeRenderStrategy {
 
-	public function render_set($res, $name, $dload, $sep){
+	public function render_set($res, $name, $dload, $sep, $config){
 		$output=array();
 		$index=0;
 		$conn = $this->conn;
 		while ($data=$conn->sql->get_next($res)){
-			$data = new $name($data,$conn->get_config(),$index);
+			$data = new $name($data,$config,$index);
 			$conn->event->trigger("beforeRender",$data);
 			//there is no info about child elements, 
 			//if we are using dyn. loading - assume that it has,
@@ -160,11 +160,10 @@ class MultitableTreeRenderStrategy extends TreeRenderStrategy {
 		$this->sep = $sep;
 	}
 	
-	public function render_set($res, $name, $dload, $sep){
+	public function render_set($res, $name, $dload, $sep, $config){
 		$output="";
 		$index=0;
 		$conn = $this->conn;
-		$config = $conn->get_config();
 		while ($data=$conn->sql->get_next($res)){
 			$data[$config->id['name']] = $this->level_id($data[$config->id['name']]);
 			$data = new $name($data,$config,$index);
@@ -259,11 +258,10 @@ class MultitableTreeRenderStrategy extends TreeRenderStrategy {
 
 class JSONMultitableTreeRenderStrategy extends MultitableTreeRenderStrategy {
 
-	public function render_set($res, $name, $dload, $sep){
+	public function render_set($res, $name, $dload, $sep, $config){
 		$output=array();
 		$index=0;
 		$conn = $this->conn;
-		$config = $conn->get_config();
 		while ($data=$conn->sql->get_next($res)){
 			$data[$config->id['name']] = $this->level_id($data[$config->id['name']]);
 			$data = new $name($data,$config,$index);
@@ -295,11 +293,10 @@ class GroupRenderStrategy extends RenderStrategy {
 		$conn->event->attach("onInit", Array($this, 'replace_postfix'));
 	}
 
-	public function render_set($res, $name, $dload, $sep){
+	public function render_set($res, $name, $dload, $sep, $config){
 		$output="";
 		$index=0;
 		$conn = $this->conn;
-		$config = $conn->get_config();
 		while ($data=$conn->sql->get_next($res)){
 			if (isset($data[$config->id['name']])) {
 				$has_kids = false;
@@ -362,11 +359,10 @@ class GroupRenderStrategy extends RenderStrategy {
 
 class JSONGroupRenderStrategy extends GroupRenderStrategy {
 
-	public function render_set($res, $name, $dload, $sep){
+	public function render_set($res, $name, $dload, $sep, $config){
 		$output=array();
 		$index=0;
 		$conn = $this->conn;
-		$config = $conn->get_config();
 		while ($data=$conn->sql->get_next($res)){
 			if (isset($data[$config->id['name']])) {
 				$has_kids = false;
