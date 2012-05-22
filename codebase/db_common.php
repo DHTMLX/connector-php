@@ -924,6 +924,29 @@ abstract class DBDataWrapper extends DataWrapper{
 	}
 	
 }
+
+class ArrayDBDataWrapper extends DBDataWrapper{
+	public function get_next($res){
+		if ($res->index < sizeof($res->data))
+		return $res->data[$res->index++];
+	}
+	public function query($sql){
+		throw new Exception("Not implemented");
+	}
+	public function escape($value){
+		throw new Exception("Not implemented");
+	}
+	public function get_new_id(){
+		throw new Exception("Not implemented");
+	}
+}
+
+class ArrayQueryWrapper{
+	public function __construct($data){
+		$this->data = $data;
+		$this->index = 0;
+	}
+}
 /*! Implementation of DataWrapper for MySQL
 **/
 class MySQLDBDataWrapper extends DBDataWrapper{

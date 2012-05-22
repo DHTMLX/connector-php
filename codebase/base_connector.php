@@ -284,7 +284,7 @@ class Connector {
 	protected $encoding="utf-8";//!< assigned encoding (UTF-8 by default) 
 	protected $editing=false;//!< flag of edit mode ( response for dataprocessor )
 
-	protected $model=false;
+	public $model=false;
 
 	private $updating=false;//!< flag of update mode ( response for data-update )
 	private $db; //!< db connection resource
@@ -470,9 +470,11 @@ class Connector {
 				$wrap->store();
 				
 
-				if ($this->model && method_exists($this->model, "get"))
-					$this->output_as_xml( call_user_func(array($this->model, "get"), $this->request));
-				else
+				if ($this->model && method_exists($this->model, "get")){
+					$this->sql = new ArrayDBDataWrapper();
+					$result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
+					$this->output_as_xml($result);
+				} else
 					$this->output_as_xml($this->get_resource());
 			}
 		}

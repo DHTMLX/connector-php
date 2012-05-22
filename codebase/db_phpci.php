@@ -5,8 +5,6 @@
 */
 require_once("db_common.php");
 
-DataProcessor::$action_param ="dhx_editor_status";
-
 /*! Implementation of DataWrapper for PDO
 
 if you plan to use it for Oracle - use Oracle connection type instead
