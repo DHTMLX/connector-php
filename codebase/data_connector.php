@@ -223,7 +223,7 @@ class JSONDataConnector extends DataConnector{
 
 		$collections = $this->fill_collections();
 		if (!empty($this->extra_output))
-			$end .= ', "collections": {'.$this->extra_output.'} }';
+			$end .= ', "collections": {'.$this->extra_output.'}';
 
 
 		$is_sections = sizeof($this->sections) && $this->is_first_call();
@@ -240,12 +240,12 @@ class JSONDataConnector extends DataConnector{
 			if ($this->dload){
 				//info for dyn. loadin
 				if ($pos=$this->request->get_start())
-					$end .= ", \"pos\":".$pos." }";
+					$end .= ", \"pos\":".$pos;
 				else
-					$end .= ", \"pos\":0, \"total_count\":".$this->sql->get_size($this->request)." }";
-			} else 
-				$end .= " }";
+					$end .= ", \"pos\":0, \"total_count\":".$this->sql->get_size($this->request);
+			}
 		}
+		$end .= " }";
 		$out = new OutputWriter($start, $end);
 		$out->set_type("json");
 		$this->event->trigger("beforeOutput", $this, $out);
