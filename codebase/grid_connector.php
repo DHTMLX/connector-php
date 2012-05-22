@@ -132,7 +132,7 @@ class GridDataItem extends DataItem{
 **/
 class GridConnector extends Connector{
 	protected $extra_output="";//!< extra info which need to be sent to client side
-	private $options=array();//!< hash of OptionsConnector 
+	protected $options=array();//!< hash of OptionsConnector 
 	
 	/*! constructor
 		

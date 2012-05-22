@@ -51,31 +51,8 @@ class SchedulerConnector extends Connector{
 		}
 		$this->options[$name]=$options;
 	}
-	/*! generates xml description for options collections
-		
-		@param list 
-			comma separated list of column names, for which options need to be generated
-	*/
-	protected function fill_collections(){
-		foreach ($this->options as $k=>$v) { 
-			$name = $k;
-			$this->extra_output.="<coll_options for='{$name}'>";
-			if (!is_string($this->options[$name]))
-				$this->extra_output.=$this->options[$name]->render();
-			else
-				$this->extra_output.=$this->options[$name];
-			$this->extra_output.="</coll_options>";
-		}
-	}
-	
-	/*! renders self as  xml, ending part
-	*/
-	protected function xml_end(){
-		$this->fill_collections();
-		return $this->extra_output."</data>";
-	}
-	
-	
+
+
 	/*! constructor
 		
 		Here initilization of all Masters occurs, execution timer initialized
@@ -176,12 +153,10 @@ class JSONSchedulerConnector extends SchedulerConnector {
 
 	protected function xml_end() {
 		$this->fill_collections();
-		if (empty($this->extra_output))
-			return ' }';
-		else
-			return ', "collections": {'.$this->extra_output.'} }';
+		$end = (!empty($this->extra_output)) ? ', "collections": {'.$this->extra_output.'}' : '';
+		$end .= '}';
+		return $end;
 	}
-
 
 	/*! assign options collection to the column
 		

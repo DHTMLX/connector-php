@@ -278,6 +278,7 @@ class Connector {
 	
 	private $id_seed=0; //!< default value, used to generate auto-IDs
 	protected $live_update = false; // actions table name for autoupdating
+	protected $options=array();//!< hash of OptionsConnector 
 	
 	/*! constructor
 		
@@ -649,9 +650,38 @@ class Connector {
 	/*! renders self as  xml, ending part
 	*/
 	protected function xml_end(){
-		return "</data>";
+		$this->fill_collections();
+		return $this->extra_output."</data>";
 	}
 
+	protected function fill_collections(){
+		foreach ($this->options as $k=>$v) { 
+			$name = $k;
+			$this->extra_output.="<coll_options for='{$name}'>";
+			if (!is_string($this->options[$name]))
+				$this->extra_output.=$this->options[$name]->render();
+			else
+				$this->extra_output.=$this->options[$name];
+			$this->extra_output.="</coll_options>";
+		}
+	}
+
+	/*! assign options collection to the column
+		
+		@param name 
+			name of the column
+		@param options
+			array or connector object
+	*/
+	public function set_options($name,$options){
+		if (is_array($options)){
+			$str="";
+			foreach($options as $k => $v)
+				$str.="<item value='".$this->xmlentities($k)."' label='".$this->xmlentities($v)."' />";
+			$options=$str;
+		}
+		$this->options[$name]=$options;
+	}
 
 	public function insert($data) {
 		$action = new DataAction('inserted', false, $data);

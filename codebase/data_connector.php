@@ -74,7 +74,7 @@ class CommonDataItem extends DataItem{
 /*! Connector class for DataView
 **/
 class DataConnector extends Connector{
-	
+
 	/*! constructor
 		
 		Here initilization of all Masters occurs, execution timer initialized
@@ -122,9 +122,6 @@ class DataConnector extends Connector{
 				$this->editing = true;
 			}
 		} else {
-			if (isset($_GET["dhx_colls"]))
-				$this->fill_collections($_GET["dhx_colls"]);
-
 			if (isset($_GET['editing']) && isset($_POST['ids']))
 				$this->editing = true;			
 			
@@ -142,7 +139,8 @@ class DataConnector extends Connector{
 		foreach($this->sections as $k=>$v)
 			$start .= "<".$k.">".$v."</".$k.">\n";
 		return $start;
-	}	
+	}
+
 };
 
 class JSONDataConnector extends DataConnector{
@@ -171,21 +169,15 @@ class JSONDataConnector extends DataConnector{
 		$this->options[$name]=$options;
 	}
 
-
-	protected function fill_collections($list){
-		$names=explode(",",$list);
-		$options=array();
-		for ($i=0; $i < sizeof($names); $i++) { 
-			$name = $this->resolve_parameter($names[$i]);
-			if (!array_key_exists($name,$this->options)){
-				$this->options[$name] = new JSONDistinctOptionsConnector($this->get_connection(),$this->names["db_class"]);
-				$c = new DataConfig($this->config);
-				$r = new DataRequestConfig($this->request);
-				$c->minimize($name);
-				
-				$this->options[$name]->render_connector($c,$r);
-			} 
-
+	/*! generates xml description for options collections
+		
+		@param list 
+			comma separated list of column names, for which options need to be generated
+	*/
+	protected function fill_collections(){
+		$options = array();
+		foreach ($this->options as $k=>$v) { 
+			$name = $k;
 			$option="\"{$name}\":[";
 			if (!is_string($this->options[$name]))
 				$option.=substr($this->options[$name]->render(),0,-2);
@@ -194,7 +186,7 @@ class JSONDataConnector extends DataConnector{
 			$option.="]";
 			$options[] = $option;
 		}
-		$this->extra_output .= implode(",", $options);
+		$this->extra_output .= implode($this->data_separator, $options);
 	}
 
 	protected function resolve_parameter($name){
@@ -204,12 +196,17 @@ class JSONDataConnector extends DataConnector{
 	}
 
 	protected function output_as_xml($res){
-		$start = "[\n";
-		$end = substr($this->render_set($res),0,-2)."\n]";
+		$start = "";
+		$end = "{ \"data\":[\n".substr($this->render_set($res),0,-2)."\n]";
+
+		$collections = $this->fill_collections();
+		if (!empty($this->extra_output))
+			$end .= ', "collections": {'.$this->extra_output.'} }';
+
 
 		$is_sections = sizeof($this->sections) && $this->is_first_call();
 		if ($this->dload || $is_sections){
-			$start = "{ \"data\":".$start.$end;
+			$start = $start.$end;
 			$end="";
 
 			if ($is_sections){
