@@ -151,6 +151,8 @@ class DataItem{
 	protected $config;//!< DataConfig instance
 	protected $index;//!< index of element
 	protected $skip;//!< flag , which set if element need to be skiped during rendering
+	protected $userdata;
+
 	/*! constructor
 		
 		@param data
@@ -165,6 +167,15 @@ class DataItem{
 		$this->data=$data;
 		$this->index=$index;
 		$this->skip=false;
+		$this->userdata=false;
+	}
+
+	//set userdata for the item
+	function set_userdata($name, $value){
+		if ($this->userdata === false)
+			$this->userdata = array();
+
+		$this->userdata[$name]=$value;
 	}
 	/*! get named value
 		
@@ -243,6 +254,12 @@ class DataItem{
 			$name=$this->config->data[$i]["name"];
 			$str.=" ".$name."='".$this->xmlentities($this->data[$name])."'";
 		}
+		//output custom data
+		if ($this->userdata !== false)
+			foreach ($this->userdata as $key => $value){
+				$str.=" ".$key."='".$this->xmlentities($value)."'";
+			}
+
 		return $str.">";
 	}
 	/*! return ending tag for XML string
@@ -266,6 +283,9 @@ class Connector {
 	protected $names;//!< hash of names for used classes
 	protected $encoding="utf-8";//!< assigned encoding (UTF-8 by default) 
 	protected $editing=false;//!< flag of edit mode ( response for dataprocessor )
+
+	public $model=false;
+
 	private $updating=false;//!< flag of update mode ( response for data-update )
 	private $db; //!< db connection resource
 	protected $dload;//!< flag of dyn. loading mode
@@ -278,7 +298,7 @@ class Connector {
 	
 	private $id_seed=0; //!< default value, used to generate auto-IDs
 	protected $live_update = false; // actions table name for autoupdating
-	protected $options=array();//!< hash of OptionsConnector 
+	protected $options = array();
 	
 	/*! constructor
 		
@@ -338,6 +358,14 @@ class Connector {
 	
 	public function get_request(){
 		return new DataRequestConfig($this->request);
+	}
+
+
+	//model is a class, which will be used for all data operations
+	//we expect that it has next methods get, update, insert, delete
+	//if method was not defined - we will use default logic
+	public function useModel($model){
+		$this->model = $model;
 	}
 
 
@@ -442,7 +470,13 @@ class Connector {
 				$this->event->trigger("beforeFilter",$wrap);
 				$wrap->store();
 				
-				$this->output_as_xml($this->get_resource());
+
+				if ($this->model && method_exists($this->model, "get")){
+					$this->sql = new ArrayDBDataWrapper();
+					$result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
+					$this->output_as_xml($result);
+				} else
+					$this->output_as_xml($this->get_resource());
 			}
 		}
 		$this->end_run();
@@ -682,6 +716,7 @@ class Connector {
 		}
 		$this->options[$name]=$options;
 	}
+
 
 	public function insert($data) {
 		$action = new DataAction('inserted', false, $data);
