@@ -3,7 +3,7 @@
 	@author dhtmlx.com
 	@license GPL, see license.txt
 */
-require_once("crosslink_connector.php");
+require_once("data_connector.php");
 
 class DelayedConnector extends Connector{
 	protected $init_flag=false;//!< used to prevent rendering while initialization
