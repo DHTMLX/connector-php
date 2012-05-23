@@ -82,7 +82,7 @@ class TreeRenderStrategy extends RenderStrategy {
 			if ($data->has_kids()===-1 || ( $data->has_kids()==true && !$dload)){
 				$sub_request = new DataRequestConfig($conn->get_request());
 				$sub_request->set_relation($data->get_id());
-				$output.=$this->render_set($conn->sql->select($sub_request), $name, $dload, $sep);
+				$output.=$this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config);
 			}
 			$output.=$data->to_xml_end();
 			$index++;
@@ -131,7 +131,7 @@ class JSONTreeRenderStrategy extends TreeRenderStrategy {
 			if ($data->has_kids()===-1 || ( $data->has_kids()==true && !$dload)){
 				$sub_request = new DataRequestConfig($conn->get_request());
 				$sub_request->set_relation($data->get_id());
-				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep);
+				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config);
 				if (sizeof($temp))
 					$record["data"] = $temp;
 			}
@@ -317,7 +317,7 @@ class GroupRenderStrategy extends RenderStrategy {
 			if (($data->has_kids()===-1 || ( $data->has_kids()==true && !$dload))&&($has_kids == true)){
 				$sub_request = new DataRequestConfig($conn->get_request());
 				$sub_request->set_relation(str_replace($this->id_postfix, "", $data->get_id()));
-				$output.=$this->render_set($conn->sql->select($sub_request), $name, $dload, $sep);
+				$output.=$this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config);
 			}
 			$output.=$data->to_xml_end();
 			$index++;
@@ -383,7 +383,7 @@ class JSONGroupRenderStrategy extends GroupRenderStrategy {
 			if (($data->has_kids()===-1 || ( $data->has_kids()==true && !$dload))&&($has_kids == true)){
 				$sub_request = new DataRequestConfig($conn->get_request());
 				$sub_request->set_relation(str_replace($this->id_postfix, "", $data->get_id()));
-				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep);
+				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config);
 				if (sizeof($temp))
 					$record["data"] = $temp;
 			}
