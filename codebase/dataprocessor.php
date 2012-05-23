@@ -98,6 +98,7 @@ class DataProcessor{
 			}
 			
 		} catch(Exception $e){
+			LogMaster::log($e);
 			$failed=true;
 		}
 		
@@ -169,6 +170,7 @@ class DataProcessor{
 			}
 		
 		} catch (Exception $e){
+			LogMaster::log($e);
 			$action->set_status("error");
 			if ($action)
 				$this->connector->event->trigger("onDBError", $action, $e);
