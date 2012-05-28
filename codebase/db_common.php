@@ -930,6 +930,9 @@ class ArrayDBDataWrapper extends DBDataWrapper{
 		if ($res->index < sizeof($res->data))
 		return $res->data[$res->index++];
 	}
+	public function select($sql){
+		return new ArrayQueryWrapper($this->connection);
+	}
 	public function query($sql){
 		throw new Exception("Not implemented");
 	}

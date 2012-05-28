@@ -102,7 +102,6 @@ class DataConnector extends Connector{
 		if (!$data_type) $data_type="CommonDataProcessor";
 
 		$this->sections = array();
-		$this->attributes = array();
 
 		if (!$render_type) $render_type="RenderStrategy";
 		parent::__construct($res,$type,$item_type,$data_type,$render_type);
@@ -112,11 +111,6 @@ class DataConnector extends Connector{
 	protected $sections;
 	public function add_section($name, $string){
 		$this->sections[$name] = $string;
-	}
-
-	protected $attributes;
-	public function add_top_attribute($name, $string){
-		$this->attributes[$name] = $string;
 	}
 
 	protected function parse_request_mode(){
@@ -150,9 +144,6 @@ class DataConnector extends Connector{
 		if (isset($_GET["start"]) && isset($_GET["count"]))
 			$this->request->set_limit($_GET["start"],$_GET["count"]);
 
-		$key = ConnectorSecurity::checkCSRF($this->editing);
-		if ($key !== "")
-			$this->add_top_attribute("dhx_security", $key);
 	}
 	
 	/*! renders self as  xml, starting part
@@ -167,7 +158,6 @@ class DataConnector extends Connector{
 			$start .= "<".$k.">".$v."</".$k.">\n";
 		return $start;
 	}
-
 };
 
 class JSONDataConnector extends DataConnector{
@@ -232,9 +222,13 @@ class JSONDataConnector extends DataConnector{
 
 
 		$is_sections = sizeof($this->sections) && $this->is_first_call();
-		if ($this->dload || $is_sections){
+		if ($this->dload || $is_sections || sizeof($this->attributes)){
 			$start = $start.$end;
 			$end="";
+
+			$attributes = "";
+			foreach($this->attributes as $k=>$v)
+				$end .= ", ".$k.":\"".$v."\"";
 
 			if ($is_sections){
 				//extra sections

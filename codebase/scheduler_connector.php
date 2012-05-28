@@ -22,7 +22,6 @@ class SchedulerDataItem extends DataItem{
 			$extra = $this->config->text[$i]["name"];
 			$str.="<".$extra."><![CDATA[".$this->data[$extra]."]]></".$extra.">";
 		}
-
 		if ($this->userdata !== false)
 			foreach ($this->userdata as $key => $value)
 				$str.="<".$key."><![CDATA[".$value."]]></".$key.">";
@@ -164,6 +163,8 @@ class JSONSchedulerConnector extends SchedulerConnector {
 	protected function xml_end() {
 		$this->fill_collections();
 		$end = (!empty($this->extra_output)) ? ', "collections": {'.$this->extra_output.'}' : '';
+		foreach ($this->attributes as $k => $v)
+			$end.=", ".$k.":\"".$v."\"";
 		$end .= '}';
 		return $end;
 	}

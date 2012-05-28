@@ -188,7 +188,11 @@ class TreeConnector extends Connector{
    /*! renders self as  xml, starting part
 	*/
 	public function xml_start(){
-		return "<tree id='".$this->request->get_relation()."'>";
+		$attributes = "";
+		foreach($this->attributes as $k=>$v)
+			$attributes .= " ".$k."='".$v."'";
+
+		return "<tree id='".$this->request->get_relation()."'".$attributes.">";
 	}
 	
 	/*! renders self as  xml, ending part

@@ -214,14 +214,18 @@ class GridConnector extends Connector{
 	/*! renders self as  xml, starting part
 	*/
 	protected function xml_start(){
+		$attributes = "";
+		foreach($this->attributes as $k=>$v)
+			$attributes .= " ".$k."='".$v."'";
+
 		if ($this->dload){
 			if ($pos=$this->request->get_start())
-				return "<rows pos='".$pos."'>";
+				return "<rows pos='".$pos."'".$attributes.">";
 			else
-				return "<rows total_count='".$this->sql->get_size($this->request)."'>";
+				return "<rows total_count='".$this->sql->get_size($this->request)."'".$attributes.">";
 		}
 		else
-			return "<rows>";
+			return "<rows".$attributes.">";
 	}
 	
 	

@@ -190,6 +190,8 @@ class ConnectorSecurity{
 
             return $_SESSION["dhx_security"];
         }
+
+        return "";
     }
 
 }

@@ -327,6 +327,7 @@ class Connector {
 			"data_class"=>$data_type,
 			"render_class"=>$render_type
 		);
+		$this->attributes = array();
 		
 		$this->config = new DataConfig();
 		$this->request = new DataRequestConfig();
@@ -360,6 +361,11 @@ class Connector {
 		return new DataRequestConfig($this->request);
 	}
 
+
+	protected $attributes;
+	public function add_top_attribute($name, $string){
+		$this->attributes[$name] = $string;
+	}
 
 	//model is a class, which will be used for all data operations
 	//we expect that it has next methods get, update, insert, delete
@@ -421,6 +427,12 @@ class Connector {
 		return $this->render();
 	}
 
+	public function render_array($data, $id, $fields, $extra=false, $relation_id=false){
+		$this->configure("-",$id,$fields,$extra,$relation_id);
+		$this->sql = new ArrayDBDataWrapper($data, null);
+		return $this->render();
+	}
+
 	public function render_complex_sql($sql,$id,$fields,$extra=false,$relation_id=false){
 		$this->config->init($id,$fields,$extra,$relation_id);
 		$this->request->parse_sql($sql, true);
@@ -475,8 +487,10 @@ class Connector {
 					$this->sql = new ArrayDBDataWrapper();
 					$result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
 					$this->output_as_xml($result);
-				} else
+				} else {
 					$this->output_as_xml($this->get_resource());
+			}
+
 			}
 		}
 		$this->end_run();
@@ -557,6 +571,9 @@ class Connector {
 				$this->request->set_filter($this->resolve_parameter($k),$v);
 			}
 			
+		$key = ConnectorSecurity::checkCSRF($this->editing);
+		if ($key !== "")
+			$this->add_top_attribute("dhx_security", $key);
 		
 	}
 
@@ -679,7 +696,11 @@ class Connector {
 	/*! renders self as  xml, starting part
 	*/
 	protected function xml_start(){
-		return "<data>";
+		$attributes = "";
+		foreach($this->attributes as $k=>$v)
+			$attributes .= " ".$k."='".$v."'";
+
+		return "<data".$attributes.">";
 	}
 	/*! renders self as  xml, ending part
 	*/

@@ -56,14 +56,19 @@ class DataViewConnector extends Connector{
 	/*! renders self as  xml, starting part
 	*/
 	protected function xml_start(){
+		$attributes = "";
+		foreach($this->attributes as $k=>$v)
+			$attributes .= " ".$k."='".$v."'";
+
+		$start.= ">";
 		if ($this->dload){
 			if ($pos=$this->request->get_start())
-				return "<data pos='".$pos."'>";
+				return "<data pos='".$pos."'".$attributes.">";
 			else
-				return "<data total_count='".$this->sql->get_size($this->request)."'>";
+				return "<data total_count='".$this->sql->get_size($this->request)."'".$attributes.">";
 		}
 		else
-			return "<data>";
+			return "<data".$attributes.">";
 	}	
 }
 ?>
