@@ -258,7 +258,9 @@ class JSONCommonDataItem extends DataItem{
 	function to_xml(){
 		if ($this->skip) return "";
 		
-		$data = array();
+		$data = array(
+			'id' => $this->get_id()
+		);
 		for ($i=0; $i<sizeof($this->config->text); $i++){
 			$extra = $this->config->text[$i]["name"];
 			$data[$extra]=$this->data[$extra];
@@ -266,7 +268,7 @@ class JSONCommonDataItem extends DataItem{
 
 		if ($this->userdata !== false)
 			foreach ($this->userdata as $key => $value)
-				$data["key"]=$value;
+				$data[$key]=$value;
 
 		return json_encode($data);
 	}
@@ -426,7 +428,7 @@ class JSONTreeCommonDataItem extends TreeCommonDataItem{
 
 		if ($this->userdata !== false)
 			foreach ($this->userdata as $key => $value)
-				$data["key"]=$value;
+				$data[$key]=$value;
 
 		if ($this->kids === true)
 			$data["dhx_kids"] = 1;
