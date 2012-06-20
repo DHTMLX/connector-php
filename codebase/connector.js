@@ -2,7 +2,7 @@
 	@author dhtmlx.com
 	@license GPL, see license.txt
 */
-if (window.dhtmlXGridObject){
+if (window.dhtmlXGridObject && !dhtmlXGridObject.prototype._init_point_connector){
 	dhtmlXGridObject.prototype._init_point_connector=dhtmlXGridObject.prototype._init_point;
 	dhtmlXGridObject.prototype._init_point=function(){
 		//make separate config array for each grid
@@ -120,7 +120,7 @@ if (window.dhtmlXGridObject){
 					
 				if (this._con_f_used[f*1])
 					this._con_f_used[f*1]=v;
-			};
+			}
 			this._colls_loaded=true;
 		}
 	};	
@@ -130,7 +130,7 @@ if (window.dhtmlXGridObject){
 
 }
 
-if (window.dataProcessor){
+if (window.dataProcessor && !dataProcessor.prototype.init_original){
 	dataProcessor.prototype.init_original=dataProcessor.prototype.init;
 	dataProcessor.prototype.init=function(obj){
 		this.init_original(obj);
@@ -139,7 +139,7 @@ if (window.dataProcessor){
 		this.setTransactionMode("POST",true);
 		this.serverProcessor+=(this.serverProcessor.indexOf("?")!=-1?"&":"?")+"editing=true";
 	};
-};
+}
 dhtmlxError.catchError("LoadXML",function(a,b,c){
 	alert(c[0].responseText);
 });
