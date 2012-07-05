@@ -298,7 +298,8 @@ class Connector {
 	
 	private $id_seed=0; //!< default value, used to generate auto-IDs
 	protected $live_update = false; // actions table name for autoupdating
-	protected $options = array();
+	protected $extra_output="";//!< extra info which need to be sent to client side
+	protected $options=array();//!< hash of OptionsConnector 
 	
 	/*! constructor
 		

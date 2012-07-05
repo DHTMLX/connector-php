@@ -119,9 +119,7 @@ class GridDataItem extends DataItem{
 /*! Connector for the dhtmlxgrid
 **/
 class GridConnector extends Connector{
-	protected $extra_output="";//!< extra info which need to be sent to client side
-	protected $options=array();//!< hash of OptionsConnector 
-	
+
 	/*! constructor
 		
 		Here initilization of all Masters occurs, execution timer initialized
