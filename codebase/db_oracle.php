@@ -34,12 +34,9 @@ class OracleDBDataWrapper extends DBDataWrapper{
 	public function get_next($res){
 		$data = oci_fetch_assoc($res);
 		if ($data){
-			if (array_key_exists("VALUE",$data))
-				$data["value"]=$data["VALUE"];
-			if (array_key_exists("LABEL",$data))
-				$data["label"]=$data["LABEL"];
+			foreach ($data as $k => $v)
+				$data[strtolower($k)] = $v;
 		}
-		
 		return $data;
 	}
 	
