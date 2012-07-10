@@ -302,6 +302,7 @@ class Connector {
 	protected $extra_output="";//!< extra info which need to be sent to client side
 	protected $options=array();//!< hash of OptionsConnector 
 	protected $as_string = false;
+	protected $filters;
 	
 	/*! constructor
 		
@@ -331,6 +332,7 @@ class Connector {
 			"render_class"=>$render_type
 		);
 		$this->attributes = array();
+		$this->filters = array();
 		
 		$this->config = new DataConfig();
 		$this->request = new DataRequestConfig();
@@ -482,6 +484,7 @@ class Connector {
 				$wrap->store();
 				
 				$wrap = new FilterInterface($this->request);
+				$this->apply_filters($wrap);
 				$this->event->trigger("beforeFilter",$wrap);
 				$wrap->store();
 				
@@ -796,6 +799,17 @@ class Connector {
 	 */
 	public function asString($as_string) {
 		$this->as_string = $as_string;
+	}
+	
+	public function filter($name, $value = false, $operation = '=') {
+		$this->filters[] = array('name' => $name, 'value' => $value, 'operation' => $operation);
+	}
+	
+	protected function apply_filters($wrap) {
+		for ($i = 0; $i < count($this->filters); $i++) {
+			$f = $this->filters[$i];
+			$wrap->add($f['name'], $f['value'], $f['operation']);
+		}
 	}
 }
 

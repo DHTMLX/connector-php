@@ -170,8 +170,11 @@ class DataRequestConfig{
 		@param operation
 			operation for filtering, optional , LIKE by default
 	*/
-	public function set_filter($field,$value,$operation=false){
-		array_push($this->filters,array("name"=>$field,"value"=>$value,"operation"=>$operation));
+	public function set_filter($field,$value=false,$operation=false){
+		if ($value === false)
+			array_push($this->filters,$field);
+		else
+			array_push($this->filters,array("name"=>$field,"value"=>$value,"operation"=>$operation));
 	}
 	
 	/*! sets list of used fields
@@ -672,7 +675,7 @@ abstract class DBDataWrapper extends DataWrapper{
 	public function sequence($sec){
 		$this->sequence=$sec;
 	}
-		
+	
 	
 	/*! create an sql string for filtering rules
 		
