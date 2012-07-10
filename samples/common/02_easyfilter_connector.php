@@ -7,5 +7,7 @@
 	$grid = new GridConnector($res);
 	
 	$grid->dynamic_loading(100);
+	$grid->filter("item_nm", "member");
+//	$grid->filter("item_nm='member'");
 	$grid->render_table("grid50000","item_id","item_nm,item_cd");
 ?>
