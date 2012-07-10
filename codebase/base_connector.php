@@ -109,7 +109,10 @@ class SortInterface extends EventInterface{
 			direction of sorting
 	*/
 	public function add($name,$dir){
-		$this->request->set_sort($name,$dir);
+		if ($dir === false)
+			$this->request->set_sort($name);
+		else
+			$this->request->set_sort($name,$dir);
 	}
 	public function store(){
 		$this->request->set_sort_by($this->rules);
@@ -303,6 +306,7 @@ class Connector {
 	protected $options=array();//!< hash of OptionsConnector 
 	protected $as_string = false;
 	protected $filters;
+	protected $sorts;
 	
 	/*! constructor
 		
@@ -333,6 +337,7 @@ class Connector {
 		);
 		$this->attributes = array();
 		$this->filters = array();
+		$this->sorts = array();
 		
 		$this->config = new DataConfig();
 		$this->request = new DataRequestConfig();
@@ -480,6 +485,7 @@ class Connector {
 					die();
 				}
 				$wrap = new SortInterface($this->request);
+				$this->apply_sorts($wrap);
 				$this->event->trigger("beforeSort",$wrap);
 				$wrap->store();
 				
@@ -809,6 +815,17 @@ class Connector {
 		for ($i = 0; $i < count($this->filters); $i++) {
 			$f = $this->filters[$i];
 			$wrap->add($f['name'], $f['value'], $f['operation']);
+		}
+	}
+	
+	public function sort($name, $direction = false) {
+		$this->sorts[] = array('name' => $name, 'direction' => $direction);
+	}
+
+	protected function apply_sorts($wrap) {
+		for ($i = 0; $i < count($this->sorts); $i++) {
+			$s = $this->sorts[$i];
+			$wrap->add($s['name'], $s['direction']);
 		}
 	}
 }

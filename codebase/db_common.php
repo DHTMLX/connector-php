@@ -157,8 +157,12 @@ class DataRequestConfig{
 		if (!$field && !$order)
 			$this->sort_by=array();
 		else{
-			$order=strtolower($order)=="asc"?"ASC":"DESC";
-			$this->sort_by[]=array("name"=>$field,"direction" => $order);
+			if ($order===false)
+				$this->sort_by[] = $field;
+			else {
+				$order=strtolower($order)=="asc"?"ASC":"DESC";
+				$this->sort_by[]=array("name"=>$field,"direction" => $order);
+			}
 		}
 	}
 	/*! sets filtering rule
@@ -713,7 +717,9 @@ abstract class DBDataWrapper extends DataWrapper{
 		if (!sizeof($by)) return "";
 		$out = array();
 		for ($i=0; $i < sizeof($by); $i++)
-			if ($by[$i]["name"])
+			if (is_string($by[$i]))
+				$out[] = $by[$i];
+			else if ($by[$i]["name"])
 				$out[]=$this->escape_name($by[$i]["name"])." ".$by[$i]["direction"];
 		return implode(",",$out);
 	}	
