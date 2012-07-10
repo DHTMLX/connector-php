@@ -301,6 +301,7 @@ class Connector {
 	protected $live_update = false; // actions table name for autoupdating
 	protected $extra_output="";//!< extra info which need to be sent to client side
 	protected $options=array();//!< hash of OptionsConnector 
+	protected $as_string = false;
 	
 	/*! constructor
 		
@@ -488,9 +489,11 @@ class Connector {
 				if ($this->model && method_exists($this->model, "get")){
 					$this->sql = new ArrayDBDataWrapper();
 					$result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
-					$this->output_as_xml($result);
+					$out = $this->output_as_xml($result);
 				} else {
-					$this->output_as_xml($this->get_resource());
+					$out = $this->output_as_xml($this->get_resource());
+				
+				if ($out !== null) return $out;
 			}
 
 			}
@@ -787,6 +790,12 @@ class Connector {
 		$this->event->attach("beforeFiltering", 	Array($this->live_update, "get_updates"));
 		$this->event->attach("beforeProcessing", 	Array($this->live_update, "check_collision"));
 		$this->event->attach("afterProcessing", 	Array($this->live_update, "log_operations"));
+	}
+
+	/*! render() returns result as string or send to response
+	 */
+	public function asString($as_string) {
+		$this->as_string = $as_string;
 	}
 }
 

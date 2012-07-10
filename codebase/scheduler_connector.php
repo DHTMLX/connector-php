@@ -217,6 +217,8 @@ class JSONSchedulerConnector extends SchedulerConnector {
 		$data.=$this->render_set($res);
 		$data.=$this->xml_end();
 
+		if ($this->as_string) return $data;
+
 		$out = new OutputWriter($data, "");
 		$out->set_type("json");
 		$this->event->trigger("beforeOutput", $this, $out);

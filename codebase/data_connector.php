@@ -213,42 +213,48 @@ class JSONDataConnector extends DataConnector{
 	}
 
 	protected function output_as_xml($res){
-		$start = "";
-		$end = "{ \"data\":[\n".substr($this->render_set($res),0,-2)."\n]";
+		$result = "[\n".substr($this->render_set($res),0,-2)."\n]";
 
-		$collections = $this->fill_collections();
-		if (!empty($this->extra_output))
-			$end .= ', "collections": {'.$this->extra_output.'}';
-
-
+		$this->fill_collections();
 		$is_sections = sizeof($this->sections) && $this->is_first_call();
-		if ($this->dload || $is_sections || sizeof($this->attributes)){
-			$start = $start.$end;
-			$end="";
+		if ($this->dload || $is_sections || sizeof($this->attributes) || !empty($this->extra_data)){
 
 			$attributes = "";
 			foreach($this->attributes as $k=>$v)
-				$end .= ", ".$k.":\"".$v."\"";
+				$attributes .= ", ".$k.":\"".$v."\"";
 
+			if (!empty($this->extra_output))
+				$extra .= ', "collections": {'.$this->extra_output.'}';
+
+			$sections = "";
 			if ($is_sections){
 				//extra sections
 				foreach($this->sections as $k=>$v)
-					$end.= ", ".$k.":".$v;
+					$sections .= ", ".$k.":".$v;
 			}
 
+			$dyn = "";
 			if ($this->dload){
 				//info for dyn. loadin
 				if ($pos=$this->request->get_start())
-					$end .= ", \"pos\":".$pos;
+					$dyn .= ", \"pos\":".$pos;
 				else
-					$end .= ", \"pos\":0, \"total_count\":".$this->sql->get_size($this->request);
+					$dyn .= ", \"pos\":0, \"total_count\":".$this->sql->get_size($this->request);
+			}
+			if ($attributes || $sections || $this->extra_output || $dyn) {
+				$result = "{ \"data\":".$result.$attributes.$this->extra_output.$sections.$dyn."}";
 			}
 		}
-		$end .= " }";
-		$out = new OutputWriter($start, $end);
+
+		// return as string
+		if ($this->as_string) return $result;
+
+		// output direct to response
+		$out = new OutputWriter($result, "");
 		$out->set_type("json");
 		$this->event->trigger("beforeOutput", $this, $out);
 		$out->output("", true, $this->encoding);
+		return null;
 	}
 }
 
@@ -394,7 +400,7 @@ class TreeDataConnector extends DataConnector{
 
 class JSONTreeDataConnector extends TreeDataConnector{
 
-	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type){
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="JSONTreeCommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
 		if (!$render_type) $render_type="JSONTreeRenderStrategy";
@@ -405,7 +411,13 @@ class JSONTreeDataConnector extends TreeDataConnector{
 		$data = array();
 		$data["parent"] = $this->request->get_relation();
 		$data["data"] = $this->render_set($res);
-		$out = new OutputWriter(json_encode($data), "");
+		$data = json_encode($data);
+
+		// return as string
+		if ($this->as_string) return $data;
+
+		// output direct to response
+		$out = new OutputWriter($data, "");
 		$out->set_type("json");
 		$this->event->trigger("beforeOutput", $this, $out);
 		$out->output("", true, $this->encoding);
