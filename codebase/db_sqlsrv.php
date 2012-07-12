@@ -1,5 +1,10 @@
 <?php
 /*
+This software is allowed to use under GPL or you need to obtain Commercial or Enterise License
+to use it in non-GPL project. Please contact sales@dhtmlx.com for details
+*/
+?><?php
+/*
 	@author dhtmlx.com
 	@license GPL, see license.txt
 */
@@ -22,7 +27,7 @@ class SQLSrvDBDataWrapper extends DBDataWrapper{
 			$errors = sqlsrv_errors();
 			$message = Array();
 			foreach($errors as $error)
-				$message[]=$error[$i]["SQLSTATE"].$error[$i]["code'"].$error[$i]["message"];
+				$message[]=$error["SQLSTATE"].$error["code'"].$error["message"];
 			throw new Exception("SQLSrv operation failed\n".implode("\n\n", $message));
 		}
 		
@@ -39,9 +44,10 @@ class SQLSrvDBDataWrapper extends DBDataWrapper{
 	
 	public function get_next($res){
 		$data = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC);
-		foreach ($data as $key => $value)
-			if (is_a($value, "DateTime"))
-				$data[$key] = $value->format("Y-m-d H:i");
+		if ($data)
+			foreach ($data as $key => $value)
+				if (is_a($value, "DateTime"))
+					$data[$key] = $value->format("Y-m-d H:i");
 		return $data;
 	}
 	
