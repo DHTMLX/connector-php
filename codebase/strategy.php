@@ -16,7 +16,8 @@ class RenderStrategy {
 	 */
 	protected function mix($config, $mix) {
 		for ($i = 0; $i < count($mix); $i++)
-			$config->add_field($mix[$i]['name']);
+			if (!$config->is_field($mix[$i]['name']))
+				$config->add_field($mix[$i]['name']);
 	}
 
 	/*! remove mix fields from DataConfig
@@ -91,7 +92,7 @@ class RenderStrategy {
 		$this->mix($config, $mix);
 		$conn->event->trigger("beforeRenderSet",$conn,$res,$config);
 		while ($data=$conn->sql->get_next($res)){
-			$data = $this->simple_mix($config, $data);
+			$data = $this->simple_mix($mix, $data);
 
 			$data = new $name($data,$config,$index);
 			if ($data->get_id()===false)
@@ -214,7 +215,7 @@ class JSONTreeRenderStrategy extends TreeRenderStrategy {
 			if ($data->has_kids()===-1 || ( $data->has_kids()==true && !$dload)){
 				$sub_request = new DataRequestConfig($conn->get_request());
 				$sub_request->set_relation($data->get_id());
-				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config);
+				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config, $mix);
 				if (sizeof($temp))
 					$record["data"] = $temp;
 			}

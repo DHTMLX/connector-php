@@ -490,7 +490,7 @@ class DataConfig{
 		@return 
 			returns true if field already a part of dataset, otherwise returns true
 	*/
-	private function is_field($name,$collection = false){
+	public function is_field($name,$collection = false){
 		if (!$collection)
 			$collection=$this->text;
 			
