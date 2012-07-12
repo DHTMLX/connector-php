@@ -259,7 +259,7 @@ class LogMaster{
 		if ($name){
 			set_error_handler(array("LogMaster","error_log"),E_ALL);
 			set_exception_handler(array("LogMaster","exception_log"));
-			LogMaster::log("\n\n====================================\nLog started, ".date("d/m/Y h:m:s")."\n====================================");
+			LogMaster::log("\n\n====================================\nLog started, ".date("d/m/Y h:i:s")."\n====================================");
 		}
 	}
 }
