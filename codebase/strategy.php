@@ -8,17 +8,91 @@ class RenderStrategy {
 		$this->conn = $conn;
 	}
 
+	/*! adds mix fields into DataConfig
+	 *	@param config
+	 *		DataConfig object
+	 *	@param mix
+	 *		mix structure
+	 */
+	protected function mix($config, $mix) {
+		for ($i = 0; $i < count($mix); $i++)
+			$config->add_field($mix[$i]['name']);
+	}
+
+	/*! remove mix fields from DataConfig
+	 *	@param config
+	 *		DataConfig object
+	 *	@param mix
+	 *		mix structure
+	 */
+	protected function unmix($config, $mix) {
+		for ($i = 0; $i < count($mix); $i++) {
+			$config->remove_field_full($mix[$i]['name']);
+		}
+	}
+
+	/*! adds mix fields in item
+	 *	simple mix adds only strings specified by user
+	 *	@param mix
+	 *		mix structure
+	 *	@param data
+	 *		array of selected data
+	 */
+	protected function simple_mix($mix, $data) {
+		// get mix details
+		for ($i = 0; $i < count($mix); $i++)
+			$data[$mix[$i]["name"]] = is_string($mix[$i]["value"]) ? $mix[$i]["value"] : "";
+		return $data;
+	}
+
+	/*! adds mix fields in item
+	 *	complex mix adds strings specified by user and results of subrequests
+	 *	@param mix
+	 *		mix structure
+	 *	@param data
+	 *		array of selected data
+	 */
+	protected function complex_mix($mix, $data) {
+		// get mix details
+		for ($i = 0; $i < count($mix); $i++) {
+			$mixname = $mix[$i]["name"];
+			if ($mix[$i]['filter'] !== false) {
+				$subconn = $mix[$i]["value"];
+				$filter = $mix[$i]["filter"];
+
+				// setting relationships
+				$subconn->clear_filter();
+				foreach ($filter as $k => $v)
+					if (isset($data[$v]))
+						$subconn->filter($k, $data[$v], "=");
+					else
+						throw new Exception('There was no such data field registered as: '.$k);
+
+				$subconn->asString(true);
+				$data[$mixname]=$subconn->simple_render();
+				if (is_array($data[$mixname]) && count($data[$mixname]) == 1)
+					$data[$mixname] = $data[$mixname][0];
+			} else {
+				$data[$mixname] = $mix[$i]["value"];
+			}
+		}
+		return $data;
+	}
+
 	/*! render from DB resultset
 		@param res
 			DB resultset 
 		process commands, output requested data as XML
 	*/
-	public function render_set($res, $name, $dload, $sep, $config){
+	public function render_set($res, $name, $dload, $sep, $config, $mix){
 		$output="";
 		$index=0;
 		$conn = $this->conn;
+		$this->mix($config, $mix);
 		$conn->event->trigger("beforeRenderSet",$conn,$res,$config);
 		while ($data=$conn->sql->get_next($res)){
+			$data = $this->simple_mix($config, $data);
+
 			$data = new $name($data,$config,$index);
 			if ($data->get_id()===false)
 				$data->set_id($conn->uuid());
@@ -26,6 +100,7 @@ class RenderStrategy {
 			$output.=$data->to_xml().$sep;
 			$index++;
 		}
+		$this->unmix($config, $mix);
 		return $output;
 	}
 
@@ -38,12 +113,14 @@ class JSONRenderStrategy extends RenderStrategy {
 			DB resultset 
 		process commands, output requested data as json
 	*/
-	public function render_set($res, $name, $dload, $sep, $config){
+	public function render_set($res, $name, $dload, $sep, $config, $mix){
 		$output=array();
 		$index=0;
 		$conn = $this->conn;
+		$this->mix($config, $mix);
 		$conn->event->trigger("beforeRenderSet",$conn,$res,$config);
 		while ($data=$conn->sql->get_next($res)){
+			$data = $this->complex_mix($mix, $data);
 			$data = new $name($data,$config,$index);
 			if ($data->get_id()===false)
 				$data->set_id($conn->uuid());
@@ -51,7 +128,8 @@ class JSONRenderStrategy extends RenderStrategy {
 			$output[]=$data->to_xml();
 			$index++;
 		}
-		return json_encode($output);
+		$this->unmix($config, $mix);
+		return $output;
 	}
 
 }
@@ -66,11 +144,13 @@ class TreeRenderStrategy extends RenderStrategy {
 		$conn->event->attach("beforeProcessing",array($this,"parent_id_correction_b"));
 	}
 
-	public function render_set($res, $name, $dload, $sep, $config){
+	public function render_set($res, $name, $dload, $sep, $config, $mix){
 		$output="";
 		$index=0;
 		$conn = $this->conn;
+		$this->mix($config, $mix);
 		while ($data=$conn->sql->get_next($res)){
+			$data = $this->simple_mix($mix, $data);
 			$data = new $name($data,$config,$index);
 			$conn->event->trigger("beforeRender",$data);
 			//there is no info about child elements,
@@ -87,6 +167,7 @@ class TreeRenderStrategy extends RenderStrategy {
 			$output.=$data->to_xml_end();
 			$index++;
 		}
+		$this->unmix($config, $mix);
 		return $output;
 	}
 
@@ -115,11 +196,13 @@ class TreeRenderStrategy extends RenderStrategy {
 
 class JSONTreeRenderStrategy extends TreeRenderStrategy {
 
-	public function render_set($res, $name, $dload, $sep, $config){
+	public function render_set($res, $name, $dload, $sep, $config,$mix){
 		$output=array();
 		$index=0;
 		$conn = $this->conn;
+		$this->mix($config, $mix);
 		while ($data=$conn->sql->get_next($res)){
+			$data = $this->complex_mix($mix, $data);
 			$data = new $name($data,$config,$index);
 			$conn->event->trigger("beforeRender",$data);
 			//there is no info about child elements, 
@@ -138,6 +221,7 @@ class JSONTreeRenderStrategy extends TreeRenderStrategy {
 			$output[] = $record;
 			$index++;
 		}
+		$this->unmix($config, $mix);
 		return $output;
 	}	
 
@@ -160,11 +244,13 @@ class MultitableTreeRenderStrategy extends TreeRenderStrategy {
 		$this->sep = $sep;
 	}
 	
-	public function render_set($res, $name, $dload, $sep, $config){
+	public function render_set($res, $name, $dload, $sep, $config, $mix){
 		$output="";
 		$index=0;
 		$conn = $this->conn;
+		$this->mix($config, $mix);
 		while ($data=$conn->sql->get_next($res)){
+			$data = $this->simple_mix($mix, $data);
 			$data[$config->id['name']] = $this->level_id($data[$config->id['name']]);
 			$data = new $name($data,$config,$index);
 			$conn->event->trigger("beforeRender",$data);
@@ -178,6 +264,7 @@ class MultitableTreeRenderStrategy extends TreeRenderStrategy {
 			$output.=$data->to_xml_end();
 			$index++;
 		}
+		$this->unmix($config, $mix);
 		return $output;
 	}
 
@@ -258,11 +345,13 @@ class MultitableTreeRenderStrategy extends TreeRenderStrategy {
 
 class JSONMultitableTreeRenderStrategy extends MultitableTreeRenderStrategy {
 
-	public function render_set($res, $name, $dload, $sep, $config){
+	public function render_set($res, $name, $dload, $sep, $config, $mix){
 		$output=array();
 		$index=0;
 		$conn = $this->conn;
+		$this->mix($config, $mix);
 		while ($data=$conn->sql->get_next($res)){
+			$data = $this->complex_mix($mix, $data);
 			$data[$config->id['name']] = $this->level_id($data[$config->id['name']]);
 			$data = new $name($data,$config,$index);
 			$conn->event->trigger("beforeRender",$data);
@@ -277,6 +366,7 @@ class JSONMultitableTreeRenderStrategy extends MultitableTreeRenderStrategy {
 			$output[] = $record;
 			$index++;
 		}
+		$this->unmix($config, $mix);
 		return $output;
 	}
 
@@ -285,7 +375,7 @@ class JSONMultitableTreeRenderStrategy extends MultitableTreeRenderStrategy {
 
 class GroupRenderStrategy extends RenderStrategy {
 
-	private $id_postfix = '__{group_param}';
+	protected $id_postfix = '__{group_param}';
 
 	public function __construct($conn) {
 		parent::__construct($conn);
@@ -293,12 +383,14 @@ class GroupRenderStrategy extends RenderStrategy {
 		$conn->event->attach("onInit", Array($this, 'replace_postfix'));
 	}
 
-	public function render_set($res, $name, $dload, $sep, $config){
+	public function render_set($res, $name, $dload, $sep, $config, $mix, $usemix = false){
 		$output="";
 		$index=0;
 		$conn = $this->conn;
+		if ($usemix) $this->mix($config, $mix);
 		while ($data=$conn->sql->get_next($res)){
 			if (isset($data[$config->id['name']])) {
+				$this->simple_mix($mix, $data);
 				$has_kids = false;
 			} else {
 				$data[$config->id['name']] = $data['value'].$this->id_postfix;
@@ -317,11 +409,12 @@ class GroupRenderStrategy extends RenderStrategy {
 			if (($data->has_kids()===-1 || ( $data->has_kids()==true && !$dload))&&($has_kids == true)){
 				$sub_request = new DataRequestConfig($conn->get_request());
 				$sub_request->set_relation(str_replace($this->id_postfix, "", $data->get_id()));
-				$output.=$this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config);
+				$output.=$this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config, $mix, true);
 			}
 			$output.=$data->to_xml_end();
 			$index++;
 		}
+		if ($usemix) $this->unmix($config, $mix);
 		return $output;
 	}
 
@@ -359,12 +452,14 @@ class GroupRenderStrategy extends RenderStrategy {
 
 class JSONGroupRenderStrategy extends GroupRenderStrategy {
 
-	public function render_set($res, $name, $dload, $sep, $config){
+	public function render_set($res, $name, $dload, $sep, $config, $mix, $usemix = false){
 		$output=array();
 		$index=0;
 		$conn = $this->conn;
+		if ($usemix) $this->mix($config, $mix);
 		while ($data=$conn->sql->get_next($res)){
 			if (isset($data[$config->id['name']])) {
+				$data = $this->complex_mix($mix, $data);
 				$has_kids = false;
 			} else {
 				$data[$config->id['name']] = $data['value'].$this->id_postfix;
@@ -383,13 +478,14 @@ class JSONGroupRenderStrategy extends GroupRenderStrategy {
 			if (($data->has_kids()===-1 || ( $data->has_kids()==true && !$dload))&&($has_kids == true)){
 				$sub_request = new DataRequestConfig($conn->get_request());
 				$sub_request->set_relation(str_replace($this->id_postfix, "", $data->get_id()));
-				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config);
+				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config, $mix, true);
 				if (sizeof($temp))
 					$record["data"] = $temp;
 			}
 			$output[] = $record;
 			$index++;
 		}
+		if ($usemix) $this->unmix($config, $mix);
 		return $output;
 	}
 

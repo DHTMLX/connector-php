@@ -213,9 +213,10 @@ class JSONSchedulerConnector extends SchedulerConnector {
 			DB resultset 
 	*/
 	protected function output_as_xml($res){
-		$data=$this->xml_start();
-		$data.=$this->render_set($res);
-		$data.=$this->xml_end();
+		$result = $this->render_set($res);
+		if ($this->simple) return $result;
+
+		$data=$this->xml_start().json_encode($result).$this->xml_end();
 
 		if ($this->as_string) return $data;
 

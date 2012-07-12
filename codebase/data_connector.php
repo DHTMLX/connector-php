@@ -162,11 +162,12 @@ class DataConnector extends Connector{
 
 class JSONDataConnector extends DataConnector{
 
-	public function __construct($res,$type=false,$item_type=false,$data_type=false){
+	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
 		if (!$item_type) $item_type="JSONCommonDataItem";
 		if (!$data_type) $data_type="CommonDataProcessor";
+		if (!$render_type) $render_type="JSONRenderStrategy";
 		$this->data_separator = ",\n";
-		parent::__construct($res,$type,$item_type,$data_type);
+		parent::__construct($res,$type,$item_type,$data_type,$render_type);
 	}
 
 	/*! assign options collection to the column
@@ -213,7 +214,9 @@ class JSONDataConnector extends DataConnector{
 	}
 
 	protected function output_as_xml($res){
-		$result = "[\n".substr($this->render_set($res),0,-2)."\n]";
+		$json = $this->render_set($res);
+		if ($this->simple) return $json;
+		$result = json_encode($json);
 
 		$this->fill_collections();
 		$is_sections = sizeof($this->sections) && $this->is_first_call();
@@ -223,6 +226,7 @@ class JSONDataConnector extends DataConnector{
 			foreach($this->attributes as $k=>$v)
 				$attributes .= ", ".$k.":\"".$v."\"";
 
+			$extra = "";
 			if (!empty($this->extra_output))
 				$extra .= ', "collections": {'.$this->extra_output.'}';
 
@@ -242,7 +246,7 @@ class JSONDataConnector extends DataConnector{
 					$dyn .= ", \"pos\":0, \"total_count\":".$this->sql->get_size($this->request);
 			}
 			if ($attributes || $sections || $this->extra_output || $dyn) {
-				$result = "{ \"data\":".$result.$attributes.$this->extra_output.$sections.$dyn."}";
+				$result = "{ \"data\":".$result.$attributes.$extra.$sections.$dyn."}";
 			}
 		}
 
@@ -276,7 +280,7 @@ class JSONCommonDataItem extends DataItem{
 			foreach ($this->userdata as $key => $value)
 				$data[$key]=$value;
 
-		return json_encode($data);
+		return $data;
 	}
 }
 
@@ -408,9 +412,12 @@ class JSONTreeDataConnector extends TreeDataConnector{
 	}
 
 	protected function output_as_xml($res){
+		$result = $this->render_set($res);
+		if ($this->simple) return $result;
+
 		$data = array();
 		$data["parent"] = $this->request->get_relation();
-		$data["data"] = $this->render_set($res);
+		$data["data"] = $result;
 		$data = json_encode($data);
 
 		// return as string
@@ -431,11 +438,12 @@ class JSONTreeCommonDataItem extends TreeCommonDataItem{
 	*/
 	function to_xml_start(){
 		if ($this->skip) return "";
-		
+
 		$data = array( "id" => $this->get_id() );
 		for ($i=0; $i<sizeof($this->config->text); $i++){
 			$extra = $this->config->text[$i]["name"];
-			$data[$extra]=$this->data[$extra];
+			if (isset($this->data[$extra]))
+				$data[$extra]=$this->data[$extra];
 		}
 
 		if ($this->userdata !== false)

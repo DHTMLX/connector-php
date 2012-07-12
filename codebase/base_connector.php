@@ -304,9 +304,11 @@ class Connector {
 	protected $live_update = false; // actions table name for autoupdating
 	protected $extra_output="";//!< extra info which need to be sent to client side
 	protected $options=array();//!< hash of OptionsConnector 
-	protected $as_string = false;
+	protected $as_string = false; // render() returns string, don't send result in response
+	protected $simple = false; // render only data without any other info
 	protected $filters;
 	protected $sorts;
+	protected $mix;
 	
 	/*! constructor
 		
@@ -338,6 +340,7 @@ class Connector {
 		$this->attributes = array();
 		$this->filters = array();
 		$this->sorts = array();
+		$this->mix = array();
 		
 		$this->config = new DataConfig();
 		$this->request = new DataRequestConfig();
@@ -493,7 +496,6 @@ class Connector {
 				$this->apply_filters($wrap);
 				$this->event->trigger("beforeFilter",$wrap);
 				$wrap->store();
-				
 
 				if ($this->model && method_exists($this->model, "get")){
 					$this->sql = new ArrayDBDataWrapper();
@@ -634,7 +636,7 @@ class Connector {
 		process commands, output requested data as XML
 	*/
 	protected function render_set($res){
-		return $this->render->render_set($res, $this->names["item_class"], $this->dload, $this->data_separator, $this->config);
+		return $this->render->render_set($res, $this->names["item_class"], $this->dload, $this->data_separator, $this->config, $this->mix);
 	}
 	
 	/*! output fetched data as XML
@@ -642,9 +644,14 @@ class Connector {
 			DB resultset 
 	*/
 	protected function output_as_xml($res){
+		$result = $this->render_set($res);
+		if ($this->simple) return $result;
+
 		$start="<?xml version='1.0' encoding='".$this->encoding."' ?>".$this->xml_start();
-		$end=$this->render_set($res).$this->xml_end();
-		
+		$end=$result.$this->xml_end();
+
+		if ($this->as_string) return $start.$end;
+
 		$out = new OutputWriter($start, $end);
 		$this->event->trigger("beforeOutput", $this, $out);
 		$out->output("", true, $this->encoding);
@@ -806,18 +813,28 @@ class Connector {
 	public function asString($as_string) {
 		$this->as_string = $as_string;
 	}
-	
+
+	public function simple_render() {
+		$this->simple = true;
+		return $this->render();
+	}
+
 	public function filter($name, $value = false, $operation = '=') {
 		$this->filters[] = array('name' => $name, 'value' => $value, 'operation' => $operation);
 	}
 	
+	public function clear_filter() {
+		$this->filters = array();
+		$this->request->set_filters(array());
+	}
+
 	protected function apply_filters($wrap) {
 		for ($i = 0; $i < count($this->filters); $i++) {
 			$f = $this->filters[$i];
 			$wrap->add($f['name'], $f['value'], $f['operation']);
 		}
 	}
-	
+
 	public function sort($name, $direction = false) {
 		$this->sorts[] = array('name' => $name, 'direction' => $direction);
 	}
@@ -827,6 +844,10 @@ class Connector {
 			$s = $this->sorts[$i];
 			$wrap->add($s['name'], $s['direction']);
 		}
+	}
+
+	public function mix($name, $value, $filter=false) {
+		$this->mix[] = Array('name'=>$name, 'value'=>$value, 'filter'=>$filter);
 	}
 }
 

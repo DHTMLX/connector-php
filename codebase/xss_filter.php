@@ -170,7 +170,7 @@ class ConnectorSecurity{
         die();
     }
     static function checkCSRF($edit){
-        @session_start();
+		if(isset($_SESSION)) @session_start();
 
         if (ConnectorSecurity::$security_key){
             if ($edit=== true){

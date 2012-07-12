@@ -63,14 +63,20 @@ class JSONTreeDataMultitableConnector extends TreeDataMultitableConnector{
 	}
 
 	protected function output_as_xml($res){
+		$result = $this->render_set($res);
+		if ($this->simple) return $result;
+
 		$data = array();
 		if (isset($_GET['parent']))
 			$data["parent"] = $this->render->level_id($_GET[$this->parent_name], $this->render->get_level() - 1);
 		else
 			$data["parent"] = "0";
-		$data["data"] = $this->render_set($res);
+		$data["data"] = $result;
 
-		$out = new OutputWriter(json_encode($data), "");
+		$result = json_encode($data);
+		if ($this->as_string) return $result;
+
+		$out = new OutputWriter($result, "");
 		$out->set_type("json");
 		$this->event->trigger("beforeOutput", $this, $out);
 		$out->output("", true, $this->encoding);

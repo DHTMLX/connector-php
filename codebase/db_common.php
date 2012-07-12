@@ -465,6 +465,22 @@ class DataConfig{
 		//we not deleting field from $data collection, so it will not be included in data operation, but its data still available
 	}
 	
+	/*! remove field from dataset config ($text and $data collections)
+
+		removed field will be excluded from all auto-generated queries
+		@param name 
+			name of field, or aliase of field
+	*/
+	public function remove_field_full($name){
+		$ind = $this->is_field($name);
+		if ($ind==-1) throw new Exception('There was no such data field registered as: '.$name);
+		array_splice($this->text,$ind,1);
+		
+		$ind = $this->is_field($name, $this->data);
+		if ($ind==-1) throw new Exception('There was no such data field registered as: '.$name);
+		array_splice($this->data,$ind,1);
+	}
+	
 	/*! check if field is a part of dataset
 
 		@param name 
