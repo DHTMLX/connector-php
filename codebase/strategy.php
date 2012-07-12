@@ -15,9 +15,11 @@ class RenderStrategy {
 	 *		mix structure
 	 */
 	protected function mix($config, $mix) {
-		for ($i = 0; $i < count($mix); $i++)
-			if (!$config->is_field($mix[$i]['name']))
+		for ($i = 0; $i < count($mix); $i++) {
+			if ($config->is_field($mix[$i]['name'])===-1) {
 				$config->add_field($mix[$i]['name']);
+			}
+		}
 	}
 
 	/*! remove mix fields from DataConfig
@@ -28,7 +30,9 @@ class RenderStrategy {
 	 */
 	protected function unmix($config, $mix) {
 		for ($i = 0; $i < count($mix); $i++) {
-			$config->remove_field_full($mix[$i]['name']);
+			if ($config->is_field($mix[$i]['name'])!==-1) {
+				$config->remove_field_full($mix[$i]['name']);
+			}
 		}
 	}
 
