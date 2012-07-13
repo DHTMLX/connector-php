@@ -27,7 +27,7 @@ class SQLSrvDBDataWrapper extends DBDataWrapper{
 			$errors = sqlsrv_errors();
 			$message = Array();
 			foreach($errors as $error)
-				$message[]=$error["SQLSTATE"].$error["code'"].$error["message"];
+				$message[]=$error["SQLSTATE"].$error["code"].$error["message"];
 			throw new Exception("SQLSrv operation failed\n".implode("\n\n", $message));
 		}
 		
