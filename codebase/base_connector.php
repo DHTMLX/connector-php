@@ -414,7 +414,10 @@ class Connector {
                 $id = $info["key"];
         }
 		$this->config->init($id,$fields,$extra,$relation_id);
-		$this->request->set_source($table);
+		if (strpos(trim($table), " ")!==false)
+			$this->request->parse_sql($table);
+		else
+			$this->request->set_source($table);
 	}
 	
 	public function uuid(){
