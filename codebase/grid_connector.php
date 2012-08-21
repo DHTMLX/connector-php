@@ -187,7 +187,7 @@ class GridConnector extends Connector{
 		@param list 
 			comma separated list of column names, for which options need to be generated
 	*/
-	protected function fill_collections($list){
+	protected function fill_collections($list=""){
 		$names=explode(",",$list);
 		for ($i=0; $i < sizeof($names); $i++) { 
 			$name = $this->resolve_parameter($names[$i]);

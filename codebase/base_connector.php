@@ -733,7 +733,7 @@ class Connector {
 		return $this->extra_output."</data>";
 	}
 
-	protected function fill_collections(){
+	protected function fill_collections($list=""){
 		foreach ($this->options as $k=>$v) { 
 			$name = $k;
 			$this->extra_output.="<coll_options for='{$name}'>";
