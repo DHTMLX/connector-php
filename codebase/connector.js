@@ -21,9 +21,10 @@ if (window.dhtmlXGridObject && !dhtmlXGridObject.prototype._init_point_connector
 			return combine_urls.call(this,url);
 		};
 		var filtering_url=function(url,inds,vals){
+			var chunks = [];
 			for (var i=0; i<inds.length; i++)
-				inds[i]="dhx_filter["+inds[i]+"]="+encodeURIComponent(vals[i]);
-			this._connector_filter="&"+inds.join("&");
+				chunks[i]="dhx_filter["+inds[i]+"]="+encodeURIComponent(vals[i]);
+			this._connector_filter="&"+chunks.join("&");
 			return combine_urls.call(this,url);
 		};
 		this.attachEvent("onCollectValues",function(ind){
@@ -50,8 +51,12 @@ if (window.dhtmlXGridObject && !dhtmlXGridObject.prototype._init_point_connector
 			return true;
 		});
 		this.attachEvent("onFilterStart",function(a,b){
+			var ss = this.getSortingState();
 			if (this._con_f_used.length){
+				var self=this;
 				this.clearAndLoad(filtering_url.call(this,this.xmlFileUrl,a,b));
+				if (ss.length)
+					self.setSortImgState(true,ss[0],ss[1]);
 				return false;
 			}
 			return true;
