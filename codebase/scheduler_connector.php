@@ -197,9 +197,10 @@ class JSONSchedulerConnector extends SchedulerConnector {
 		foreach ($this->options as $k=>$v) { 
 			$name = $k;
 			$option="\"{$name}\":[";
-			if (!is_string($this->options[$name]))
-				$option.=substr($this->options[$name]->render(),0,-2);
-			else
+			if (!is_string($this->options[$name])){
+				$data = json_encode($this->options[$name]->render());
+				$option.=substr($data,1,-1);
+			} else
 				$option.=$this->options[$name];
 			$option.="]";
 			$options[] = $option;
