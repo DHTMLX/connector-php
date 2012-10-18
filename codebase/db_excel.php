@@ -34,6 +34,7 @@ class ExcelDBDataWrapper extends DBDataWrapper {
 	public function select($source) {
 		$path = $this->connection;
 		$excel = PHPExcel_IOFactory::createReaderForFile($path);
+		$excel->setReadDataOnly(false);
 		$excel = $excel->load($path);
 		$excRes = new ExcelResult();
 		$excelWS = $excel->getActiveSheet();
@@ -68,7 +69,9 @@ class ExcelDBDataWrapper extends DBDataWrapper {
 			for ($j = 0; $j < count($this->config->text); $j++) {
 				$col = PHPExcel_Cell::columnIndexFromString($this->config->text[$j]['name']) - 1;
 				$cell = $excelWS->getCellByColumnAndRow($col, $i);
-				if ($cell->getDataType() == 'f') {
+				if (PHPExcel_Shared_Date::isDateTime($cell)) {
+					$r[PHPExcel_Cell::stringFromColumnIndex($col)] = PHPExcel_Shared_Date::ExcelToPHP($cell->getValue());
+				}  else if ($cell->getDataType() == 'f') {
 					$r[PHPExcel_Cell::stringFromColumnIndex($col)] = $cell->getCalculatedValue();
 				} else {
 					$r[PHPExcel_Cell::stringFromColumnIndex($col)] = $cell->getValue();
