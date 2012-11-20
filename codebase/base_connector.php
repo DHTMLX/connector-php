@@ -256,7 +256,7 @@ class DataItem{
 		for ($i=0; $i < sizeof($this->config->data); $i++){ 
 			$name=$this->config->data[$i]["name"];
 			$db_name=$this->config->data[$i]["db_name"];
-			$str.=" ".$name."='".$this->xmlentities($this->data[$db_name])."'";
+			$str.=" ".$name."='".$this->xmlentities($this->data[$name])."'";
 		}
 		//output custom data
 		if ($this->userdata !== false)
@@ -733,7 +733,7 @@ class Connector {
 		return $this->extra_output."</data>";
 	}
 
-	protected function fill_collections(){
+	protected function fill_collections($list=""){
 		foreach ($this->options as $k=>$v) { 
 			$name = $k;
 			$this->extra_output.="<coll_options for='{$name}'>";
@@ -825,7 +825,7 @@ class Connector {
 	public function filter($name, $value = false, $operation = '=') {
 		$this->filters[] = array('name' => $name, 'value' => $value, 'operation' => $operation);
 	}
-	
+
 	public function clear_filter() {
 		$this->filters = array();
 		$this->request->set_filters(array());

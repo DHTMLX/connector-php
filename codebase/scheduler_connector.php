@@ -192,7 +192,7 @@ class JSONSchedulerConnector extends SchedulerConnector {
 		@param list 
 			comma separated list of column names, for which options need to be generated
 	*/
-	protected function fill_collections(){
+	protected function fill_collections($list=""){
 		$options = array();
 		foreach ($this->options as $k=>$v) { 
 			$name = $k;
