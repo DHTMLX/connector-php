@@ -164,7 +164,7 @@ class JSONSchedulerConnector extends SchedulerConnector {
 		$this->fill_collections();
 		$end = (!empty($this->extra_output)) ? ', "collections": {'.$this->extra_output.'}' : '';
 		foreach ($this->attributes as $k => $v)
-			$end.=", ".$k.":\"".$v."\"";
+			$end.=", \"".$k."\":\"".$v."\"";
 		$end .= '}';
 		return $end;
 	}

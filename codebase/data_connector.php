@@ -224,7 +224,7 @@ class JSONDataConnector extends DataConnector{
 
 			$attributes = "";
 			foreach($this->attributes as $k=>$v)
-				$attributes .= ", ".$k.":\"".$v."\"";
+				$attributes .= ", \"".$k."\":\"".$v."\"";
 
 			$extra = "";
 			if (!empty($this->extra_output))
@@ -234,7 +234,7 @@ class JSONDataConnector extends DataConnector{
 			if ($is_sections){
 				//extra sections
 				foreach($this->sections as $k=>$v)
-					$sections .= ", ".$k.":".$v;
+					$sections .= ", \"".$k."\":".$v;
 			}
 
 			$dyn = "";
