@@ -22,7 +22,7 @@ class SQLite3DBDataWrapper extends DBDataWrapper{
 		return $res->fetchArray();
 	}
 	
-	protected function get_new_id(){
+	public function get_new_id(){
 		return $this->connection->lastInsertRowID();
 	}
 	

@@ -45,7 +45,7 @@ class PDODBDataWrapper extends DBDataWrapper{
 		return $data;
 	}
 	
-	protected function get_new_id(){
+	public function get_new_id(){
 		return $this->connection->lastInsertId();
 	}
 	

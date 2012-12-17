@@ -134,10 +134,10 @@ class FileSystemDBDataWrapper extends DBDataWrapper {
 		return $result;
 	}
 
-	protected function query($sql) {
+	public function query($sql) {
 	}
 
-	protected function get_new_id() {
+	public function get_new_id() {
 	}
 
 	public function escape($data) {

@@ -51,7 +51,7 @@ class SQLSrvDBDataWrapper extends DBDataWrapper{
 		return $data;
 	}
 	
-	protected function get_new_id(){
+	public function get_new_id(){
 		/*
 		MSSQL doesn't support identity or auto-increment fields
 		Insert SQL returns new ID value, which stored in last_id field

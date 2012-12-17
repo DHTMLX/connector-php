@@ -96,10 +96,10 @@ class ExcelDBDataWrapper extends DBDataWrapper {
 		return $excRes;
 	}
 
-	protected function query($sql) {
+	public function query($sql) {
 	}
 
-	protected function get_new_id() {
+	public function get_new_id() {
 	}
 
 	public function escape($data) {

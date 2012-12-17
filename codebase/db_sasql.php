@@ -20,7 +20,7 @@ class SaSQLDBDataWrapper extends DBDataWrapper{
 		return sasql_fetch_assoc($res);
 	}
 	
-	protected function get_new_id(){
+	public function get_new_id(){
 		return sasql_insert_id($this->connection);
 	}
 	
