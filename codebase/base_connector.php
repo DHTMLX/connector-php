@@ -550,6 +550,13 @@ class Connector {
 		$this->limit = $limit;
 	}
 	
+
+	public function limit($start, $count, $sort_field=false, $sort_dir=false){
+		$this->request->set_limit($start, $count);
+		if ($sort_field)
+			$this->request->set_sort($sort_field, $sort_dir);
+	}
+	
 	protected function parse_request_mode(){
 		//detect edit mode
         if (isset($_GET["editing"])){
