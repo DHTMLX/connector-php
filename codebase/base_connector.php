@@ -475,7 +475,8 @@ class Connector {
         $this->event->trigger("onInit", $this);
 		EventMaster::trigger_static("connectorInit",$this);
 		
-		$this->parse_request();
+		if (!$this->as_string)
+			$this->parse_request();
 		$this->set_relation();
 		
 		if ($this->live_update !== false && $this->updating!==false) {
