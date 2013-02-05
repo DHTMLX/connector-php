@@ -741,7 +741,10 @@ class Connector {
 	*/
 	protected function xml_end(){
 		$this->fill_collections();
-		return $this->extra_output."</data>";
+		if (isset($this->extra_output))
+			return $this->extra_output."</data>";
+		else
+			return "</data>";
 	}
 
 	protected function fill_collections($list=""){
