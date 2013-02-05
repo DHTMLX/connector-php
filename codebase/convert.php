@@ -41,6 +41,10 @@ class ConvertService{
 	}	
 	public function convert($conn, $out){
 		
+		$str_out = str_replace("<rows>","<rows profile='color'>", $out);
+		$str_out = str_replace("<head>","<head><columns>", $str_out);
+		$str_out = str_replace("</head>","</columns></head>", $str_out);
+
 		if ($this->type == "pdf")
 			header("Content-type: application/pdf");
 		else
@@ -50,7 +54,7 @@ class ConvertService{
 		curl_setopt($handle, CURLOPT_POST, true);
 		curl_setopt($handle, CURLOPT_HEADER, false);
 		curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($handle, CURLOPT_POSTFIELDS, "grid_xml=".urlencode(str_replace("<rows>","<rows profile='color'>", $out)));
+		curl_setopt($handle, CURLOPT_POSTFIELDS, "grid_xml=".urlencode($str_out));
 		
 		
 		$out->reset();

@@ -288,6 +288,9 @@ class Connector {
 	protected $encoding="utf-8";//!< assigned encoding (UTF-8 by default) 
 	protected $editing=false;//!< flag of edit mode ( response for dataprocessor )
 
+	public static $filter_var="dhx_filter";
+	public static $sort_var="dhx_sort";
+
 	public $model=false;
 
 	private $updating=false;//!< flag of update mode ( response for data-update )
@@ -586,21 +589,21 @@ class Connector {
             $this->request->set_user($_GET["dhx_user"]);
         }
 		
-		if (isset($_GET["dhx_sort"]))
-			foreach($_GET["dhx_sort"] as $k => $v){
+		if (isset($_GET[Connector::$sort_var]))
+			foreach($_GET[Connector::$sort_var] as $k => $v){
 				$k = $this->safe_field_name($k);
 				$this->request->set_sort($this->resolve_parameter($k),$v);
 			}
 				
-		if (isset($_GET["dhx_filter"]))
-			foreach($_GET["dhx_filter"] as $k => $v){
+		if (isset($_GET[Connector::$sort_var]))
+			foreach($_GET[Connector::$filter_var] as $k => $v){
 				$k = $this->safe_field_name($k);
 				$this->request->set_filter($this->resolve_parameter($k),$v);
 			}
 			
 		$key = ConnectorSecurity::checkCSRF($this->editing);
 		if ($key !== "")
-			$this->add_top_attribute("dhx_security", $key);
+			$this->add_top_attribute(ConnectorSecurity::$security_var, $key);
 		
 	}
 

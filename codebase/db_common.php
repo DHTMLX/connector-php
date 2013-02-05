@@ -800,7 +800,7 @@ abstract class DBDataWrapper extends DataWrapper{
 		$sql.=implode(",",$temp)." WHERE ".$this->escape_name($this->config->id["db_name"])."='".$this->escape($data->get_id())."'";
 		
 		//if we have limited set - set constraints
-		$where=$this->build_where($request->get_filters(),$request->get_relation());
+		$where=$this->build_where($request->get_filters());
 		if ($where) $sql.=" AND (".$where.")";
 		
 		return $sql;
@@ -820,7 +820,7 @@ abstract class DBDataWrapper extends DataWrapper{
 		$sql.=" WHERE ".$this->escape_name($this->config->id["db_name"])."='".$this->escape($data->get_id())."'";
 		
 		//if we have limited set - set constraints
-		$where=$this->build_where($request->get_filters(),$request->get_relation());
+		$where=$this->build_where($request->get_filters());
 		if ($where) $sql.=" AND (".$where.")";
 		
 		return $sql;
