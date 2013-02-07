@@ -113,9 +113,6 @@ class DataConnector extends Connector{
 		$this->sections[$name] = $string;
 	}
 
-	protected function parse_request_mode(){
-		//do nothing, at least for now
-	}
 	
 	//parse GET scoope, all operations with incoming request must be done here
 	protected function parse_request(){
