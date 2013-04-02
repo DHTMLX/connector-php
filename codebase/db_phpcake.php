@@ -13,7 +13,12 @@ if you plan to use it for Oracle - use Oracle connection type instead
 **/
 class PHPCakeDBDataWrapper extends ArrayDBDataWrapper{
 	public function select($sql){
-		$res = $this->connection->find("all");
+		$source = $sql->get_source();
+		if (is_array($source))	//result of find
+			$res = $source;
+		else
+			$res = $this->connection->find("all");
+
 		if (sizeof($res)){
 			$name = get_class($this->connection);
 			$temp = array();
