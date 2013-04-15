@@ -9,6 +9,9 @@ require_once("data_connector.php");
 /*! DataItem class for Gantt component
 **/
 class GanttDataItem extends DataItem{
+
+    public static $open = null;
+
     /*! return self as XML string
     */
     function to_xml(){
@@ -25,6 +28,8 @@ class GanttDataItem extends DataItem{
         if ($this->userdata !== false)
             foreach ($this->userdata as $key => $value)
                 $str.="<".$key."><![CDATA[".$value."]]></".$key.">";
+        if (GanttDataItem::$open !== null)
+            $str.="<open>".GanttDataItem::$open."</open>";
 
         return $str."</task>";
     }
@@ -88,6 +93,10 @@ class GanttConnector extends Connector{
                 $this->request->set_filter($this->config->text[1]["name"],$_GET["from"],">");
         }
     }
+    
+    public function openAll($mode = true) {
+        GanttDataItem::$open = $mode;
+    }
 }
 
 /*! DataProcessor class for Gantt component
@@ -123,6 +132,8 @@ class JSONGanttDataItem extends GanttDataItem{
             $extra = $this->config->text[$i]["name"];
             $obj[$extra]=$this->data[$extra];
         }
+        if (GanttDataItem::$open !== null)
+            $obj['open'] = GanttDataItem::$open;
 
         if ($this->userdata !== false)
             foreach ($this->userdata as $key => $value)
