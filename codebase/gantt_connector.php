@@ -93,9 +93,15 @@ class GanttConnector extends Connector{
                 $this->request->set_filter($this->config->text[1]["name"],$_GET["from"],">");
         }
     }
-    
+
     public function openAll($mode = true) {
         GanttDataItem::$open = $mode;
+    }
+
+    public function render_links($table,$id="",$fields=false,$extra=false,$relation_id=false) {
+        $links = new OptionsConnector($this->get_connection(),$this->names["db_class"]);
+        $links->render_table($table,$id,$fields,$extra);
+        $this->set_options("links", $links);
     }
 }
 
@@ -236,6 +242,12 @@ class JSONGanttConnector extends GanttConnector {
         $out->set_type("json");
         $this->event->trigger("beforeOutput", $this, $out);
         $out->output("", true, $this->encoding);
+    }
+
+    public function render_links($table,$id="",$fields=false,$extra=false,$relation_id=false) {
+        $links = new JSONOptionsConnector($this->get_connection(),$this->names["db_class"]);
+        $links->render_table($table,$id,$fields,$extra);
+        $this->set_options("links", $links);
     }
 }
 ?>
