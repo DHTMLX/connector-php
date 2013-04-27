@@ -19,7 +19,7 @@ class GanttDataItem extends DataItem{
 
         $str="<task id='".$this->get_id()."' >";
         $str.="<start_date><![CDATA[".$this->data[$this->config->text[0]["name"]]."]]></start_date>";
-        $str.="<duration><![CDATA[".$this->data[$this->config->text[1]["name"]]."]]></duration>";
+        $str.="<".$this->config->text[1]["name"]."><![CDATA[".$this->data[$this->config->text[1]["name"]]."]]></".$this->config->text[1]["name"].">";
         $str.="<text><![CDATA[".$this->data[$this->config->text[2]["name"]]."]]></text>";
         for ($i=3; $i<sizeof($this->config->text); $i++){
             $extra = $this->config->text[$i]["name"];
@@ -113,7 +113,9 @@ class GanttDataProcessor extends DataProcessor{
             return $this->config->text[0]["db_name"];
         if ($data=="id")
             return $this->config->id["db_name"];
-        if ($data=="duration")
+        if ($data=="duration" && $this->config->text[1]["name"] == "duration")
+            return $this->config->text[1]["db_name"];
+        if ($data=="end_date" && $this->config->text[1]["name"] == "end_date")
             return $this->config->text[1]["db_name"];
         if ($data=="text")
             return $this->config->text[2]["db_name"];
@@ -132,7 +134,7 @@ class JSONGanttDataItem extends GanttDataItem{
         $obj = array();
         $obj['id'] = $this->get_id();
         $obj['start_date'] = $this->data[$this->config->text[0]["name"]];
-        $obj['duration'] = $this->data[$this->config->text[1]["name"]];
+        $obj[$this->config->text[1]["name"]] = $this->data[$this->config->text[1]["name"]];
         $obj['text'] = $this->data[$this->config->text[2]["name"]];
         for ($i=3; $i<sizeof($this->config->text); $i++){
             $extra = $this->config->text[$i]["name"];
