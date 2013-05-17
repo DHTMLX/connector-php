@@ -729,6 +729,14 @@ class Connector {
 	*/
 	protected function xml_start(){
 		$attributes = "";
+
+        if ($this->dload){
+            //info for dyn. loadin
+            if ($pos=$this->request->get_start())
+                $attributes .= " pos='".$pos."'";
+            else
+                $attributes .= " pos='0' total_count='".$this->sql->get_size($this->request)."'";
+        }
 		foreach($this->attributes as $k=>$v)
 			$attributes .= " ".$k."='".$v."'";
 

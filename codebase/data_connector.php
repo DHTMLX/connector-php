@@ -145,11 +145,20 @@ class DataConnector extends Connector{
 			$this->request->set_limit($_GET["start"],$_GET["count"]);
 
 	}
-	
+
 	/*! renders self as  xml, starting part
 	*/
 	protected function xml_start(){
 		$start = "<data";
+
+        if ($this->dload){
+            //info for dyn. loadin
+            if ($pos=$this->request->get_start())
+                $start .= " pos='".$pos."'";
+            else
+                $start .= " pos='0' total_count='".$this->sql->get_size($this->request)."'";
+        }
+
 		foreach($this->attributes as $k=>$v)
 			$start .= " ".$k."='".$v."'";
 		$start.= ">";
