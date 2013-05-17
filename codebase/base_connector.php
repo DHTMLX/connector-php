@@ -575,10 +575,14 @@ class Connector {
 	protected function parse_request(){
 		//set default dyn. loading params, can be reset in child classes
 		if ($this->dload)
-			$this->request->set_limit(0,$this->dload);
+            $this->request->set_limit(0,$this->dload);
 		else if ($this->limit)
 			$this->request->set_limit(0,$this->limit);
-		
+
+        if (isset($_GET["posStart"]) && isset($_GET["count"])) {
+            $this->request->set_limit($_GET["posStart"],$_GET["count"]);
+        }
+
 		$this->parse_request_mode();
 
         if ($this->live_update && ($this->updating || $this->editing)){
@@ -735,7 +739,7 @@ class Connector {
             if ($pos=$this->request->get_start())
                 $attributes .= " pos='".$pos."'";
             else
-                $attributes .= " pos='0' total_count='".$this->sql->get_size($this->request)."'";
+                $attributes .= " total_count='".$this->sql->get_size($this->request)."'";
         }
 		foreach($this->attributes as $k=>$v)
 			$attributes .= " ".$k."='".$v."'";
