@@ -445,7 +445,7 @@ class Connector {
 
 	public function render_array($data, $id, $fields, $extra=false, $relation_id=false){
 		$this->configure("-",$id,$fields,$extra,$relation_id);
-		$this->sql = new ArrayDBDataWrapper($data, null);
+		$this->sql = new ArrayDBDataWrapper($data, $this->config);
 		return $this->render();
 	}
 
