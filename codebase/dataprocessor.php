@@ -220,7 +220,7 @@ class DataProcessor{
 		}
 		$this->connector->event->trigger("after".$mode,$action);
 		
-		$this->config = $old_config;
+		$this->config->copy($old_config);
 	}
 	
 	/*! output xml response for dataprocessor

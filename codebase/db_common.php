@@ -195,7 +195,9 @@ class DataRequestConfig{
 			name of source table
 	*/
 	public function set_source($value){
-		$this->source=trim($value);
+		if (is_string($value))
+			$value = trim($value);
+		$this->source = $value;
 		if (!$this->source) throw new Exception("Source of data can't be empty");
 	}
 	/*! sets data limits
