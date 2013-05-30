@@ -145,9 +145,6 @@ class GridConnector extends Connector{
 		
 		if (isset($_GET["dhx_colls"]))
 			$this->fill_collections($_GET["dhx_colls"]);	
-		
-		if (isset($_GET["posStart"]) && isset($_GET["count"]))
-			$this->request->set_limit($_GET["posStart"],$_GET["count"]);
 	}
 	protected function resolve_parameter($name){
 		if (intval($name).""==$name)
