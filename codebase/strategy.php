@@ -223,6 +223,7 @@ class JSONTreeRenderStrategy extends TreeRenderStrategy {
 				$sub_request = new DataRequestConfig($conn->get_request());
                 $sub_request->set_fieldset(implode(",",$config_copy->db_names_list($conn->sql)));
 				$sub_request->set_relation($data->get_id());
+                $sub_request->set_filters(array());
 				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config_copy, $mix);
 				if (sizeof($temp))
 					$record["data"] = $temp;
