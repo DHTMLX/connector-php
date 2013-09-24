@@ -667,6 +667,12 @@ abstract class DBDataWrapper extends DataWrapper{
 			
 		return $this->query($this->select_query($select,$source->get_source(),$where,$sort,$source->get_start(),$source->get_count()));
 	}	
+	public function queryOne($sql){
+		$res = $this->query($sql);
+		if ($res)
+			return $this->get_next($res);
+		return false;
+	}	
 	public function get_size($source){
 		$count = new DataRequestConfig($source);
 		
@@ -896,7 +902,7 @@ abstract class DBDataWrapper extends DataWrapper{
 		@return 
 			sql result set
 	*/
-	abstract protected function query($sql);
+	abstract public function query($sql);
 	/*! returns next record from result set
 		
 		@param res 
@@ -909,7 +915,7 @@ abstract class DBDataWrapper extends DataWrapper{
 		@return 
 			new id value, for newly inserted row
 	*/
-	abstract protected function get_new_id();
+	abstract public function get_new_id();
 	/*! escape data to prevent sql injections
 		@param data 
 			unescaped data
@@ -956,7 +962,25 @@ class ArrayDBDataWrapper extends DBDataWrapper{
 		return $res->data[$res->index++];
 	}
 	public function select($sql){
-		return new ArrayQueryWrapper($this->connection);
+		if ($this->config->relation_id["db_name"] == "") {
+            if ($sql->get_relation() == "0" || $sql->get_relation() == "") {
+                return new ArrayQueryWrapper($this->connection);
+            } else {
+                return new ArrayQueryWrapper(array());
+            }
+        }
+
+		$relation_id = $this->config->relation_id["db_name"];
+
+        for ($i = 0; $i < count($this->connection); $i++) {
+            $item = $this->connection[$i];
+            if (!isset($item[$relation_id])) continue;
+            if ($item[$relation_id] == $sql->get_relation())
+                $result[] = $item;
+
+        }
+
+		return new ArrayQueryWrapper($result);
 	}
 	public function query($sql){
 		throw new Exception("Not implemented");
@@ -994,7 +1018,7 @@ class MySQLDBDataWrapper extends DBDataWrapper{
 		return mysql_fetch_assoc($res);
 	}
 	
-	protected function get_new_id(){
+	public function get_new_id(){
 		return mysql_insert_id($this->connection);
 	}
 	

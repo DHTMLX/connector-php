@@ -445,7 +445,7 @@ class Connector {
 
 	public function render_array($data, $id, $fields, $extra=false, $relation_id=false){
 		$this->configure("-",$id,$fields,$extra,$relation_id);
-		$this->sql = new ArrayDBDataWrapper($data, null);
+		$this->sql = new ArrayDBDataWrapper($data, $this->config);
 		return $this->render();
 	}
 
@@ -475,7 +475,8 @@ class Connector {
         $this->event->trigger("onInit", $this);
 		EventMaster::trigger_static("connectorInit",$this);
 		
-		$this->parse_request();
+		if (!$this->as_string)
+			$this->parse_request();
 		$this->set_relation();
 		
 		if ($this->live_update !== false && $this->updating!==false) {
@@ -550,6 +551,13 @@ class Connector {
 		$this->limit = $limit;
 	}
 	
+
+	public function limit($start, $count, $sort_field=false, $sort_dir=false){
+		$this->request->set_limit($start, $count);
+		if ($sort_field)
+			$this->request->set_sort($sort_field, $sort_dir);
+	}
+	
 	protected function parse_request_mode(){
 		//detect edit mode
         if (isset($_GET["editing"])){
@@ -567,10 +575,14 @@ class Connector {
 	protected function parse_request(){
 		//set default dyn. loading params, can be reset in child classes
 		if ($this->dload)
-			$this->request->set_limit(0,$this->dload);
+            $this->request->set_limit(0,$this->dload);
 		else if ($this->limit)
 			$this->request->set_limit(0,$this->limit);
-		
+
+        if (isset($_GET["posStart"]) && isset($_GET["count"])) {
+            $this->request->set_limit($_GET["posStart"],$_GET["count"]);
+        }
+
 		$this->parse_request_mode();
 
         if ($this->live_update && ($this->updating || $this->editing)){
@@ -721,6 +733,14 @@ class Connector {
 	*/
 	protected function xml_start(){
 		$attributes = "";
+
+        if ($this->dload){
+            //info for dyn. loadin
+            if ($pos=$this->request->get_start())
+                $attributes .= " pos='".$pos."'";
+            else
+                $attributes .= " total_count='".$this->sql->get_size($this->request)."'";
+        }
 		foreach($this->attributes as $k=>$v)
 			$attributes .= " ".$k."='".$v."'";
 

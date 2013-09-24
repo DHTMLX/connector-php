@@ -8,12 +8,15 @@ require_once("db_common.php");
 
 class PHPYiiDBDataWrapper extends ArrayDBDataWrapper{
 	public function select($sql){
-		$res = $this->connection->findAll();
+		if (is_array($this->connection))	//result of findAll
+			$res = $this->connection;
+		else
+			$res = $this->connection->findAll();
+
 		if (sizeof($res)){
-			$name = get_class($this->connection);
 			$temp = array();
 			foreach ($res as $obj)
-				$temp[]=&$obj->getAttributes();
+				$temp[]=$obj->getAttributes();
 		}
 		return new ArrayQueryWrapper($temp);
 	}

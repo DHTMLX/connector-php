@@ -18,7 +18,7 @@ class MySQLiDBDataWrapper extends MySQLDBDataWrapper{
 		return $res->fetch_assoc();
 	}
 
-	protected function get_new_id(){
+	public function get_new_id(){
 		return $this->connection->insert_id;
 	}
 

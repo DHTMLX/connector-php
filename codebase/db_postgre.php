@@ -32,7 +32,7 @@ class PostgreDBDataWrapper extends DBDataWrapper{
 		return pg_fetch_assoc($res);
 	}
 	
-	protected function get_new_id(){
+	public function get_new_id(){
 		$res  = pg_query( $this->connection, "SELECT LASTVAL() AS seq");
 		$data = pg_fetch_assoc($res);
 				pg_free_result($res);

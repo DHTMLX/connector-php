@@ -28,7 +28,7 @@ class PHPCIDBDataWrapper extends DBDataWrapper{
 		return $data;
 	}
 	
-	protected function get_new_id(){
+	public function get_new_id(){
 		return $this->connection->insert_id();
 	}
 	
