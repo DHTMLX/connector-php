@@ -46,7 +46,7 @@ class RenderStrategy {
 	protected function simple_mix($mix, $data) {
 		// get mix details
 		for ($i = 0; $i < count($mix); $i++)
-			$data[$mix[$i]["name"]] = is_string($mix[$i]["value"]) ? $mix[$i]["value"] : "";
+			$data[$mix[$i]["name"]] = is_object($mix[$i]["value"]) ? "" : $mix[$i]["value"];
 		return $data;
 	}
 

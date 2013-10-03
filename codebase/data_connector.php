@@ -310,6 +310,10 @@ class JSONOptionsConnector extends JSONDataConnector{
 		$res = $this->sql->select($this->request);
 		return $this->render_set($res);
 	}
+
+	public function render_save(){
+    	parent::render();
+    }
 }
 
 

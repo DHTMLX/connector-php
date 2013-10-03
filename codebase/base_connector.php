@@ -600,10 +600,11 @@ class Connector {
 				$this->request->set_sort($this->resolve_parameter($k),$v);
 			}
 				
-		if (isset($_GET[Connector::$sort_var]))
+		if (isset($_GET[Connector::$filter_var]))
 			foreach($_GET[Connector::$filter_var] as $k => $v){
 				$k = $this->safe_field_name($k);
-				$this->request->set_filter($this->resolve_parameter($k),$v);
+				if ($v !== "")
+					$this->request->set_filter($this->resolve_parameter($k),$v);
 			}
 			
 		$this->check_csrf();
@@ -923,6 +924,11 @@ class OptionsConnector extends Connector{
 		$res = $this->sql->select($this->request);
 		return $this->render_set($res);
 	}
+
+    public function render_save(){
+    	$this->config->remove_field($this->config->id["name"]);
+    	parent::render();
+    }
 }
 
 
