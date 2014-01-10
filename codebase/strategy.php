@@ -167,7 +167,7 @@ class TreeRenderStrategy extends RenderStrategy {
 			$output.=$data->to_xml_start();
 			if ($data->has_kids()===-1 || ( $data->has_kids()==true && !$dload)){
 				$sub_request = new DataRequestConfig($conn->get_request());
-                $sub_request->set_fieldset(implode(",",$config_copy->db_names_list($conn->sql)));
+                //$sub_request->set_fieldset(implode(",",$config_copy->db_names_list($conn->sql)));
 				$sub_request->set_relation($data->get_id());
 				$output.=$this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config_copy, $mix);
 			}
@@ -221,9 +221,9 @@ class JSONTreeRenderStrategy extends TreeRenderStrategy {
 			$record = $data->to_xml_start();
 			if ($data->has_kids()===-1 || ( $data->has_kids()==true && !$dload)){
 				$sub_request = new DataRequestConfig($conn->get_request());
-                $sub_request->set_fieldset(implode(",",$config_copy->db_names_list($conn->sql)));
+                //$sub_request->set_fieldset(implode(",",$config_copy->db_names_list($conn->sql)));
 				$sub_request->set_relation($data->get_id());
-                $sub_request->set_filters(array());
+                //$sub_request->set_filters(array());
 				$temp = $this->render_set($conn->sql->select($sub_request), $name, $dload, $sep, $config_copy, $mix);
 				if (sizeof($temp))
 					$record["data"] = $temp;
