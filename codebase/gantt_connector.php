@@ -38,6 +38,7 @@ class GanttConnector extends Connector{
 
     protected $extra_output="";//!< extra info which need to be sent to client side
     protected $options=array();//!< hash of OptionsConnector
+    protected $links_mode = false;
 
 
     /*! assign options collection to the column
@@ -86,6 +87,9 @@ class GanttConnector extends Connector{
     function parse_request(){
         parent::parse_request();
 
+        if (isset($_GET["gantt_mode"]) && $_GET["gantt_mode"] == "links")
+            $this->links_mode = true;
+
         if (count($this->config->text)){
             if (isset($_GET["to"]))
                 $this->request->set_filter($this->config->text[0]["name"],$_GET["to"],"<");
@@ -107,7 +111,7 @@ class GanttConnector extends Connector{
     function delete_related_links($action){
         if (isset($this->options["links"])){
             $links = $this->options["links"];
-            $value = $this->sql->escape($action->get_id());
+            $value = $this->sql->escape($action->get_new_id());
             $table = $links->get_request()->get_source();
             
             $this->sql->query("DELETE FROM $table WHERE source = '$value'");
@@ -115,22 +119,9 @@ class GanttConnector extends Connector{
         }
     }
 
-    /*! render self
-        process commands, output requested data as XML
-    */
-    public function render(){
-        if (!$this->as_string){
-            if (isset($_GET["gantt_mode"]) && $_GET["gantt_mode"] == "links")
-                if (isset($this->options["links"]))
-                    return $this->options["links"]->render_save();
-        }
-
-        return parent::render();
-    }
-
     public function render_links($table,$id="",$fields=false,$extra=false,$relation_id=false) {
-        $links = new OptionsConnector($this->get_connection(),$this->names["db_class"]);
-        $links->render_table($table,$id,$id.",".$fields,$extra);
+        $links = new GanttLinksConnector($this->get_connection(),$this->names["db_class"]);
+        $links->render_table($table,$id,$fields,$extra);
         $this->set_options("links", $links);
     }
 }
@@ -139,8 +130,16 @@ class GanttConnector extends Connector{
 **/
 class GanttDataProcessor extends DataProcessor{
     function name_data($data){
+        if ($data=="start_date")
+            return $this->config->text[0]["db_name"];
         if ($data=="id")
             return $this->config->id["db_name"];
+        if ($data=="duration" && $this->config->text[1]["name"] == "duration")
+            return $this->config->text[1]["db_name"];
+        if ($data=="end_date" && $this->config->text[1]["name"] == "end_date")
+            return $this->config->text[1]["db_name"];
+        if ($data=="text")
+            return $this->config->text[2]["db_name"];
 
         return $data;
     }
@@ -267,12 +266,99 @@ class JSONGanttConnector extends GanttConnector {
     }
 
     public function render_links($table,$id="",$fields=false,$extra=false,$relation_id=false) {
-        $links = new JSONOptionsConnector($this->get_connection(),$this->names["db_class"]);
+        $links = new JSONGanttLinksConnector($this->get_connection(),$this->names["db_class"]);
         $links->render_table($table,$id,$fields,$extra);
         $this->set_options("links", $links);
+    }
+
+
+    /*! render self
+		process commands, output requested data as XML
+	*/
+    public function render(){
+        $this->event->trigger("onInit", $this);
+        EventMaster::trigger_static("connectorInit",$this);
+
+        if (!$this->as_string)
+            $this->parse_request();
+        $this->set_relation();
+
+        if ($this->live_update !== false && $this->updating!==false) {
+            $this->live_update->get_updates();
+        } else {
+            if ($this->editing){
+                if ($this->links_mode && isset($this->options["links"])) {
+                    $this->options["links"]->save();
+                } else {
+                    $dp = new $this->names["data_class"]($this,$this->config,$this->request);
+                    $dp->process($this->config,$this->request);
+                }
+            } else {
+                if (!$this->access->check("read")){
+                    LogMaster::log("Access control: read operation blocked");
+                    echo "Access denied";
+                    die();
+                }
+                $wrap = new SortInterface($this->request);
+                $this->apply_sorts($wrap);
+                $this->event->trigger("beforeSort",$wrap);
+                $wrap->store();
+
+                $wrap = new FilterInterface($this->request);
+                $this->apply_filters($wrap);
+                $this->event->trigger("beforeFilter",$wrap);
+                $wrap->store();
+
+                if ($this->model && method_exists($this->model, "get")){
+                    $this->sql = new ArrayDBDataWrapper();
+                    $result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
+                    $out = $this->output_as_xml($result);
+                } else {
+                    $out = $this->output_as_xml($this->get_resource());
+
+                    if ($out !== null) return $out;
+                }
+
+            }
+        }
+        $this->end_run();
     }
 }
 
 
+class GanttLinksConnector extends OptionsConnector {
+    public function render(){
+        if (!$this->init_flag){
+            $this->init_flag=true;
+            return "";
+        }
+
+        $res = $this->sql->select($this->request);
+        return $this->render_set($res);
+    }
+
+    public function save() {
+        $dp = new $this->names["data_class"]($this,$this->config,$this->request);
+        $dp->process($this->config,$this->request);
+    }
+}
+
+
+class JSONGanttLinksConnector extends JSONOptionsConnector {
+    public function render(){
+        if (!$this->init_flag){
+            $this->init_flag=true;
+            return "";
+        }
+
+        $res = $this->sql->select($this->request);
+        return $this->render_set($res);
+    }
+
+    public function save() {
+        $dp = new $this->names["data_class"]($this,$this->config,$this->request);
+        $dp->process($this->config,$this->request);
+    }
+}
 
 ?>

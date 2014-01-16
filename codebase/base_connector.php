@@ -924,11 +924,6 @@ class OptionsConnector extends Connector{
 		$res = $this->sql->select($this->request);
 		return $this->render_set($res);
 	}
-
-    public function render_save(){
-    	$this->config->remove_field($this->config->id["name"]);
-    	parent::render();
-    }
 }
 
 
