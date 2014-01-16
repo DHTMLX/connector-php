@@ -130,7 +130,9 @@ class JSONRenderStrategy extends RenderStrategy {
 			if ($data->get_id()===false)
 				$data->set_id($conn->uuid());
 			$conn->event->trigger("beforeRender",$data);
-			$output[]=$data->to_xml();
+            $item = $data->to_xml();
+            if ($item !== false)
+                $output[]=$item;
 			$index++;
 		}
 		$this->unmix($config, $mix);
@@ -228,7 +230,8 @@ class JSONTreeRenderStrategy extends TreeRenderStrategy {
 				if (sizeof($temp))
 					$record["data"] = $temp;
 			}
-			$output[] = $record;
+            if ($record !== false)
+			    $output[] = $record;
 			$index++;
 		}
 		$this->unmix($config, $mix);
