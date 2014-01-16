@@ -83,7 +83,7 @@ if (window.dhtmlXGridObject && !dhtmlXGridObject.prototype._init_point_connector
 		if (!this._colls_loaded && this.cellType){
 			var ar=[];
 			for (var i=0; i < this.cellType.length; i++)
-				if (this.cellType[i].indexOf("co")==0 || this._con_f_used[i]==2) ar.push(i);
+				if (this.cellType[i].indexOf("co")==0 || this.cellType[i].indexOf("clist")==0 || this._con_f_used[i]==2) ar.push(i);
 			if (ar.length)
 				arguments[0]+=(arguments[0].indexOf("?")!=-1?"&":"?")+"connector=true&dhx_colls="+ar.join(",");
 		}
@@ -120,8 +120,13 @@ if (window.dhtmlXGridObject && !dhtmlXGridObject.prototype._init_point_connector
 					} else
 						v[v.length]=val;
 				}
-				if (opts.length)
-					combo.addOption(opts);
+				if (opts.length){
+					if (combo)
+						combo.addOption(opts);
+				} else if (v.length && !combo)
+					if (this.registerCList)
+						this.registerCList(f*1, v);
+
 					
 				if (this._con_f_used[f*1])
 					this._con_f_used[f*1]=v;
