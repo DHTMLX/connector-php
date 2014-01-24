@@ -346,7 +346,7 @@ class TreeCommonDataItem extends CommonDataItem{
 				$str.=" ".$key."='".$this->xmlentities($value)."'";
 
 		if ($this->kids === true)
-			$str .=" dhx_kids='1'";
+			$str .=" ".Connector::$kids_var."='1'";
 		
 		return $str.">";
 	}
@@ -503,7 +503,7 @@ class JSONTreeCommonDataItem extends TreeCommonDataItem{
 				$data[$key]=$value;
 
 		if ($this->kids === true)
-			$data["dhx_kids"] = 1;
+			$data[Connector::$kids_var] = 1;
 
 		return $data;
 	}

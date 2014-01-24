@@ -800,8 +800,14 @@ abstract class DBDataWrapper extends DataWrapper{
 					else
 						array_push($sql,$this->escape_name($rules[$i]["name"])." ".$rules[$i]["operation"]." '".$this->escape($rules[$i]["value"])."'");
 				}
-		if ($relation !== false && $relation !== "")
-			array_push($sql,$this->escape_name($this->config->relation_id["db_name"])." = '".$this->escape($relation)."'");
+
+		if ($relation !== false && $relation !== ""){
+			$relsql = $this->escape_name($this->config->relation_id["db_name"])." = '".$this->escape($relation)."'";
+			if ($relation == "0")
+				$relsql = "( ".$relsql." OR ".$this->escape_name($this->config->relation_id["db_name"])." IS NULL )";
+
+			array_push($sql,$relsql);
+		}
 		return implode(" AND ",$sql);
 	}	
 	/*! convert sorting rules to sql string
