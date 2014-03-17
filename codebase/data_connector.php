@@ -280,8 +280,11 @@ class JSONCommonDataItem extends DataItem{
 		}
 
 		if ($this->userdata !== false)
-			foreach ($this->userdata as $key => $value)
+			foreach ($this->userdata as $key => $value){
+				if ($value === null)
+					$data[$key]="";
 				$data[$key]=$value;
+			}
 
 		return $data;
 	}
