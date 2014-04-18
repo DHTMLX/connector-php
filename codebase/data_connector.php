@@ -366,6 +366,7 @@ class TreeCommonDataItem extends CommonDataItem{
 
 class TreeDataConnector extends DataConnector{
 	protected $parent_name = 'parent';
+	public $rootId = "0";
 
 	/*! constructor
 		
@@ -403,7 +404,10 @@ class TreeDataConnector extends DataConnector{
 	/*! renders self as  xml, starting part
 	*/
 	protected function xml_start(){
-		$attributes = " parent='".$this->request->get_relation()."' ";
+		$attributes = " ";
+		if (!$this->rootId || $this->rootId != $this->request->get_relation())
+			$attributes = " parent='".$this->request->get_relation()."' ";
+
 		foreach($this->attributes as $k=>$v)
 			$attributes .= " ".$k."='".$v."'";
 
@@ -426,7 +430,9 @@ class JSONTreeDataConnector extends TreeDataConnector{
 		if ($this->simple) return $result;
 
 		$data = array();
-		$data["parent"] = $this->request->get_relation();
+		if (!$this->rootId || $this->rootId != $this->request->get_relation())
+			$data["parent"] = $this->request->get_relation();
+
 		$data["data"] = $result;
 
         $this->fill_collections();
