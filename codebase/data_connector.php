@@ -398,7 +398,7 @@ class TreeDataConnector extends DataConnector{
 		if (isset($_GET[$this->parent_name]))
 			$this->request->set_relation($_GET[$this->parent_name]);
 		else
-			$this->request->set_relation("0");
+            $this->request->set_relation($this->rootId);
 
 		$this->request->set_limit(0,0); //netralize default reaction on dyn. loading mode
 	}
