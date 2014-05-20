@@ -109,6 +109,10 @@ class CrossOptionsConnector extends Connector{
 				$this->link->delete($master_key);
 				break;
 			case "updated":
+				//cross link options not loaded yet, so we can skip update
+				if (!array_key_exists($this->link_name, $action->get_data()))
+					break;
+				//else, delete old options and continue in insert section to add new values
 				$this->link->delete($master_key);
 			case "inserted":
 				for ($i=0; $i < sizeof($link_key); $i++)

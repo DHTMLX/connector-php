@@ -114,7 +114,10 @@ class DataConnector extends Connector{
 	}
 
 	protected function parse_request_mode(){
-		//do nothing, at least for now
+		if (isset($_GET['action']) && $_GET["action"] != "get")
+			$this->editing = true;
+		else
+			parent::parse_request_mode();
 	}
 	
 	//parse GET scoope, all operations with incoming request must be done here
@@ -134,10 +137,10 @@ class DataConnector extends Connector{
 				//data saving
 				$this->editing = true;
 			}
+			parent::check_csrf();
 		} else {
 			if (isset($_GET['editing']) && isset($_POST['ids']))
 				$this->editing = true;			
-			
 			parent::parse_request();
 		}
 	
@@ -149,7 +152,10 @@ class DataConnector extends Connector{
 	/*! renders self as  xml, starting part
 	*/
 	protected function xml_start(){
-		$start = parent::xml_start();
+		$start = "<data";
+		foreach($this->attributes as $k=>$v)
+			$start .= " ".$k."='".$v."'";
+		$start.= ">";
 
 		foreach($this->sections as $k=>$v)
 			$start .= "<".$k.">".$v."</".$k.">\n";
@@ -195,7 +201,7 @@ class JSONDataConnector extends DataConnector{
 			$name = $k;
 			$option="\"{$name}\":[";
 			if (!is_string($this->options[$name]))
-				$option.=substr($this->options[$name]->render(),0,-2);
+				$option.=substr(json_encode($this->options[$name]->render()),1,-1);
 			else
 				$option.=$this->options[$name];
 			$option.="]";
@@ -274,8 +280,11 @@ class JSONCommonDataItem extends DataItem{
 		}
 
 		if ($this->userdata !== false)
-			foreach ($this->userdata as $key => $value)
+			foreach ($this->userdata as $key => $value){
+				if ($value === null)
+					$data[$key]="";
 				$data[$key]=$value;
+			}
 
 		return $data;
 	}
@@ -340,7 +349,7 @@ class TreeCommonDataItem extends CommonDataItem{
 				$str.=" ".$key."='".$this->xmlentities($value)."'";
 
 		if ($this->kids === true)
-			$str .=" dhx_kids='1'";
+			$str .=" ".Connector::$kids_var."='1'";
 		
 		return $str.">";
 	}
@@ -394,7 +403,11 @@ class TreeDataConnector extends DataConnector{
 	/*! renders self as  xml, starting part
 	*/
 	protected function xml_start(){
-		return "<data parent='".$this->request->get_relation()."'>";
+		$attributes = " parent='".$this->request->get_relation()."' ";
+		foreach($this->attributes as $k=>$v)
+			$attributes .= " ".$k."='".$v."'";
+
+		return "<data".$attributes.">";
 	}	
 }
 
@@ -420,6 +433,10 @@ class JSONTreeDataConnector extends TreeDataConnector{
         if (!empty($this->options))
             $data["collections"] = $this->options;
 
+
+		foreach($this->attributes as $k=>$v)
+			$data[$k] = $v;
+		
 		$data = json_encode($data);
 
 		// return as string
@@ -489,7 +506,7 @@ class JSONTreeCommonDataItem extends TreeCommonDataItem{
 				$data[$key]=$value;
 
 		if ($this->kids === true)
-			$data["dhx_kids"] = 1;
+			$data[Connector::$kids_var] = 1;
 
 		return $data;
 	}

@@ -10,8 +10,6 @@ require_once("data_connector.php");
 **/
 class GanttDataItem extends DataItem{
 
-    public static $open = null;
-
     /*! return self as XML string
     */
     function to_xml(){
@@ -28,8 +26,6 @@ class GanttDataItem extends DataItem{
         if ($this->userdata !== false)
             foreach ($this->userdata as $key => $value)
                 $str.="<".$key."><![CDATA[".$value."]]></".$key.">";
-        if (GanttDataItem::$open !== null)
-            $str.="<open>".GanttDataItem::$open."</open>";
 
         return $str."</task>";
     }
@@ -82,6 +78,9 @@ class GanttConnector extends Connector{
         if (!$data_type) $data_type="GanttDataProcessor";
         if (!$render_type) $render_type="RenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
+
+        $this->event->attach("afterDelete", array($this, "delete_related_links"));
+        $this->event->attach("afterOrder", array($this, "order_set_parent"));
     }
 
     //parse GET scoope, all operations with incoming request must be done here
@@ -99,8 +98,25 @@ class GanttConnector extends Connector{
         }
     }
 
-    public function openAll($mode = true) {
-        GanttDataItem::$open = $mode;
+    function order_set_parent($action){
+        $value  = $action->get_id();
+        $parent = $action->get_value("parent");
+
+        $table = $this->request->get_source();
+        $id    = $this->config->id["db_name"];
+
+        $this->sql->query("UPDATE $table SET parent = $parent WHERE $id = $value");
+    }
+
+    function delete_related_links($action){
+        if (isset($this->options["links"])){
+            $links = $this->options["links"];
+            $value = $this->sql->escape($action->get_new_id());
+            $table = $links->get_request()->get_source();
+            
+            $this->sql->query("DELETE FROM $table WHERE source = '$value'");
+            $this->sql->query("DELETE FROM $table WHERE target = '$value'");
+        }
     }
 
     public function render_links($table,$id="",$fields=false,$extra=false,$relation_id=false) {
@@ -145,9 +161,7 @@ class JSONGanttDataItem extends GanttDataItem{
             $extra = $this->config->text[$i]["name"];
             $obj[$extra]=$this->data[$extra];
         }
-        if (GanttDataItem::$open !== null)
-            $obj['open'] = GanttDataItem::$open;
-
+        
         if ($this->userdata !== false)
             foreach ($this->userdata as $key => $value)
                 $obj[$key]=$value;

@@ -1,5 +1,5 @@
 <?php
-	$mysql_server="192.168.1.251";
+	$mysql_server="192.168.3.251";
 	$mysql_user = "sampleDB";
 	$mysql_pass = "sampleDB";
 	$mysql_db = "sampleDB";
