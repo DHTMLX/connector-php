@@ -1,11 +1,11 @@
 <?php
 
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 	
 	require_once('../../codebase/treegridgroup_connector.php');
-	$treegrid = new TreeGridGroupConnector($res);
+	$treegrid = new TreeGridGroupConnector($res, "PDO");
 	
 	$treegrid->render_table("products", "id", "product_name,scales,colour", "", "category");
 

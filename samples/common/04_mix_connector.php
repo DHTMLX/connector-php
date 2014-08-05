@@ -1,18 +1,18 @@
 <?php
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 
 	require("../../codebase/data_connector.php");
 	require("../../codebase/scheduler_connector.php");
 	require("../../codebase/grid_connector.php");
 
 
-	$details = new JSONDataConnector($res);
+	$details = new JSONDataConnector($res, "PDO");
 	$details->mix("active", "yes");
 	$details->configure("types","typeid","name");
 
-	$events = new JSONSchedulerConnector($res);
+	$events = new JSONSchedulerConnector($res, "PDO");
 	$events->mix("types", $details, array(
 		"typeid" => "type"
 	));

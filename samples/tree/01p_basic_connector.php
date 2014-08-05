@@ -1,7 +1,7 @@
 <?php
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 
 function child_setter($data){
 	//the check is kind of lame, in real table you most probably may have some more stable way to detect is item have childs or not
@@ -12,7 +12,7 @@ function child_setter($data){
 }
 
    require("../../codebase/tree_connector.php");
-   $tree = new TreeConnector($res);
+   $tree = new TreeConnector($res, "PDO");
 //   
    $tree->event->attach("beforeRender","child_setter");
    $tree->render_table("tasks","taskId","taskName","","parentId");

@@ -1,7 +1,7 @@
 <?php
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 	
 
 	require("../../codebase/grid_connector.php");
@@ -10,10 +10,10 @@
 	$convert = new ConvertService("http://dhtmlxgrid.appspot.com/export/excel");
 	$convert->excel();
 	
-	$grid = new GridConnector($res);
+	$grid = new GridConnector($res, "PDO");
 	$config = new GridConfiguration();
 	
-	$grid = new GridConnector($res);
+	$grid = new GridConnector($res, "PDO");
 	$grid->set_config($config);
 	$grid->render_table("grid50");
 ?>

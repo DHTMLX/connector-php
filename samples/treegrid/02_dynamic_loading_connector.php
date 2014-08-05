@@ -1,10 +1,10 @@
 <?php
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 
    require("../../codebase/treegrid_connector.php");
-   $tree = new TreeGridConnector($res);
+   $tree = new TreeGridConnector($res, "PDO");
    
    $tree->dynamic_loading(true);
    $tree->render_table("tasks","taskId","taskName,duration,complete","","parentId");

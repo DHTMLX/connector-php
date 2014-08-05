@@ -1,14 +1,14 @@
 <?php
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 
 	function check_data($action){
 		if ($action->get_value("item_cd")=="" || $action->get_value("item_nm")=="")
 			$action->invalid();
 	}
 	require("../../codebase/grid_connector.php");
-	$grid = new GridConnector($res);
+	$grid = new GridConnector($res, "PDO");
 	
 	$grid->dynamic_loading(100);
 	$grid->event->attach("beforeProcessing",check_data);

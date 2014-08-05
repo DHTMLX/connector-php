@@ -1,10 +1,10 @@
 <?php
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 
 	require("../../codebase/grid_connector.php");
-	$grid = new GridConnector($res);
+	$grid = new GridConnector($res, "PDO");
 	
 	$config = new GridConfiguration();
 	$config->setHeader("ID,First Name,Last Name,Title,Office,Extn,Mobile,Email");

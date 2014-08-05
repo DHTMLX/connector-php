@@ -1,10 +1,10 @@
 <?php
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 	
 	require_once("../../codebase/treegrid_connector.php");
-	$tree = new TreeGridConnector($res);
+	$tree = new TreeGridConnector($res, "PDO");
 	
 	function custom_format($item){
 			$item->set_row_color($item->get_value("complete")<75?"#AAFFFF":"#FFAAFF");

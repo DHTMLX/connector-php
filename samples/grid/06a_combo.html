@@ -36,7 +36,7 @@
 <div class='code'><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php
 <br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">require_once(</span><span style="color: #DD0000">"../config.php"</span><span style="color: #007700">);
-<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">=</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysql_server</span><span style="color: #007700">,</span><span style="color: #0000BB">$mysql_user</span><span style="color: #007700">,</span><span style="color: #0000BB">$mysql_pass</span><span style="color: #007700">);
+<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">=</span><span style="color: #0000BB"> new PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysql_server</span><span style="color: #007700">,</span><span style="color: #0000BB">$mysql_user</span><span style="color: #007700">,</span><span style="color: #0000BB">$mysql_pass</span><span style="color: #007700">);
 <br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysql_db</span><span style="color: #007700">);
 <br />&nbsp;&nbsp;&nbsp;&nbsp;require(</span><span style="color: #DD0000">"../../codebase/grid_connector.php"</span><span style="color: #007700">);
 <br />&nbsp;&nbsp;&nbsp;&nbsp;
@@ -46,7 +46,7 @@
 <br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$grid</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">enable_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"temp.log"</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">);
 <br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$grid</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dynamic_loading</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">);
 <br />&nbsp;&nbsp;&nbsp;&nbsp;
-<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*$filter1&nbsp;=&nbsp;new&nbsp;OptionsConnector($res);
+<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*$filter1&nbsp;=&nbsp;new&nbsp;OptionsConnector($res, "PDO");
 <br />&nbsp;&nbsp;&nbsp;&nbsp;$filter1-&gt;render_table("countries","item_id","item_id(value),item_nm(label)");
 <br />&nbsp;&nbsp;&nbsp;&nbsp;$grid-&gt;set_options("item_nm",$filter1);*/
 <br />&nbsp;&nbsp;&nbsp;&nbsp;

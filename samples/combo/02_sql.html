@@ -33,7 +33,7 @@
 <div class='code'><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php
 <br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">require_once(</span><span style="color: #DD0000">"../config.php"</span><span style="color: #007700">);
-<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">=</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysql_server</span><span style="color: #007700">,</span><span style="color: #0000BB">$mysql_user</span><span style="color: #007700">,</span><span style="color: #0000BB">$mysql_pass</span><span style="color: #007700">);
+<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">=</span><span style="color: #0000BB"> new PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysql_server</span><span style="color: #007700">,</span><span style="color: #0000BB">$mysql_user</span><span style="color: #007700">,</span><span style="color: #0000BB">$mysql_pass</span><span style="color: #007700">);
 <br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysql_db</span><span style="color: #007700">);
 <br />&nbsp;&nbsp;&nbsp;&nbsp;
 <br />&nbsp;&nbsp;&nbsp;&nbsp;require(</span><span style="color: #DD0000">"../../codebase/combo_connector.php"</span><span style="color: #007700">);
