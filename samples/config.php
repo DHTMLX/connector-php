@@ -1,6 +1,4 @@
 <?php
-	require_once("../../codebase/db_pdo.php");
-
 	$mysql_server="mysql:dbname=sampleDB;host=192.168.3.251";
 	$mysql_user = "sampleDB";
 	$mysql_pass = "sampleDB";

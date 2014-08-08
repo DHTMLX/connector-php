@@ -1,5 +1,6 @@
 <?php
 	require_once("../config.php");
+	require("../../codebase/db_pdo.php");
 	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
 	
 
@@ -7,5 +8,5 @@
 	$grid = new GridConnector($res, "PDO");
 	$grid->enable_log("some.txt", true);
 	$grid->dynamic_loading(100);
-	$grid->render_table("grida50000","item_id","item_nm,item_cd");
+	$grid->render_table("grid50000","item_id","item_nm,item_cd");
 ?>

@@ -1,5 +1,6 @@
 <?php
 
+	require_once("../../codebase/db_pdo.php");
 	require_once("../../codebase/dataview_connector.php");
 	require_once("../config.php");
 	

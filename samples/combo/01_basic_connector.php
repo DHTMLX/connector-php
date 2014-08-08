@@ -1,5 +1,7 @@
 <?php
+	require_once("../../codebase/db_pdo.php");
 	require_once("../config.php");
+	
 	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
 	
 

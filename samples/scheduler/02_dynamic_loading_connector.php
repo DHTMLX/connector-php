@@ -1,6 +1,7 @@
 <?php
 
 	include ('../config.php');
+	include ('../../codebase/db_pdo.php');
 	include ('../../codebase/scheduler_connector.php');
 
     $res= new PDO($mysql_server,$mysql_user,$mysql_pass); 
