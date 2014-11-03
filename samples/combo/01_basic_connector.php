@@ -1,10 +1,12 @@
 <?php
+	require_once("../../codebase/db_pdo.php");
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 
    require("../../codebase/combo_connector.php");
-   $combo = new ComboConnector($res);
+   $combo = new ComboConnector($res, "PDO");
 //   $combo->enable_log("temp.log");
    $combo->render_table("country_data","country_id","name");
 ?>

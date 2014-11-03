@@ -1,8 +1,8 @@
 <?php
 	require_once("../config.php");
-
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	require_once('../../codebase/db_pdo.php');
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 
 	require("../../codebase/scheduler_connector.php");
 
@@ -10,6 +10,6 @@
 
 	$_GET["id"] = 810;
 
-	$grid = new JSONSchedulerConnector($res);
+	$grid = new JSONSchedulerConnector($res, "PDO");
 	$grid->render_table("events","event_id","start_date, end_date, event_name");
 ?>

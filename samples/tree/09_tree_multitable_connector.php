@@ -1,13 +1,14 @@
 <?php
 
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	require_once('../../codebase/db_pdo.php');
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 	
 	require("../../codebase/treemultitable_connector.php");
 	
 	
-	$tree = new TreeMultitableConnector($res);
+	$tree = new TreeMultitableConnector($res, "PDO");
 	//
 	$tree->setMaxLevel(3);
 	$level = $tree->get_level();

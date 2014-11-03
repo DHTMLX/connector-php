@@ -7,7 +7,7 @@
 	require("../../codebase/grid_connector.php");
 	require("../../codebase/db_oracle.php");
 	
-	$grid = new GridConnector($res,"Oracle");
+	$grid = new GridConnector($res, "PDO","Oracle");
 	
 	$grid->dynamic_loading(50);
 	$grid->sql->sequence("EMPLOYEES_INC.nextVal");

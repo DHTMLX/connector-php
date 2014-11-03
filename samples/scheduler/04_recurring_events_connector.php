@@ -1,10 +1,11 @@
 <?php
 	include ('../config.php');
+	include ('../../codebase/db_pdo.php');
 	include ('../../codebase/scheduler_connector.php');
 	include ('../../codebase/db_sqlsrv.php');
 
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-    mysql_select_db($mysql_db);
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+    
 
 
 	function delete_related($action){
@@ -31,7 +32,7 @@
 			$action->set_status("deleted");
 	}
 	
-	$scheduler = new schedulerConnector($res);
+	$scheduler = new schedulerConnector($res, "PDO");
 	//$scheduler->enable_log("log.txt",true);
 	$scheduler->event->attach("beforeProcessing","delete_related");
 	$scheduler->event->attach("afterProcessing","insert_related");

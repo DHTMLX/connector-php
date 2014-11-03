@@ -6,7 +6,7 @@
 	require("../../codebase/grid_connector.php");
 	require("../../codebase/db_mssql.php");
 	
-	$grid = new GridConnector($res,"MsSQL");
+	$grid = new GridConnector($res, "PDO","MsSQL");
 	
 	$grid->dynamic_loading(100);
 	$grid->render_table("grid50000","item_id","item_nm,item_cd");

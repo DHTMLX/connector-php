@@ -1,12 +1,13 @@
 <?php
 
 	require_once("../config.php");
-	$res=mysql_connect($mysql_server,$mysql_user,$mysql_pass);
-	mysql_select_db($mysql_db);
+	require_once('../../codebase/db_pdo.php');
+	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
+	
 
 	require("../../codebase/treegridmultitable_connector.php");
 
-	$treegrid = new TreeGridMultitableConnector($res);
+	$treegrid = new TreeGridMultitableConnector($res, "PDO");
 	
 	$treegrid->setMaxLevel(3);
 	$level = $treegrid->get_level();
