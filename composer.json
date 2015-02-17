@@ -1,5 +1,5 @@
 {
-    "name": "DHTMLX/connector-php",
+    "name": "dhtmlx/connector-php",
     "description": "PHP extension for the DHTMLX library",
     "homepage": "http://dhtmlx.com/docs/products/dhtmlxConnector/index.shtml",
     "keywords": ["dhtmlx","connector","connector-php"],
