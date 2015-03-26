@@ -1060,6 +1060,7 @@ class ArrayDBDataWrapper extends DBDataWrapper{
         }
 
 		$relation_id = $this->config->relation_id["db_name"];
+		$result = array();
 
         for ($i = 0; $i < count($this->connection); $i++) {
             $item = $this->connection[$i];
