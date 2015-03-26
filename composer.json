@@ -1,0 +1,26 @@
+{
+    "name": "dhtmlx/connector-php",
+    "description": "PHP extension for the DHTMLX library",
+    "homepage": "http://dhtmlx.com/docs/products/dhtmlxConnector/index.shtml",
+    "keywords": ["dhtmlx","connector","connector-php"],
+    "license": "GNU",
+    "type": "library",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DHTMLX\\Connector\\": "codebase/"
+        }
+    },
+    "min-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1-dev"
+        }
+    },
+    "config": {
+        "vendor-dir": "codebase/"
+    }
+}
