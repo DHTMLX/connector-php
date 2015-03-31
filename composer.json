@@ -17,7 +17,7 @@
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
-            "yii2": "1.0.0-alpha"
+            "yii2": "1.0.0-dev"
         }
     },
     "config": {
