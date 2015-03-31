@@ -1,4 +1,4 @@
-DHTMLX Connector for PHP
+DHTMLX Connector for Yii2
 ========================
 
 dhtmlxConnector is an extension for the DHTMLX library, which maps client-side 

@@ -17,7 +17,7 @@
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
-            "dev-master": "2.1-dev"
+            "yii2": "1.0-dev"
         }
     },
     "config": {
