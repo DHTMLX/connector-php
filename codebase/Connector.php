@@ -13,6 +13,7 @@ use DHTMLX\Connector\DataStorage\DataRequestConfig;
 use DHTMLX\Connector\DataStorage\MySQLDBDataWrapper;
 use DHTMLX\Connector\DataStorage\ArrayDBDataWrapper;
 use DHTMLX\Connector\DataStorage\PHPYii2DBDataWrapper;
+use DHTMLX\Connector\Data\CommonDataProcessor;
 use DHTMLX\Connector\XSSFilter\ConnectorSecurity;
 use DHTMLX\Connector\Event\SortInterface;
 use DHTMLX\Connector\Event\FilterInterface;
