@@ -1,4 +1,7 @@
 <?php
+
+namespace DHTMLX\Connector\Output;
+
 class JSONRenderStrategy extends RenderStrategy {
 
     /*! render from DB resultset
