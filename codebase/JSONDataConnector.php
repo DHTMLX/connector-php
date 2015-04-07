@@ -9,7 +9,7 @@ class JSONDataConnector extends DataConnector{
 
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
         if (!$item_type) $item_type="DHTMLX\\Connector\\Data\\JSONCommonDataItem";
-        if (!$data_type) $data_type="DHTMLX\\Connector\\CommonDataProcessor";
+        if (!$data_type) $data_type="DHTMLX\\Connector\\Data\\CommonDataProcessor";
         if (!$render_type) $render_type="DHTMLX\\Connector\\Output\\JSONRenderStrategy";
         $this->data_separator = ",\n";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
