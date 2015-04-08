@@ -53,23 +53,24 @@ class PHPYii2DBDataWrapper extends ArrayDBDataWrapper {
 
 	protected function fill_model_and_save($obj, $data){
 
-		//map data to model object
-		for ($i=0; $i < sizeof($this->config->text); $i++){
-			$step=$this->config->text[$i];
-			$obj->setAttribute($step["name"], $data->get_value("c".$i)); //TODO make array with corresponding names
-		}
+        $values = $data->get_data();
 
-		if ($relation = $this->config->relation_id["db_name"])
-			$obj->setAttribute($relation, $data->get_value($relation));
+        //map data to model object
+        for ($i=0; $i < sizeof($this->config->text); $i++){
+            $step=$this->config->text[$i];
+            $obj->setAttribute($step["name"], $data->get_value($step["name"]));
+        }
+        if ($relation = $this->config->relation_id["db_name"])
+            $obj->setAttribute($relation, $data->get_value($relation));
 
-		//save model
-		if ($obj->save()){
-			$data->success();
-			$data->set_new_id($obj->getPrimaryKey());
-		} else {
-			$data->set_response_attribute("details", $this->errors_to_string($obj->getErrors()));
-			$data->invalid();
-		}
+        //save model
+        if ($obj->save()){
+            $data->success();
+            $data->set_new_id($obj->getPrimaryKey());
+        } else {
+            $data->set_response_attribute("details", $this->errors_to_string($obj->getErrors()));
+            $data->invalid();
+        }
 	}
 
 	protected function errors_to_string($errors){
