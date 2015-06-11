@@ -1,8 +1,8 @@
 <?php
-namespace DHTMLX\Connector\XSSFilter;
+namespace Dhtmlx\Connector\XSSFilter;
 
 
-use DHTMLX\Connector\Tools\LogMaster;
+use Dhtmlx\Connector\Tools\LogMaster;
 
 define("DHX_SECURITY_SAFETEXT",  1);
 define("DHX_SECURITY_SAFEHTML", 2);

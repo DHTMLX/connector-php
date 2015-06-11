@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\Data;
+namespace Dhtmlx\Connector\Data;
 /*! base class for component item representation
 **/
 class DataItem{

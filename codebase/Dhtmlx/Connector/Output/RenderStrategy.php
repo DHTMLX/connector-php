@@ -1,8 +1,8 @@
 <?php
-namespace DHTMLX\Connector\Output;
+namespace Dhtmlx\Connector\Output;
 
-use DHTMLX\Connector\Data\DataItem;
-use DHTMLX\Connector\GridDataItem;
+use Dhtmlx\Connector\Data\DataItem;
+use Dhtmlx\Connector\GridDataItem;
 class RenderStrategy {
 
     protected $conn = null;

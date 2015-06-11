@@ -1,8 +1,8 @@
 <?php
 
-namespace DHTMLX\Connector;
+namespace Dhtmlx\Connector;
 
-use DHTMLX\Connector\Tools\EventMaster;
+use Dhtmlx\Connector\Tools\EventMaster;
 /*
 	@author dhtmlx.com
 	@license GPL, see license.txt

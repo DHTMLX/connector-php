@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\Event;
+namespace Dhtmlx\Connector\Event;
 
 /*! Wrapper for collection of filtering rules
 **/

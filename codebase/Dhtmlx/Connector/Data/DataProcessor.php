@@ -1,10 +1,10 @@
 <?php
 /*! Base DataProcessor handling
 **/
-namespace DHTMLX\Connector\Data;
-use DHTMLX\Connector\Tools\LogMaster;
-use DHTMLX\Connector\XSSFilter\ConnectorSecurity;
-use DHTMLX\Connector\DataStorage\DataConfig;
+namespace Dhtmlx\Connector\Data;
+use Dhtmlx\Connector\Tools\LogMaster;
+use Dhtmlx\Connector\XSSFilter\ConnectorSecurity;
+use Dhtmlx\Connector\DataStorage\DataConfig;
 
 class DataProcessor{
     protected $connector;//!< Connector instance

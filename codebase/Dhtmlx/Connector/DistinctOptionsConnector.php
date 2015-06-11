@@ -1,5 +1,5 @@
 <?php
-namespace DHTMLX\Connector;
+namespace Dhtmlx\Connector;
 
 class DistinctOptionsConnector extends OptionsConnector{
     /*! render self

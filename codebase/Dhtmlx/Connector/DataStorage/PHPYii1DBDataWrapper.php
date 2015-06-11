@@ -1,5 +1,5 @@
 <?php
-namespace DHTMLX\Connector\DataStorage;
+namespace Dhtmlx\Connector\DataStorage;
 
 class PHPYii1DBDataWrapper extends ArrayDBDataWrapper {
 

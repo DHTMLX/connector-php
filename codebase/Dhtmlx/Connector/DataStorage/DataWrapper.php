@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\DataStorage;
+namespace Dhtmlx\Connector\DataStorage;
 /*! Base abstraction class, used for data operations
 	Class abstract access to data, it is a base class to all DB wrappers
 **/

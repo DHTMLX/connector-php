@@ -1,5 +1,5 @@
 <?php
-namespace DHTMLX\Connector\Event;
+namespace Dhtmlx\Connector\Event;
 
 class EventInterface{
     protected $request; ////!< DataRequestConfig instance

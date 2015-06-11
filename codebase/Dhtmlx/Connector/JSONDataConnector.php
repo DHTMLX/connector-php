@@ -1,16 +1,16 @@
 <?php
 
-namespace DHTMLX\Connector;
+namespace Dhtmlx\Connector;
 
-use DHTMLX\Connector\Output\OutputWriter;
+use Dhtmlx\Connector\Output\OutputWriter;
 
 
 class JSONDataConnector extends DataConnector{
 
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        if (!$item_type) $item_type="DHTMLX\\Connector\\Data\\JSONCommonDataItem";
-        if (!$data_type) $data_type="DHTMLX\\Connector\\Data\\CommonDataProcessor";
-        if (!$render_type) $render_type="DHTMLX\\Connector\\Output\\JSONRenderStrategy";
+        if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\JSONCommonDataItem";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\Data\\CommonDataProcessor";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\JSONRenderStrategy";
         $this->data_separator = ",\n";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
     }

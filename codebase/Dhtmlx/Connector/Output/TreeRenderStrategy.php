@@ -1,7 +1,7 @@
 <?php
-namespace DHTMLX\Connector\Output;
+namespace Dhtmlx\Connector\Output;
 
-use DHTMLX\Connector\DataStorage\DataConfig;
+use Dhtmlx\Connector\DataStorage\DataConfig;
 
 class TreeRenderStrategy extends RenderStrategy {
 

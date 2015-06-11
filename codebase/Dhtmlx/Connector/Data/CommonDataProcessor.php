@@ -1,8 +1,8 @@
 <?php
-namespace DHTMLX\Connector\Data;
+namespace Dhtmlx\Connector\Data;
 
-use DHTMLX\Connector\XSSFilter\ConnectorSecurity;
-use DHTMLX\Connector\Tools\LogMaster;
+use Dhtmlx\Connector\XSSFilter\ConnectorSecurity;
+use Dhtmlx\Connector\Tools\LogMaster;
 
 class CommonDataProcessor extends DataProcessor{
     protected function get_post_values($ids){

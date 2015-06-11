@@ -1,7 +1,7 @@
 <?php
-namespace DHTMLX\Connector;
+namespace Dhtmlx\Connector;
 
-use DHTMLX\Connector\Connector;
+use Dhtmlx\Connector\Connector;
 
 class MixedConnector extends Connector {
 

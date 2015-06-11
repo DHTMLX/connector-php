@@ -1,5 +1,5 @@
 <?php
-namespace DHTMLX\Connector\Data;
+namespace Dhtmlx\Connector\Data;
 
 /*! DataProcessor class for Grid component
 **/

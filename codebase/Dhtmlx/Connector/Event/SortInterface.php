@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\Event;
+namespace Dhtmlx\Connector\Event;
 
 class SortInterface extends EventInterface{
     /*! constructor

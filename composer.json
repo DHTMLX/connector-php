@@ -10,7 +10,7 @@
     },
     "autoload": {
         "psr-0": {
-            "DHTMLX\\Connector\\": "codebase/"
+            "Dhtmlx\\Connector\\": "codebase/"
         }
     },
     "min-stability": "dev",

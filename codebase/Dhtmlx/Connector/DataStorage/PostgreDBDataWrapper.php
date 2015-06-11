@@ -1,8 +1,8 @@
 <?php
 
-namespace DHTMLX\Connector\DataStorage;
+namespace Dhtmlx\Connector\DataStorage;
 
-use DHTMLX\Connector\Tools\LogMaster;
+use Dhtmlx\Connector\Tools\LogMaster;
 
 class PostgreDBDataWrapper extends DBDataWrapper{
     public function query($sql){

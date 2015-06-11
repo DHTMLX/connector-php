@@ -1,8 +1,8 @@
 <?php
 
-namespace DHTMLX\Connector;
+namespace Dhtmlx\Connector;
 
-use DHTMLX\Connector\Data\DataItem;
+use Dhtmlx\Connector\Data\DataItem;
 /*! DataItem class for Grid component
 **/
 

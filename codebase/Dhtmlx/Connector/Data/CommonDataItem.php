@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\Data;
+namespace Dhtmlx\Connector\Data;
 /*! DataItem class for DataView component
 **/
 class CommonDataItem extends DataItem{

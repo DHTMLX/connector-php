@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\Tools;
+namespace Dhtmlx\Connector\Tools;
 /*! Class which allows to assign|fire events.
 */
 class EventMaster{

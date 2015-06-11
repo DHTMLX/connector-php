@@ -1,22 +1,22 @@
 <?php
 
-namespace DHTMLX\Connector;
+namespace Dhtmlx\Connector;
 
-use DHTMLX\Connector\Tools\EventMaster;
-use DHTMLX\Connector\Tools\AccessMaster;
-use DHTMLX\Connector\Tools\LogMaster;
-use DHTMLX\Connector\Output\RenderStrategy;
-use DHTMLX\Connector\Output\OutputWriter;
-use DHTMLX\Connector\DataStorage\DataConfig;
-use DHTMLX\Connector\DataStorage\DataAction;
-use DHTMLX\Connector\DataStorage\DataRequestConfig;
-use DHTMLX\Connector\DataStorage\MySQLDBDataWrapper;
-use DHTMLX\Connector\DataStorage\ArrayDBDataWrapper;
-use DHTMLX\Connector\DataStorage\PHPYii2DBDataWrapper;
-use DHTMLX\Connector\Data\CommonDataProcessor;
-use DHTMLX\Connector\XSSFilter\ConnectorSecurity;
-use DHTMLX\Connector\Event\SortInterface;
-use DHTMLX\Connector\Event\FilterInterface;
+use Dhtmlx\Connector\Tools\EventMaster;
+use Dhtmlx\Connector\Tools\AccessMaster;
+use Dhtmlx\Connector\Tools\LogMaster;
+use Dhtmlx\Connector\Output\RenderStrategy;
+use Dhtmlx\Connector\Output\OutputWriter;
+use Dhtmlx\Connector\DataStorage\DataConfig;
+use Dhtmlx\Connector\DataStorage\DataAction;
+use Dhtmlx\Connector\DataStorage\DataRequestConfig;
+use Dhtmlx\Connector\DataStorage\MySQLDBDataWrapper;
+use Dhtmlx\Connector\DataStorage\ArrayDBDataWrapper;
+use Dhtmlx\Connector\DataStorage\PHPYii2DBDataWrapper;
+use Dhtmlx\Connector\Data\CommonDataProcessor;
+use Dhtmlx\Connector\XSSFilter\ConnectorSecurity;
+use Dhtmlx\Connector\Event\SortInterface;
+use Dhtmlx\Connector\Event\FilterInterface;
 
 class Connector {
     protected $config;//DataConfig instance
@@ -66,15 +66,15 @@ class Connector {
     */
     public function __construct($db,$type=false, $item_type=false, $data_type=false, $render_type = false){
         $this->exec_time=microtime(true);
-        $dsnamespace = "DHTMLX\\Connector\\DataStorage\\";
+        $dsnamespace = "Dhtmlx\\Connector\\DataStorage\\";
         if (!$type) $type=$dsnamespace."MySQLDBDataWrapper";
 
         //die(var_dump(class_exists("DataConfig",true), new MySQLDBDataWrapper));
         if (class_exists($dsnamespace.$type."DBDataWrapper",true))
             $type.="DBDataWrapper";
-        if (!$item_type) $item_type="DHTMLX\\Connector\\Data\\DataItem";
-        if (!$data_type) $data_type="DHTMLX\\Connector\\Data\\DataProcessor";
-        if (!$render_type) $render_type="DHTMLX\\Connector\\Output\\RenderStrategy";
+        if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\DataItem";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\Data\\DataProcessor";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\RenderStrategy";
 
         $this->names=array(
             "db_class"=>$type,

@@ -1,5 +1,5 @@
 <?php
-namespace DHTMLX\Connector\Tools;
+namespace Dhtmlx\Connector\Tools;
 /*! Class which handles access rules.
 **/
 class AccessMaster{

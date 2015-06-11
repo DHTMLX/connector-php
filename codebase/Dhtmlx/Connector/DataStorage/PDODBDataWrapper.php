@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\DataStorage;
+namespace Dhtmlx\Connector\DataStorage;
 
 /*! Implementation of DataWrapper for PDO
 

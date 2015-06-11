@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\Output;
+namespace Dhtmlx\Connector\Output;
 
 class JSONRenderStrategy extends RenderStrategy {
 

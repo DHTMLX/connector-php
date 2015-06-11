@@ -11,7 +11,7 @@
 	Create wrapper for every data item with update information.
 */
 
-namespace DHTMLX\Connector\Data;
+namespace Dhtmlx\Connector\Data;
 
 class DataItemUpdate extends DataItem {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\Data;
+namespace Dhtmlx\Connector\Data;
 
 class TreeDataItem extends DataItem
 {

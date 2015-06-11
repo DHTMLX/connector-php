@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector;
+namespace Dhtmlx\Connector;
 /*! wrapper around options collection, used for comboboxes and filters
 **/
 class JSONOptionsConnector extends JSONDataConnector{

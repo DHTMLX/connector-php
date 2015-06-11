@@ -6,7 +6,7 @@
  * Time: 15.50
  */
 
-namespace DHTMLX\Connector\DataStorage;
+namespace Dhtmlx\Connector\DataStorage;
 
 abstract class DBDataWrapper extends DataWrapper
 {

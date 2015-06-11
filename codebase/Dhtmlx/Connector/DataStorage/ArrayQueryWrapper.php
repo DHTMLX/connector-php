@@ -1,5 +1,5 @@
 <?php
-namespace DHTMLX\Connector\DataStorage;
+namespace Dhtmlx\Connector\DataStorage;
 
 class ArrayQueryWrapper{
     public function __construct($data){

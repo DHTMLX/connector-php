@@ -1,5 +1,5 @@
 <?php
-namespace DHTMLX\Connector;
+namespace Dhtmlx\Connector;
 
 /*! Connector class for DataView
 **/
@@ -18,12 +18,12 @@ class DataConnector extends Connector{
             name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default.
     */
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        if (!$item_type) $item_type="DHTMLX\\Connector\\Data\\CommonDataItem";
-        if (!$data_type) $data_type="DHTMLX\\Connector\\Data\\CommonDataProcessor";
+        if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\CommonDataItem";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\Data\\CommonDataProcessor";
 
         $this->sections = array();
 
-        if (!$render_type) $render_type="DHTMLX\\Connector\\Output\\RenderStrategy";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\RenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
 
     }

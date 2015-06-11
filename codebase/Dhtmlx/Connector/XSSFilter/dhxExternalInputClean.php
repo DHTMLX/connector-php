@@ -1,5 +1,5 @@
 <?php
-namespace DHTMLX\Connector\XSSFilter;
+namespace Dhtmlx\Connector\XSSFilter;
 //original name was lx_externalinput_clean
 //renamed to prevent possible conflicts
 class dhxExternalInputClean {

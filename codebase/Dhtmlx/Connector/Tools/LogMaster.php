@@ -1,6 +1,6 @@
 <?php
 
-namespace DHTMLX\Connector\Tools;
+namespace Dhtmlx\Connector\Tools;
 /*! Controls error and debug logging.
 	Class designed to be used as static object.
 **/
@@ -93,8 +93,8 @@ class LogMaster{
         LogMaster::$_log=$name;
         LogMaster::$_output=$output;
         if ($name){
-            set_error_handler(array("DHTMLX\\Connector\\Tools\\LogMaster","error_log"),E_ALL);
-            set_exception_handler(array("DHTMLX\\Connector\\Tools\\LogMaster","exception_log"));
+            set_error_handler(array("Dhtmlx\\Connector\\Tools\\LogMaster","error_log"),E_ALL);
+            set_exception_handler(array("Dhtmlx\\Connector\\Tools\\LogMaster","exception_log"));
             LogMaster::log("\n\n====================================\nLog started, ".date("d/m/Y h:i:s")."\n====================================");
         }
     }

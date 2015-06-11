@@ -1,7 +1,7 @@
 <?php
-namespace DHTMLX\Connector\Data;
+namespace Dhtmlx\Connector\Data;
 
-use DHTMLX\Connector\Tools\LogMaster;
+use Dhtmlx\Connector\Tools\LogMaster;
 /*! contain all info related to action and controls customizaton
 **/
 class DataAction{

@@ -1,5 +1,5 @@
 <?php
-namespace DHTMLX\Connector\Data;
+namespace Dhtmlx\Connector\Data;
 
 class TreeDataProcessor extends DataProcessor{
 
