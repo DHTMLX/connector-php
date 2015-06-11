@@ -1,8 +1,8 @@
 <?php
-namespace DHTMLX\Connector\DataStorage;
+namespace Dhtmlx\Connector\DataStorage;
 use Cake\ORM\TableRegistry;
 
-class PHPCake3DBDataWrapper extends ArrayDBDataWrapper {
+class PHPCakeDBDataWrapper extends ArrayDBDataWrapper {
 
     public function select($sql) {
         if(is_array($this->connection))	//result of findAll
