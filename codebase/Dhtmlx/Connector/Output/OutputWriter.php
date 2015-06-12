@@ -1,8 +1,7 @@
 <?php
-
 namespace Dhtmlx\Connector\Output;
 
-class OutputWriter{
+class OutputWriter {
     private $start;
     private $end;
     private $type;

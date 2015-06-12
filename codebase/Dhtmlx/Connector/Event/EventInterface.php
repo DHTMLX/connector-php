@@ -1,7 +1,7 @@
 <?php
 namespace Dhtmlx\Connector\Event;
 
-class EventInterface{
+class EventInterface {
     protected $request; ////!< DataRequestConfig instance
     public $rules=array(); //!< array of sorting rules
 

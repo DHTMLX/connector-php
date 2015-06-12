@@ -1,10 +1,10 @@
 <?php
-
-namespace Dhtmlx\Connector\DataStorage;
+namespace Dhtmlx\Connector\Data;
+use \Exception;
 
 /*! manager of data request
 **/
-class DataRequestConfig{
+class DataRequestConfig {
     private $filters;	//!< array of filtering rules
     private $relation=false;	//!< ID or other element used for linking hierarchy
     private $sort_by;	//!< sorting field

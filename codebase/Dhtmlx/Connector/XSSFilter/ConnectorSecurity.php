@@ -1,14 +1,12 @@
 <?php
 namespace Dhtmlx\Connector\XSSFilter;
-
-
 use Dhtmlx\Connector\Tools\LogMaster;
 
 define("DHX_SECURITY_SAFETEXT",  1);
 define("DHX_SECURITY_SAFEHTML", 2);
 define("DHX_SECURITY_TRUSTED", 3);
 
-class ConnectorSecurity{
+class ConnectorSecurity {
 	static public $xss = DHX_SECURITY_SAFETEXT;
 	static public $security_key = false;
 	static public $security_var = "dhx_security";

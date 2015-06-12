@@ -3,7 +3,7 @@ namespace Dhtmlx\Connector;
 
 /*! Connector class for DataView
 **/
-class DataConnector extends Connector{
+class DataConnector extends Connector {
 
     /*! constructor
 

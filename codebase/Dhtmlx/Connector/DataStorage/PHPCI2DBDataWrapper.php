@@ -2,6 +2,7 @@
 namespace Dhtmlx\Connector\DataStorage;
 use Dhtmlx\Connector\Connector;
 use Dhtmlx\Connector\Tools\LogMaster;
+use \Exception;
 
 class PHPCI2DBDataWrapper extends DBDataWrapper {
 

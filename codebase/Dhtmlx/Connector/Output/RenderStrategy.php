@@ -1,8 +1,9 @@
 <?php
 namespace Dhtmlx\Connector\Output;
-
 use Dhtmlx\Connector\Data\DataItem;
-use Dhtmlx\Connector\GridDataItem;
+use Dhtmlx\Connector\Data\GridDataItem;
+use \Exception;
+
 class RenderStrategy {
 
     protected $conn = null;
@@ -98,13 +99,15 @@ class RenderStrategy {
         $conn = $this->conn;
         $this->mix($config, $mix);
         $conn->event->trigger("beforeRenderSet",$conn,$res,$config);
-        while ($data=$conn->sql->get_next($res)){
-            $data = $this->simple_mix($mix, $data);
 
-            $data = new $name($data,$config,$index);
-            if ($data->get_id()===false)
+        while($data=$conn->sql->get_next($res)) {
+            $data = $this->simple_mix($mix, $data);
+            $data = new $name($data, $config, $index);
+
+            if($data->get_id()===false)
                 $data->set_id($conn->uuid());
-            $conn->event->trigger("beforeRender",$data);
+
+            $conn->event->trigger("beforeRender", $data);
             $output.=$data->to_xml().$sep;
             $index++;
         }

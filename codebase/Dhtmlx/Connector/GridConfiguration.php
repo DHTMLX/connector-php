@@ -1,8 +1,8 @@
 <?php
 namespace Dhtmlx\Connector;
+use Dhtmlx\Connector\Data\DataConfig;
 
-class GridConfiguration
-{
+class GridConfiguration {
 
     /*! attaching header functionality
     */

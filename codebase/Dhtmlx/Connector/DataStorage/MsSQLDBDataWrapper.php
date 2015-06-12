@@ -1,11 +1,8 @@
 <?php
-
 namespace Dhtmlx\Connector\DataStorage;
-
 use Dhtmlx\Connector\Tools\LogMaster;
 
-class MsSQLDBDataWrapper extends DBDataWrapper
-{
+class MsSQLDBDataWrapper extends DBDataWrapper {
     private $last_id = ""; //!< ID of previously inserted record
     private $insert_operation = false; //!< flag of insert operation
     private $start_from = false; //!< index of start position

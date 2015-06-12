@@ -1,9 +1,8 @@
 <?php
-
 namespace Dhtmlx\Connector\DataStorage;
+use \Exception;
 
-class ArrayDBDataWrapper extends DBDataWrapper
-{
+class ArrayDBDataWrapper extends DBDataWrapper {
     public function get_next($res)
     {
         if ($res->index < sizeof($res->data))

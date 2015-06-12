@@ -1,6 +1,7 @@
 <?php
 namespace Dhtmlx\Connector\DataStorage;
 use Cake\ORM\TableRegistry;
+use \Exception;
 
 class PHPCakeDBDataWrapper extends ArrayDBDataWrapper {
 

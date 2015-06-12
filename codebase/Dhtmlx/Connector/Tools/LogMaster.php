@@ -1,10 +1,10 @@
 <?php
-
 namespace Dhtmlx\Connector\Tools;
+
 /*! Controls error and debug logging.
 	Class designed to be used as static object.
 **/
-class LogMaster{
+class LogMaster {
     private static $_log=false;//!< logging mode flag
     private static $_output=false;//!< output error infor to client flag
     private static $session="";//!< all messages generated for current request

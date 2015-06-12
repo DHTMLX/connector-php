@@ -1,4 +1,6 @@
 <?php
+namespace Dhtmlx\Connector\Data;
+use Dhtmlx\Connector\Tools\LogMaster;
 
 /*
 	@author dhtmlx.com
@@ -10,8 +12,6 @@
 	It's used during outputing updates instead of DataItem object
 	Create wrapper for every data item with update information.
 */
-
-namespace Dhtmlx\Connector\Data;
 
 class DataItemUpdate extends DataItem {
 

@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 26.3.15
- * Time: 15.50
- */
-
 namespace Dhtmlx\Connector\DataStorage;
+use Dhtmlx\Connector\Data\DataRequestConfig;
+use Dhtmlx\Connector\Event\SortInterface;
+use \Exception;
 
-abstract class DBDataWrapper extends DataWrapper
-{
+abstract class DBDataWrapper extends DataWrapper {
     private $transaction = false; //!< type of transaction
     private $sequence = false;//!< sequence name
     private $sqls = array();//!< predefined sql actions

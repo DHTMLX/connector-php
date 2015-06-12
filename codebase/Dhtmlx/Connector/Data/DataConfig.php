@@ -1,9 +1,11 @@
 <?php
+namespace Dhtmlx\Connector\Data;
+use Dhtmlx\Connector\Tools\LogMaster;
+use \Exception;
 
-namespace Dhtmlx\Connector\DataStorage;
 /*! manager of data configuration
 **/
-class DataConfig{
+class DataConfig {
     public $id;////!< name of ID field
     public $relation_id;//!< name or relation ID field
     public $text;//!< array of text fields

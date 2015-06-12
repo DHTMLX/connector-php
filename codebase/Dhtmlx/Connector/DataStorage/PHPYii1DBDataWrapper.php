@@ -1,5 +1,6 @@
 <?php
 namespace Dhtmlx\Connector\DataStorage;
+use \Exception;
 
 class PHPYii1DBDataWrapper extends ArrayDBDataWrapper {
 

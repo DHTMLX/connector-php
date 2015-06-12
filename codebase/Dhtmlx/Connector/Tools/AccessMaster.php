@@ -1,8 +1,9 @@
 <?php
 namespace Dhtmlx\Connector\Tools;
+
 /*! Class which handles access rules.
 **/
-class AccessMaster{
+class AccessMaster {
     private $rules,$local;
     /*! constructor
 

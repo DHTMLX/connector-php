@@ -1,10 +1,11 @@
 <?php
 namespace Dhtmlx\Connector\DataStorage;
-
+use Dhtmlx\Connector\Tools\LogMaster;
+use \Exception;
 
 /*! Implementation of DataWrapper for MySQL
 **/
-class MySQLDBDataWrapper extends DBDataWrapper{
+class MySQLDBDataWrapper extends DBDataWrapper {
     protected $last_result;
     public function query($sql){
         LogMaster::log($sql);

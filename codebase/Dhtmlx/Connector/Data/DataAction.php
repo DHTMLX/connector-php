@@ -1,10 +1,10 @@
 <?php
 namespace Dhtmlx\Connector\Data;
-
 use Dhtmlx\Connector\Tools\LogMaster;
+
 /*! contain all info related to action and controls customizaton
 **/
-class DataAction{
+class DataAction {
 	private $status; //!< cuurent status of record
 	private $id;//!< id of record
 	private $data;//!< data hash of record

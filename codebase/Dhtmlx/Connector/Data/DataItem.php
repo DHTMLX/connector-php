@@ -1,9 +1,9 @@
 <?php
-
 namespace Dhtmlx\Connector\Data;
+
 /*! base class for component item representation
 **/
-class DataItem{
+class DataItem {
     protected $data; //!< hash of data
     protected $config;//!< DataConfig instance
     protected $index;//!< index of element

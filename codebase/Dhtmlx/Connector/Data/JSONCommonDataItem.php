@@ -1,7 +1,7 @@
 <?php
 namespace Dhtmlx\Connector\Data;
 
-class JSONCommonDataItem extends DataItem{
+class JSONCommonDataItem extends DataItem {
     /*! return self as XML string
     */
     function to_xml(){

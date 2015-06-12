@@ -1,7 +1,9 @@
 <?php
-namespace Dhtmlx\Connector\Data;
+namespace Dhtmlx\Connector\DataProcessor;
 
-class TreeDataProcessor extends DataProcessor{
+/*! DataProcessor class for Grid component
+**/
+class TreeGridDataProcessor extends GridDataProcessor {
 
     function __construct($connector,$config,$request){
         parent::__construct($connector,$config,$request);
@@ -16,10 +18,9 @@ class TreeDataProcessor extends DataProcessor{
             related db_name
     */
     function name_data($data){
-        if ($data=="tr_pid")
-            return $this->config->relation_id["db_name"];
-        if ($data=="tr_text")
-            return $this->config->text[0]["db_name"];
-        return $data;
+
+        if ($data=="gr_pid")
+            return $this->config->relation_id["name"];
+        else return parent::name_data($data);
     }
 }

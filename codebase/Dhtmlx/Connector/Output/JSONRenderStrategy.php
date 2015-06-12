@@ -1,5 +1,4 @@
 <?php
-
 namespace Dhtmlx\Connector\Output;
 
 class JSONRenderStrategy extends RenderStrategy {

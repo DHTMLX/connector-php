@@ -1,6 +1,7 @@
 <?php
+namespace Dhtmlx\Connector\Data;
 
-class DataUpdate{
+class DataUpdate {
 
     protected $table; //!< table , where actions are stored
     protected $url; //!< url for notification service, optional

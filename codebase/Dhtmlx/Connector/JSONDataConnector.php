@@ -1,11 +1,8 @@
 <?php
-
 namespace Dhtmlx\Connector;
-
 use Dhtmlx\Connector\Output\OutputWriter;
 
-
-class JSONDataConnector extends DataConnector{
+class JSONDataConnector extends DataConnector {
 
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
         if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\JSONCommonDataItem";

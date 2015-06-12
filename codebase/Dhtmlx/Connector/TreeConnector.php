@@ -1,9 +1,7 @@
 <?php
-
 namespace Dhtmlx\Connector;
 
-class TreeConnector extends Connector
-{
+class TreeConnector extends Connector {
     protected $parent_name = 'id';
     public $rootId = "0";
 

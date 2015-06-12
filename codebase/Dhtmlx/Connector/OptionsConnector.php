@@ -1,10 +1,9 @@
 <?php
-
 namespace Dhtmlx\Connector;
 
 /*! wrapper around options collection, used for comboboxes and filters
 **/
-class OptionsConnector extends Connector{
+class OptionsConnector extends Connector {
     protected $init_flag=false;//!< used to prevent rendering while initialization
     public function __construct($res,$type=false,$item_type=false,$data_type=false){
         if (!$item_type) $item_type="DataItem";

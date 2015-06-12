@@ -1,5 +1,7 @@
 <?php
 namespace Dhtmlx\Connector\Output;
+use Dhtmlx\Connector\Data\DataConfig;
+use Dhtmlx\Connector\Data\DataRequestConfig;
 
 class JSONTreeRenderStrategy extends TreeRenderStrategy {
 

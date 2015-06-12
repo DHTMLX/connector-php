@@ -1,8 +1,7 @@
 <?php
+namespace Dhtmlx\Connector\DataStorage\ResultHandler;
 
-namespace Dhtmlx\Connector\DataStorage;
-
-class PDOResultSet{
+class PDOResultHandler {
 	private $res;
 	public function __construct($res){
 		$this->res = $res;

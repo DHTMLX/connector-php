@@ -1,10 +1,9 @@
 <?php
-
 namespace Dhtmlx\Connector\DataStorage;
-
 use Dhtmlx\Connector\Tools\LogMaster;
+use \Exception;
 
-class PostgreDBDataWrapper extends DBDataWrapper{
+class PostgreDBDataWrapper extends DBDataWrapper {
     public function query($sql){
         LogMaster::log($sql);
 

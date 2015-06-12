@@ -1,10 +1,9 @@
 <?php
-namespace Dhtmlx\Connector\Data;
-
+namespace Dhtmlx\Connector\DataProcessor;
 use Dhtmlx\Connector\XSSFilter\ConnectorSecurity;
 use Dhtmlx\Connector\Tools\LogMaster;
 
-class CommonDataProcessor extends DataProcessor{
+class CommonDataProcessor extends DataProcessor {
     protected function get_post_values($ids){
         if (isset($_GET['action'])){
             $data = array();

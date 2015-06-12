@@ -1,10 +1,9 @@
 <?php
-
 namespace Dhtmlx\Connector\Event;
 
 /*! Wrapper for collection of filtering rules
 **/
-class FilterInterface extends EventInterface{
+class FilterInterface extends EventInterface {
     /*! constructor
         creates a new interface based on existing request
         @param request

@@ -1,12 +1,14 @@
 <?php
-/*! Base DataProcessor handling
-**/
-namespace Dhtmlx\Connector\Data;
+namespace Dhtmlx\Connector\DataProcessor;
 use Dhtmlx\Connector\Tools\LogMaster;
 use Dhtmlx\Connector\XSSFilter\ConnectorSecurity;
-use Dhtmlx\Connector\DataStorage\DataConfig;
+use Dhtmlx\Connector\Data\DataConfig;
+use Dhtmlx\Connector\Data\DataAction;
+use \Exception;
 
-class DataProcessor{
+/*! Base DataProcessor handling
+**/
+class DataProcessor {
     protected $connector;//!< Connector instance
     protected $config;//!< DataConfig instance
     protected $request;//!< DataRequestConfig instance
@@ -61,13 +63,13 @@ class DataProcessor{
     }
     protected function get_ids(){
         if (!isset($_POST["ids"]))
-            throw new \Exception("Incorrect incoming data, ID of incoming records not recognized");
+            throw new Exception("Incorrect incoming data, ID of incoming records not recognized");
         return explode(",",$_POST["ids"]);
     }
 
     protected function get_operation($rid){
         if (!isset($_POST[$rid."_".DataProcessor::$action_param]))
-            throw new \Exception("Status of record [{$rid}] not found in incoming request");
+            throw new Exception("Status of record [{$rid}] not found in incoming request");
         return $_POST[$rid."_".DataProcessor::$action_param];
     }
     /*! process incoming request ( save|update|delete )
@@ -96,7 +98,7 @@ class DataProcessor{
                 $this->inner_process($action);
             }
 
-        } catch(\Exception $e){
+        } catch(Exception $e){
             LogMaster::log($e);
             $failed=true;
         }
@@ -175,7 +177,7 @@ class DataProcessor{
                 $check = $this->connector->event->trigger("afterProcessing",$action);
             }
 
-        } catch (\Exception $e){
+        } catch (Exception $e){
             LogMaster::log($e);
             $action->set_status("error");
             if ($action)
@@ -224,7 +226,7 @@ class DataProcessor{
 
                     $method=array($this->connector->sql,$mode);
                     if (!is_callable($method))
-                        throw new \Exception("Unknown dataprocessing action: ".$mode);
+                        throw new Exception("Unknown dataprocessing action: ".$mode);
                     call_user_func($method,$action,$this->request);
                 }
             }

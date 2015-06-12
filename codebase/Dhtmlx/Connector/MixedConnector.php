@@ -1,8 +1,6 @@
 <?php
 namespace Dhtmlx\Connector;
 
-use Dhtmlx\Connector\Connector;
-
 class MixedConnector extends Connector {
 
     protected $connectors = array();

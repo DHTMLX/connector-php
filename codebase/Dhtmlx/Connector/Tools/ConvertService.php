@@ -1,13 +1,11 @@
 <?php
+namespace Dhtmlx\Connector\Tools;
 
-namespace Dhtmlx\Connector;
-
-use Dhtmlx\Connector\Tools\EventMaster;
 /*
 	@author dhtmlx.com
 	@license GPL, see license.txt
 */
-class ConvertService{
+class ConvertService {
 	private $url;
 	private $type;
 	private $name;

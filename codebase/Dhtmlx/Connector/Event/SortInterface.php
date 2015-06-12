@@ -1,8 +1,7 @@
 <?php
-
 namespace Dhtmlx\Connector\Event;
 
-class SortInterface extends EventInterface{
+class SortInterface extends EventInterface {
     /*! constructor
         creates a new interface based on existing request
         @param request

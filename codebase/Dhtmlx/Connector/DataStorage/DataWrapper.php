@@ -1,10 +1,11 @@
 <?php
-
 namespace Dhtmlx\Connector\DataStorage;
+use \Exception;
+
 /*! Base abstraction class, used for data operations
 	Class abstract access to data, it is a base class to all DB wrappers
 **/
-abstract class DataWrapper{
+abstract class DataWrapper {
     protected $connection;
     protected $config;//!< DataConfig instance
     /*! constructor

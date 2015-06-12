@@ -1,22 +1,20 @@
 <?php
-
 namespace Dhtmlx\Connector;
-
+use Dhtmlx\Connector\Data\DataAction;
+use Dhtmlx\Connector\Data\DataConfig;
+use Dhtmlx\Connector\Data\DataRequestConfig;
+use Dhtmlx\Connector\Data\DataUpdate;
+use Dhtmlx\Connector\DataStorage\MySQLDBDataWrapper;
+use Dhtmlx\Connector\DataStorage\ArrayDBDataWrapper;
 use Dhtmlx\Connector\Tools\EventMaster;
 use Dhtmlx\Connector\Tools\AccessMaster;
 use Dhtmlx\Connector\Tools\LogMaster;
 use Dhtmlx\Connector\Output\RenderStrategy;
 use Dhtmlx\Connector\Output\OutputWriter;
-use Dhtmlx\Connector\DataStorage\DataConfig;
-use Dhtmlx\Connector\DataStorage\DataAction;
-use Dhtmlx\Connector\DataStorage\DataRequestConfig;
-use Dhtmlx\Connector\DataStorage\MySQLDBDataWrapper;
-use Dhtmlx\Connector\DataStorage\ArrayDBDataWrapper;
-use Dhtmlx\Connector\DataStorage\PHPYii2DBDataWrapper;
-use Dhtmlx\Connector\Data\CommonDataProcessor;
 use Dhtmlx\Connector\XSSFilter\ConnectorSecurity;
 use Dhtmlx\Connector\Event\SortInterface;
 use Dhtmlx\Connector\Event\FilterInterface;
+use Dhtmlx\Connector\DataStorage\ArrayQueryWrapper;
 
 class Connector {
     protected $config;//DataConfig instance

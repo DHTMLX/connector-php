@@ -1,9 +1,7 @@
 <?php
-
 namespace Dhtmlx\Connector\Data;
 
-class TreeDataItem extends DataItem
-{
+class TreeDataItem extends DataItem {
     private $im0;//!< image of closed folder
     private $im1;//!< image of opened folder
     private $im2;//!< image of leaf item
