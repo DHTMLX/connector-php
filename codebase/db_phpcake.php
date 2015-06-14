@@ -11,75 +11,62 @@ require_once("db_common.php");
 
 if you plan to use it for Oracle - use Oracle connection type instead
 **/
-class PHPCakeDBDataWrapper extends ArrayDBDataWrapper{
-	public function select($sql){
-		$source = $sql->get_source();
-		if (is_array($source))	//result of find
-			$res = $source;
-		else
-			$res = $this->connection->find("all");
-
-		$temp = array();
-		if (sizeof($res)){
-			$name = get_class($this->connection);
-			for ($i=sizeof($res)-1; $i>=0; $i--)
-				$temp[]=&$res[$i][$name];
-		}
-		return new ArrayQueryWrapper($temp);
-	}
-
-	protected function getErrorMessage(){
-		$errors = $this->connection->invalidFields();
-		$text = array();
-		foreach ($errors as $key => $value){
-			$text[] = $key." - ".$value[0];
-		}
-		return implode("\n", $text);
-	}
-
-	public function insert($data,$source){
-		$name = get_class($this->connection);
-		$save = array(); 
-		$temp_data = $data->get_data();
-		unset($temp_data[$this->config->id['db_name']]);
-		unset($temp_data["!nativeeditor_status"]);
-		$save[$name] = $temp_data;
-
-		if ($this->connection->save($save)){
-			$data->success($this->connection->getLastInsertID());	
-		} else {
-			$data->set_response_attribute("details", $this->getErrorMessage());
-			$data->invalid();
-		}
-	}
-	public function delete($data,$source){
-		$id = $data->get_id();
-		$this->connection->delete($id);
-		$data->success();
-	}
-	public function update($data,$source){
-		$name = get_class($this->connection);
-		$save = array(); 
-		$save[$name] = &$data->get_data();
-
-		if ($this->connection->save($save)){
-			$data->success();
-		} else {
-			$data->set_response_attribute("details", $this->getErrorMessage());
-			$data->invalid();
-		}
-	}	
-		
-
-	public function escape($str){
-		throw new Exception("Not implemented");
-	}
-	public function query($str){
-		throw new Exception("Not implemented");
-	}
-	public function get_new_id(){
-		throw new Exception("Not implemented");
-	}
+class PHPCakeDBDataWrapper extends ArrayDBDataWrapper {
+	public function select($sql) {
+    if(is_array($this->connection))	//result of findAll
+        $query = $this->connection;
+    else
+        $query = $this->connection->find("all");
+    $temp = array();
+    foreach($query as $row)
+        $temp[] = $row->toArray();
+    return new ArrayQueryWrapper($temp);
+}
+    protected function getErrorMessage() {
+        $errors = $this->connection->invalidFields();
+        $text = array();
+        foreach ($errors as $key => $value){
+            $text[] = $key." - ".$value[0];
+        }
+        return implode("\n", $text);
+    }
+    public function insert($data, $source) {
+        $table = TableRegistry::get($source->get_source());
+        $obj = $table->newEntity();
+        $obj = $this->fillModel($obj, $data);
+        $savedResult = $this->connection->save($obj);
+        $data->success($savedResult->get($this->config->id["db_name"]));
+    }
+    public function delete($data, $source) {
+        $table = TableRegistry::get($source->get_source());
+        $obj = $table->get($data->get_id());
+        $this->connection->delete($obj);
+    }
+    public function update($data, $source) {
+        $table = TableRegistry::get($source->get_source());
+        $obj = $table->get($data->get_id());
+        $obj = $this->fillModel($obj, $data);
+        $table->save($obj);
+    }
+    private function fillModel($obj, $data) {
+        //Map data to model object.
+        for($i = 0; $i < count($this->config->text); $i++) {
+            $step=$this->config->text[$i];
+            $obj->set($step["name"], $data->get_value($step["name"]));
+        }
+        if($relation = $this->config->relation_id["db_name"])
+            $obj->set($relation, $data->get_value($relation));
+        return $obj;
+    }
+    public function escape($str){
+        throw new Exception("Not implemented");
+    }
+    public function query($str){
+        throw new Exception("Not implemented");
+    }
+    public function get_new_id(){
+        throw new Exception("Not implemented");
+    }
 }
 
 ?>
