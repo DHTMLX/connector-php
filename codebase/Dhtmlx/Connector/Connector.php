@@ -158,7 +158,7 @@ class Connector {
                 $id = $info["key"];
         }
         $this->config->init($id,$fields,$extra,$relation_id);
-        if (strpos(trim($table), " ")!==false)
+        if(is_string($table) && strpos(trim($table), " ")!==false)
             $this->request->parse_sql($table);
         else
             $this->request->set_source($table);

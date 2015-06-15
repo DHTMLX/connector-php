@@ -5,11 +5,12 @@ use \Exception;
 
 class PHPCakeDBDataWrapper extends ArrayDBDataWrapper {
 
-    public function select($sql) {
-        if(is_array($this->connection))	//result of findAll
-            $query = $this->connection;
+    public function select($source) {
+        $sourceData = $source->get_source();
+        if(is_array($sourceData))	//result of find
+            $query = $sourceData;
         else
-            $query = $this->connection->find("all");
+            $query = $sourceData->find("all");
 
         $temp = array();
         foreach($query as $row)
@@ -31,14 +32,14 @@ class PHPCakeDBDataWrapper extends ArrayDBDataWrapper {
         $table = TableRegistry::get($source->get_source());
         $obj = $table->newEntity();
         $obj = $this->fillModel($obj, $data);
-        $savedResult = $this->connection->save($obj);
+        $savedResult = $source->get_source()->save($obj);
         $data->success($savedResult->get($this->config->id["db_name"]));
     }
 
     public function delete($data, $source) {
         $table = TableRegistry::get($source->get_source());
         $obj = $table->get($data->get_id());
-        $this->connection->delete($obj);
+        $source->get_source()->delete($obj);
     }
 
     public function update($data, $source) {

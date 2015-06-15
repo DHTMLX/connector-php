@@ -8,11 +8,11 @@ class PHPCake2DBDataWrapper extends ArrayDBDataWrapper {
         if (is_array($source))	//result of find
             $res = $source;
         else
-            $res = $this->connection->find("all");
+            $res = $source->get_source()->find("all");
 
         $temp = array();
         if (sizeof($res)){
-            $name = get_class($this->connection);
+            $name = get_class($source->get_source());
             for ($i=sizeof($res)-1; $i>=0; $i--)
                 $temp[]=&$res[$i][$name];
         }
@@ -29,15 +29,15 @@ class PHPCake2DBDataWrapper extends ArrayDBDataWrapper {
     }
 
     public function insert($data,$source){
-        $name = get_class($this->connection);
+        $name = get_class($source->get_source());
         $save = array();
         $temp_data = $data->get_data();
         unset($temp_data[$this->config->id['db_name']]);
         unset($temp_data["!nativeeditor_status"]);
         $save[$name] = $temp_data;
 
-        if ($this->connection->save($save)){
-            $data->success($this->connection->getLastInsertID());
+        if ($source->get_source()->save($save)){
+            $data->success($source->get_source()->getLastInsertID());
         } else {
             $data->set_response_attribute("details", $this->getErrorMessage());
             $data->invalid();
@@ -45,15 +45,15 @@ class PHPCake2DBDataWrapper extends ArrayDBDataWrapper {
     }
     public function delete($data,$source){
         $id = $data->get_id();
-        $this->connection->delete($id);
+        $source->get_source()->delete($id);
         $data->success();
     }
     public function update($data,$source){
-        $name = get_class($this->connection);
+        $name = get_class($source->get_source());
         $save = array();
         $save[$name] = &$data->get_data();
 
-        if ($this->connection->save($save)){
+        if ($source->get_source()->save($save)){
             $data->success();
         } else {
             $data->set_response_attribute("details", $this->getErrorMessage());

@@ -4,11 +4,12 @@ use \Exception;
 
 class PHPYiiDBDataWrapper extends ArrayDBDataWrapper {
 
-	public function select($sql) {
-		if(is_array($this->connection))	//result of findAll
-			$res = $this->connection;
-		else
-			$res = $this->connection->find()->all();
+	public function select($source) {
+        $sourceData = $source->get_source();
+        if(is_array($sourceData))	//result of find
+            $res = $sourceData;
+        else
+            $res = $sourceData->find()->all();
 
 		$temp = array();
 		if(sizeof($res)) {
@@ -27,13 +28,13 @@ class PHPYiiDBDataWrapper extends ArrayDBDataWrapper {
 		return implode("\n", $text);
 	}
 	public function insert($data, $source) {
-		$name = get_class($this->connection);
+		$name = get_class($source->get_source());
 		$obj = new $name();
 		$this->fill_model_and_save($obj, $data);
 	}
 
 	public function delete($data, $source) {
-		$obj = $this->connection->findOne($data->get_id());
+		$obj = $source->get_source()->findOne($data->get_id());
 		if($obj->delete()) {
 			$data->success();
 			$data->set_new_id($obj->getPrimaryKey());
@@ -45,7 +46,7 @@ class PHPYiiDBDataWrapper extends ArrayDBDataWrapper {
 	}
 
 	public function update($data, $source) {
-		$obj = $this->connection->findOne($data->get_id());
+		$obj = $source->get_source()->findOne($data->get_id());
 		$this->fill_model_and_save($obj, $data);
 	}
 
