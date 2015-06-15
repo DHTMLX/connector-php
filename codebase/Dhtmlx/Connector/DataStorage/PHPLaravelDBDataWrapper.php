@@ -6,8 +6,15 @@ use \Exception;
 class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 
 	public function select($source) {
-        $className = $source->get_source();
-		return new ArrayQueryWrapper($className::all()->toArray());
+        $sourceData = $source->get_source();
+        if(is_array($sourceData))	//result of find
+            $res = $sourceData;
+        else {
+            $className = get_class($sourceData);
+            $res = $className::all()->toArray();
+        }
+
+		return new ArrayQueryWrapper($res);
 	}
 
 	protected function getErrorMessage() {
@@ -20,28 +27,28 @@ class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 	}
 
 	public function insert($data, $source) {
-		$className = $source->get_source();
+		$className = get_class($source->get_source());
         $obj = $className::create();
-        $this->fill_model_data($obj, $data)->save();
+        $this->fill_model($obj, $data)->save();
 
         $fieldPrimaryKey = $this->config->id["db_name"];
         $data->success($obj->$fieldPrimaryKey);
 	}
 
 	public function delete($data, $source) {
-        $className = $source->get_source();
+        $className = get_class($source->get_source());
         $className::destroy($data->get_id());
         $data->success();
 	}
 
 	public function update($data, $source) {
-        $className = $source->get_source();
+        $className = get_class($source->get_source());
         $obj = $className::find($data->get_id());
-        $this->fill_model_data($obj, $data)->save();
+        $this->fill_model($obj, $data)->save();
         $data->success();
 	}
 
-    private function fill_model_data($obj, $data) {
+    private function fill_model($obj, $data) {
         $dataArray = $data->get_data();
         unset($dataArray[DataProcessor::$action_param]);
         unset($dataArray[$this->config->id["db_name"]]);
