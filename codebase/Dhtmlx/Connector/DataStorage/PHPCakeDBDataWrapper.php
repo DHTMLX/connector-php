@@ -1,6 +1,5 @@
 <?php
 namespace Dhtmlx\Connector\DataStorage;
-use Cake\ORM\TableRegistry;
 use \Exception;
 
 class PHPCakeDBDataWrapper extends ArrayDBDataWrapper {
@@ -29,24 +28,24 @@ class PHPCakeDBDataWrapper extends ArrayDBDataWrapper {
     }
 
     public function insert($data, $source) {
-        $table = TableRegistry::get($source->get_source());
-        $obj = $table->newEntity();
+        $sourceData = $source->get_source();
+        $obj = $sourceData->newEntity();
         $obj = $this->fillModel($obj, $data);
         $savedResult = $source->get_source()->save($obj);
         $data->success($savedResult->get($this->config->id["db_name"]));
     }
 
     public function delete($data, $source) {
-        $table = TableRegistry::get($source->get_source());
-        $obj = $table->get($data->get_id());
+        $sourceData = $source->get_source();
+        $obj = $sourceData->get($data->get_id());
         $source->get_source()->delete($obj);
     }
 
     public function update($data, $source) {
-        $table = TableRegistry::get($source->get_source());
-        $obj = $table->get($data->get_id());
+        $sourceData = $source->get_source();
+        $obj = $sourceData->get($data->get_id());
         $obj = $this->fillModel($obj, $data);
-        $table->save($obj);
+        $sourceData->save($obj);
     }
 
     private function fillModel($obj, $data) {
