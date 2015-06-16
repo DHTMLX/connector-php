@@ -4,7 +4,7 @@ namespace Dhtmlx\Connector;
 class TreeDataGroupConnector extends TreeDataConnector {
 
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        if (!$render_type) $render_type="GroupRenderStrategy";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\GroupRenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
     }
 

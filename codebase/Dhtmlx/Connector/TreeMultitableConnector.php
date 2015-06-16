@@ -6,8 +6,8 @@ class TreeMultitableConnector extends TreeConnector {
     protected $parent_name = 'id';
 
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        if (!$data_type) $data_type="TreeDataProcessor";
-        if (!$render_type) $render_type="MultitableTreeRenderStrategy";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\DataProcessor\\TreeDataProcessor";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\MultitableTreeRenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
     }
 

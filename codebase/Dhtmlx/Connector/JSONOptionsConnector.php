@@ -6,7 +6,7 @@ namespace Dhtmlx\Connector;
 class JSONOptionsConnector extends JSONDataConnector {
     protected $init_flag=false;//!< used to prevent rendering while initialization
     public function __construct($res,$type=false,$item_type=false,$data_type=false){
-        if (!$item_type) $item_type="JSONCommonDataItem";
+        if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\JSONCommonDataItem";
         if (!$data_type) $data_type=""; //has not sense, options not editable
         parent::__construct($res,$type,$item_type,$data_type);
     }

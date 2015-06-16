@@ -3,8 +3,8 @@ namespace Dhtmlx\Connector;
 
 class KeyGridConnector extends GridConnector {
     public function __construct($res,$type=false,$item_type=false,$data_type=false){
-        if (!$item_type) $item_type="GridDataItem";
-        if (!$data_type) $data_type="KeyGridDataProcessor";
+        if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\GridDataItem";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\DataProcessor\\KeyGridDataProcessor";
         parent::__construct($res,$type,$item_type,$data_type);
 
         $this->event->attach("beforeProcessing",array($this,"before_check_key"));

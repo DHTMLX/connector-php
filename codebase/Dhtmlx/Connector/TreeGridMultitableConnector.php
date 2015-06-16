@@ -4,8 +4,8 @@ namespace Dhtmlx\Connector;
 class TreeGridMultitableConnector extends TreeGridConnector {
 
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        $data_type="TreeGridMultitableDataProcessor";
-        if (!$render_type) $render_type="MultitableTreeRenderStrategy";
+        $data_type="Dhtmlx\\Connector\\DataProcessor\\TreeGridMultitableDataProcessor";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\MultitableTreeRenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
     }
 

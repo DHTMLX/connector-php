@@ -4,7 +4,7 @@ namespace Dhtmlx\Connector;
 class JSONTreeDataGroupConnector extends JSONTreeDataConnector {
 
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        if (!$render_type) $render_type="JSONGroupRenderStrategy";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\JSONGroupRenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
     }
 

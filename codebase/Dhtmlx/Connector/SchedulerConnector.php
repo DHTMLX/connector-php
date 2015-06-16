@@ -41,10 +41,10 @@ class SchedulerConnector extends Connector {
      * @param render_type
             name of class which will be used for rendering.
     */
-    public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        if (!$item_type) $item_type="SchedulerDataItem";
-        if (!$data_type) $data_type="SchedulerDataProcessor";
-        if (!$render_type) $render_type="RenderStrategy";
+    public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false) {
+        if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\SchedulerDataItem";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\DataProcessor\\SchedulerDataProcessor";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\RenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
     }
 

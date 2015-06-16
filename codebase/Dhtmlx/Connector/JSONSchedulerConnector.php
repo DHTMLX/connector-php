@@ -19,9 +19,9 @@ class JSONSchedulerConnector extends SchedulerConnector {
             name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default.
     */
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        if (!$item_type) $item_type="JSONSchedulerDataItem";
-        if (!$data_type) $data_type="SchedulerDataProcessor";
-        if (!$render_type) $render_type="JSONRenderStrategy";
+        if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\JSONSchedulerDataItem";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\DataProcessor\\SchedulerDataProcessor";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\JSONRenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
     }
 

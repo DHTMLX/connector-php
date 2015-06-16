@@ -22,9 +22,9 @@ class TreeGridConnector extends GridConnector {
      *		name of class which will provides data rendering
     */
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        if (!$item_type) $item_type="TreeGridDataItem";
-        if (!$data_type) $data_type="TreeGridDataProcessor";
-        if (!$render_type) $render_type="TreeRenderStrategy";
+        if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\TreeGridDataItem";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\DataProcessor\\TreeGridDataProcessor";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\TreeRenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
     }
 
