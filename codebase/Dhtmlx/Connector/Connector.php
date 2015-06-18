@@ -71,7 +71,7 @@ class Connector {
         if (class_exists($dsnamespace.$type."DBDataWrapper",true))
             $type.="DBDataWrapper";
         if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\DataItem";
-        if (!$data_type) $data_type="Dhtmlx\\Connector\\Data\\DataProcessor";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\DataProcessor\\DataProcessor";
         if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\RenderStrategy";
 
         $this->names=array(

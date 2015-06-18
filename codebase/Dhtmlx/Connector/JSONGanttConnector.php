@@ -1,12 +1,6 @@
 <?php
 namespace Dhtmlx\Connector;
-use Dhtmlx\Connector\Tools\LogMaster;
-use Dhtmlx\Connector\Tools\EventMaster;
 use Dhtmlx\Connector\Output\OutputWriter;
-use Dhtmlx\Connector\Event\SortInterface;
-use Dhtmlx\Connector\Event\FilterInterface;
-use Dhtmlx\Connector\DataStorage\ArrayDBDataWrapper;
-use Dhtmlx\Connector\DataStorage\ArrayQueryWrapper;
 
 class JSONGanttConnector extends GanttConnector {
 
@@ -108,56 +102,4 @@ class JSONGanttConnector extends GanttConnector {
         $this->set_options("links", $links);
     }
 
-
-    /*! render self
-		process commands, output requested data as XML
-	*/
-    public function render(){
-        $this->event->trigger("onInit", $this);
-        EventMaster::trigger_static("connectorInit",$this);
-
-        if (!$this->as_string)
-            $this->parse_request();
-        $this->set_relation();
-
-        if ($this->live_update !== false && $this->updating!==false) {
-            $this->live_update->get_updates();
-        } else {
-            if ($this->editing){
-                if ($this->links_mode && isset($this->options["links"])) {
-                    $this->options["links"]->save();
-                } else {
-                    $dp = new $this->names["data_class"]($this,$this->config,$this->request);
-                    $dp->process($this->config,$this->request);
-                }
-            } else {
-                if (!$this->access->check("read")){
-                    LogMaster::log("Access control: read operation blocked");
-                    echo "Access denied";
-                    die();
-                }
-                $wrap = new SortInterface($this->request);
-                $this->apply_sorts($wrap);
-                $this->event->trigger("beforeSort",$wrap);
-                $wrap->store();
-
-                $wrap = new FilterInterface($this->request);
-                $this->apply_filters($wrap);
-                $this->event->trigger("beforeFilter",$wrap);
-                $wrap->store();
-
-                if ($this->model && method_exists($this->model, "get")){
-                    $this->sql = new ArrayDBDataWrapper();
-                    $result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
-                    $out = $this->output_as_xml($result);
-                } else {
-                    $out = $this->output_as_xml($this->get_resource());
-
-                    if ($out !== null) return $out;
-                }
-
-            }
-        }
-        $this->end_run();
-    }
 }
