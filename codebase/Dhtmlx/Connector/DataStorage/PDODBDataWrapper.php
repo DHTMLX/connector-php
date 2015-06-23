@@ -31,7 +31,7 @@ class PDODBDataWrapper extends DBDataWrapper {
 		if ($where) $sql.=" WHERE ".$where;
 		if ($sort) $sql.=" ORDER BY ".$sort;
 		if ($start || $count) {
-			if ($this->connection->getAttribute(PDO::ATTR_DRIVER_NAME)=="pgsql")
+			if ($this->connection->getAttribute(\PDO::ATTR_DRIVER_NAME)=="pgsql")
 				$sql.=" OFFSET ".$start." LIMIT ".$count;
 			else
 				$sql.=" LIMIT ".$start.",".$count;
