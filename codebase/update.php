@@ -207,7 +207,8 @@ class DataUpdate{
 		$version =	$this->request->get_version();
 		$user = 	$this->request->get_user();
 
-		$sub_request->parse_sql($this->select_update($this->table, $this->request->get_source(), $this->config->id['db_name'], $version, $user));
+		$table = explode(" ", $this->request->get_source());
+		$sub_request->parse_sql($this->select_update($this->table, $table[0], $this->config->id['db_name'], $version, $user));
 		$sub_request->set_relation(false);
 
 		$output = $this->render_set($this->sql->select($sub_request), $this->item_class);
