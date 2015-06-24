@@ -6,6 +6,8 @@ use Dhtmlx\Connector\Data\DataRequestConfig;
 /*! Connector for the dhtmlxgrid
 **/
 class GridConnector extends Connector {
+	
+    protected $userdata;
 
 	/*! constructor
 
@@ -20,6 +22,8 @@ class GridConnector extends Connector {
 			name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default.
 	*/
 	public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
+        $this->userdata=false;
+		
 		if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\GridDataItem";
         if (!$data_type) $data_type="Dhtmlx\\Connector\\DataProcessor\\GridDataProcessor";
 		if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\RenderStrategy";
@@ -102,12 +106,20 @@ class GridConnector extends Connector {
 
 		if ($this->dload){
 			if ($pos=$this->request->get_start())
-				return "<rows pos='".$pos."'".$attributes.">";
+				$str = "<rows pos='".$pos."'".$attributes.">";
 			else
-				return "<rows total_count='".$this->sql->get_size($this->request)."'".$attributes.">";
+				$str = "<rows total_count='".$this->sql->get_size($this->request)."'".$attributes.">";
 		}
 		else
-			return "<rows".$attributes.">";
+			$str = "<rows".$attributes.">";
+		
+		if ($this->userdata !== false) {
+			foreach ($this->userdata as $key => $value) {
+				$str .= "<userdata name='".$key."'><![CDATA[".$value."]]></userdata>";				
+			}			
+		}
+
+		return $str;
 	}
 
 
@@ -117,6 +129,14 @@ class GridConnector extends Connector {
 		return $this->extra_output."</rows>";
 	}
 
+    //set global userdata for grid
+    public function set_userdata($name, $value){
+        if ($this->userdata === false)
+            $this->userdata = array();
+
+        $this->userdata[$name]=$value;
+    }
+    
 	public function set_config($config = false){
 		if (gettype($config) == 'boolean')
 			$config = new GridConfiguration($config);
