@@ -9,7 +9,7 @@ require_once("db_common.php");
 
 if you plan to use it for Oracle - use Oracle connection type instead
 **/
-class PHPCIDBDataWrapper extends DBDataWrapper{
+class PHPCI2DBDataWrapper extends DBDataWrapper{
 	private $last_result;//!< store result or last operation
 	
 	public function query($sql){

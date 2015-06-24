@@ -6,7 +6,7 @@
 
 require_once("db_common.php");
 
-class PHPYiiDBDataWrapper extends ArrayDBDataWrapper{
+class PHPYii1DBDataWrapper extends ArrayDBDataWrapper{
 	public function select($sql){
 		if (is_array($this->connection))	//result of findAll
 			$res = $this->connection;

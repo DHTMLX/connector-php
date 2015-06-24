@@ -31,6 +31,25 @@ class GanttDataItem extends DataItem{
     }
 }
 
+class GanttLinkDataItem extends DataItem {
+
+    public function to_xml_start(){
+        $str="<item id='".$this->xmlentities($this->get_id())."'";
+        for ($i=0; $i < sizeof($this->config->data); $i++){
+            $name=$this->config->data[$i]["name"];
+            $db_name=$this->config->data[$i]["db_name"];
+            $str.=" ".$name."='".$this->xmlentities($this->data[$name])."'";
+        }
+        //output custom data
+        if ($this->userdata !== false)
+            foreach ($this->userdata as $key => $value){
+                $str.=" ".$key."='".$this->xmlentities($value)."'";
+            }
+
+        return $str.">";
+    }
+
+}
 
 /*! Connector class for dhtmlxGantt
 **/
@@ -124,6 +143,60 @@ class GanttConnector extends Connector{
         $links->render_table($table,$id,$fields,$extra);
         $this->set_options("links", $links);
     }
+
+
+    /*! render self
+		process commands, output requested data as XML
+	*/
+    public function render(){
+        $this->event->trigger("onInit", $this);
+        EventMaster::trigger_static("connectorInit",$this);
+
+        if (!$this->as_string)
+            $this->parse_request();
+        $this->set_relation();
+
+        if ($this->live_update !== false && $this->updating!==false) {
+            $this->live_update->get_updates();
+        } else {
+            if ($this->editing){
+                if ($this->links_mode && isset($this->options["links"])) {
+                    $this->options["links"]->save();
+                } else {
+                    $dp = new $this->names["data_class"]($this,$this->config,$this->request);
+                    $dp->process($this->config,$this->request);
+                }
+            } else {
+                if (!$this->access->check("read")){
+                    LogMaster::log("Access control: read operation blocked");
+                    echo "Access denied";
+                    die();
+                }
+                $wrap = new SortInterface($this->request);
+                $this->apply_sorts($wrap);
+                $this->event->trigger("beforeSort",$wrap);
+                $wrap->store();
+
+                $wrap = new FilterInterface($this->request);
+                $this->apply_filters($wrap);
+                $this->event->trigger("beforeFilter",$wrap);
+                $wrap->store();
+
+                if ($this->model && method_exists($this->model, "get")){
+                    $this->sql = new ArrayDBDataWrapper();
+                    $result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
+                    $out = $this->output_as_xml($result);
+                } else {
+                    $out = $this->output_as_xml($this->get_resource());
+
+                    if ($out !== null) return $out;
+                }
+
+            }
+        }
+        $this->end_run();
+    }
+
 }
 
 /*! DataProcessor class for Gantt component
@@ -271,62 +344,16 @@ class JSONGanttConnector extends GanttConnector {
         $this->set_options("links", $links);
     }
 
-
-    /*! render self
-		process commands, output requested data as XML
-	*/
-    public function render(){
-        $this->event->trigger("onInit", $this);
-        EventMaster::trigger_static("connectorInit",$this);
-
-        if (!$this->as_string)
-            $this->parse_request();
-        $this->set_relation();
-
-        if ($this->live_update !== false && $this->updating!==false) {
-            $this->live_update->get_updates();
-        } else {
-            if ($this->editing){
-                if ($this->links_mode && isset($this->options["links"])) {
-                    $this->options["links"]->save();
-                } else {
-                    $dp = new $this->names["data_class"]($this,$this->config,$this->request);
-                    $dp->process($this->config,$this->request);
-                }
-            } else {
-                if (!$this->access->check("read")){
-                    LogMaster::log("Access control: read operation blocked");
-                    echo "Access denied";
-                    die();
-                }
-                $wrap = new SortInterface($this->request);
-                $this->apply_sorts($wrap);
-                $this->event->trigger("beforeSort",$wrap);
-                $wrap->store();
-
-                $wrap = new FilterInterface($this->request);
-                $this->apply_filters($wrap);
-                $this->event->trigger("beforeFilter",$wrap);
-                $wrap->store();
-
-                if ($this->model && method_exists($this->model, "get")){
-                    $this->sql = new ArrayDBDataWrapper();
-                    $result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
-                    $out = $this->output_as_xml($result);
-                } else {
-                    $out = $this->output_as_xml($this->get_resource());
-
-                    if ($out !== null) return $out;
-                }
-
-            }
-        }
-        $this->end_run();
-    }
 }
 
 
 class GanttLinksConnector extends OptionsConnector {
+
+    public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
+        if (!$item_type) $item_type="GanttLinkDataItem";
+        parent::__construct($res,$type,$item_type,$data_type,$render_type);
+    }
+
     public function render(){
         if (!$this->init_flag){
             $this->init_flag=true;
