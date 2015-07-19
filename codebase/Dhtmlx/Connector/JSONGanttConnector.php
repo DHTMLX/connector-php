@@ -5,6 +5,7 @@ use Dhtmlx\Connector\Output\OutputWriter;
 class JSONGanttConnector extends GanttConnector {
 
     protected $data_separator = ",";
+    protected $live_update_data_type = "Dhtmlx\\Connector\\Data\\JSONGanttDataUpdate";
 
     /*! constructor
 
@@ -98,6 +99,10 @@ class JSONGanttConnector extends GanttConnector {
 
     public function render_links($table,$id="",$fields=false,$extra=false,$relation_id=false) {
         $links = new JSONGanttLinksConnector($this->get_connection(),$this->names["db_class"]);
+
+        if($this->live_update)
+            $links->enable_live_update($this->live_update->get_table());
+
         $links->render_table($table,$id,$fields,$extra);
         $this->set_options("links", $links);
     }

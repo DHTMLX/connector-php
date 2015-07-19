@@ -24,13 +24,14 @@ class DataUpdate {
       @param request
          DataRequestConfig object
     */
-    function __construct($sql, $config, $request, $table, $url){
+    function __construct($sql, $config, $request, $table, $url, $options){
         $this->config= $config;
         $this->request= $request;
         $this->sql = $sql;
         $this->table=$table;
         $this->url=$url;
         $this->demu = false;
+        $this->options = $options;
     }
 
     public function set_demultiplexor($path){
@@ -42,15 +43,15 @@ class DataUpdate {
         $this->item_class = $name;
     }
 
-    private function select_update($actions_table, $join_table, $id_field_name, $version, $user) {
-        $sql = "SELECT * FROM  {$actions_table}";
+    protected function select_update($actions_table, $join_table, $id_field_name, $version, $user) {
+        $sql = "SELECT $join_table.*, {$actions_table}.id, {$actions_table}.dataId, {$actions_table}.type as action_table_type, {$actions_table}.user FROM  {$actions_table}";
         $sql .= " LEFT OUTER JOIN {$join_table} ON ";
         $sql .= "{$actions_table}.DATAID = {$join_table}.{$id_field_name} ";
         $sql .= "WHERE {$actions_table}.ID > '{$version}' AND {$actions_table}.USER <> '{$user}'";
         return $sql;
     }
 
-    private function get_update_max_version() {
+    protected function get_update_max_version() {
         $sql = "SELECT MAX(id) as VERSION FROM {$this->table}";
         $res = $this->sql->query($sql);
         $data = $this->sql->get_next($res);
@@ -68,6 +69,9 @@ class DataUpdate {
             file_get_contents($this->demu);
     }
 
+    public function get_table() {
+        return $this->table;
+    }
 
 
 
@@ -80,6 +84,10 @@ class DataUpdate {
         $dataId = 	$this->sql->escape($action->get_new_id());
         $user = 	$this->sql->escape($this->request->get_user());
         if ($type!="error" && $type!="invalid" && $type !="collision") {
+            $action_mode = $this->request->get_action_mode();
+            if(!empty($action_mode))
+                $type .= "#".$action_mode;
+
             $this->log_update_action($this->table, $dataId, $type, $user);
         }
     }

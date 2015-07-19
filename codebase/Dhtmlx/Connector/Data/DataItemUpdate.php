@@ -47,7 +47,7 @@ class DataItemUpdate extends DataItem {
     */
     public function to_xml(){
         $str= "<update ";
-        $str .= 'status="'.$this->data['type'].'" ';
+        $str .= 'status="'.$this->data['action_table_type'].'" ';
         $str .= 'id="'.$this->data['dataId'].'" ';
         $str .= 'parent="'.$this->get_parent_id().'"';
         $str .= '>';
@@ -60,7 +60,7 @@ class DataItemUpdate extends DataItem {
     */
     public function to_xml_start(){
         $str="<update ";
-        $str .= 'status="'.$this->data['type'].'" ';
+        $str .= 'status="'.$this->data['action_table_type'].'" ';
         $str .= 'id="'.$this->data['dataId'].'" ';
         $str .= 'parent="'.$this->get_parent_id().'"';
         $str .= '>';
