@@ -23,15 +23,9 @@ and paging) as well as server-side sorting and filtering.
 
 External links
 --------------
-  * Documentation  - http://docs.dhtmlx.com/doku.php?id=dhtmlxconnector:toc
-  * Video introduction - http://dhtmlx.com/docs/products/dhtmlxConnector/index.shtml
-
+  * Documentation  - http://docs.dhtmlx.com/connector__php__index.html
 
 Other languages
 ---------------
-  * Java - [wiki](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnectorjava:toc),
-           [package](http://www.dhtmlx.com/x/download/regular/dhtmlxConnector_v09_java.zip)
-  * .Net - [wiki](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnectornet:toc), 
-           [package](http://www.dhtmlx.com/x/download/regular/dhtmlxConnector_v09_net.zip)
-  * ColdFustion - [wiki](http://docs.dhtmlx.com/doku.php?id=dhtmlxconnectorcf:toc), 
-                  [package](http://www.dhtmlx.com/x/download/regular/dhtmlxConnector_v10_cfm.zip)
+  * Java - [documentation](http://docs.dhtmlx.com/connector__java__index.html),
+           [github](https://github.com/DHTMLX/connector-java)
