@@ -70,3 +70,109 @@ SELECT COUNT(*) as DHX_COUNT  FROM grid50000
 
 Done in 0.0049238204956055s
 
+
+
+====================================
+Log started, 18/08/2015 07:51:07
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 0,100
+
+SELECT COUNT(*) as DHX_COUNT  FROM grid50000
+
+Done in 0.48602795600891s
+
+
+
+====================================
+Log started, 18/08/2015 08:01:02
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 0,100
+
+SELECT COUNT(*) as DHX_COUNT  FROM grid50000
+
+Done in 0.0069999694824219s
+
+
+
+====================================
+Log started, 18/08/2015 08:01:03
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 1964,22
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 18/08/2015 08:01:05
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 3808,22
+
+Done in 0.0080001354217529s
+
+
+
+====================================
+Log started, 18/08/2015 08:01:06
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 5376,22
+
+Done in 0.0070009231567383s
+
+
+
+====================================
+Log started, 18/08/2015 08:01:06
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 6461,22
+
+Done in 0.0090007781982422s
+
+
+
+====================================
+Log started, 18/08/2015 08:01:07
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 7323,22
+
+Done in 0.0090007781982422s
+
+
+
+====================================
+Log started, 18/08/2015 08:01:08
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 3859,22
+
+Done in 0.0070011615753174s
+
+
+
+====================================
+Log started, 18/08/2015 08:01:09
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 1809,22
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 24/08/2015 07:19:36
+====================================
+
+SELECT item_id,item_nm,item_cd FROM grid50000 LIMIT 0,100
+
+SELECT COUNT(*) as DHX_COUNT  FROM grid50000
+
+Done in 0.012634992599487s
+

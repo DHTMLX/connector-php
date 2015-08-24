@@ -1,17 +1,14 @@
- 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>Live update mode</title>
-
-
-
-
-<script src="../dhtmlx/dhtmlx.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="../dhtmlx/dhtmlx.css" type="text/css" charset="utf-8">
+	<script src="../dhtmlx/dhtmlx.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="../dhtmlx/dhtmlx.css" type="text/css" charset="utf-8">
 </head>
+
 <body>
-				<div id="gridbox" width="450px" height="550px" style="background-color:white;overflow:hidden"></div>
+	<div id="gridbox" width="450px" height="550px" style="background-color:white;overflow:hidden"></div>
+	
 <script>
 if (!window.eXcell_tree)
 	alert("To check TreeGrid's samples you need to replace files in `dhtmlx` folder with ones from dhtmlx pro suite.");
@@ -23,13 +20,13 @@ if (!window.eXcell_tree)
 	mygrid.setColTypes("tree,ed,ed");
 	mygrid.setColSorting("connector,connector")
 	mygrid.init();
-	mygrid.loadXML("05_live_update_connector.php");
+	mygrid.load("05_live_update_connector.php");
 	
 	var dp = new dataProcessor("05_live_update_connector.php");
 	dp.init(mygrid);
-	dp.setUpdateMode("off");
 	dp.setAutoUpdate(2000);
 </script>
+
 <input type="button" name="add" value="add row" onclick="var id=mygrid.uid(); mygrid.addRow(id,'', 0); mygrid.showRow(id);">
 <input type="button" name="delete" value="delete row" onclick="mygrid.deleteSelectedRows()">
 

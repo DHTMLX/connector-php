@@ -1,18 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>Group connector</title>
-	<script>
-		window.dhx_globalImgPath="../common/imgs/";
-	</script>
-
-
-
-
-<script src="../dhtmlx/dhtmlx.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="../dhtmlx/dhtmlx.css" type="text/css" charset="utf-8">
+	<script src="../dhtmlx/dhtmlx.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="../dhtmlx/dhtmlx.css" type="text/css" charset="utf-8">
 </head>
-
 <body>
 <div id="treeboxbox_tree" style="width:300; height:218;background-color:#f5f5f5;border :1px solid Silver; "></div>
 
@@ -20,7 +12,7 @@
 	tree=new dhtmlXTreeObject("treeboxbox_tree","100%","100%",0);
 	tree.setImagePath("../dhtmlx/imgs/dhxtree_skyblue/");
     tree.enableItemEditor(true);
-    tree.loadXML("08_tree_group_connector.php");
+    tree.load("08_tree_group_connector.php");
 
 	var dp = new dataProcessor("08_tree_group_connector.php");
     dp.init(tree);

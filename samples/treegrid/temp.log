@@ -1,0 +1,4499 @@
+
+
+====================================
+Log started, 21/08/2015 04:42:51
+====================================
+
+SELECT taskId,parentId,taskName,duration,complete FROM tasks
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.020001173019409s
+
+
+
+====================================
+Log started, 21/08/2015 04:42:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168171869')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:42:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168171869')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:42:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168171869')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:42:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168171869')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:51:49
+====================================
+
+SELECT taskId,parentId,taskName,duration,complete FROM tasks
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.015001058578491s
+
+
+
+====================================
+Log started, 21/08/2015 04:51:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:51:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:51:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:51:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0019998550415039s
+
+
+
+====================================
+Log started, 21/08/2015 04:51:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0029997825622559s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0030009746551514s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.018000841140747s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:25
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:27
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:29
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:31
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:33
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:35
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:37
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0030009746551514s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.020001173019409s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:52:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:02
+====================================
+
+SELECT taskId,parentId,taskName,duration,complete FROM tasks
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.018001079559326s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:04
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:06
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.021001100540161s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:08
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:10
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0029997825622559s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:12
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:14
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.013000011444092s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:16
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:18
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:20
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:22
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:24
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:25
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:26
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:27
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:28
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050008296966553s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:29
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:30
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:31
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:32
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:33
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:34
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:35
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:36
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:37
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:38
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:40
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:42
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:44
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:46
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:48
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:50
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.031002044677734s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:52
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:54
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:56
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:58
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:53:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0060000419616699s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:02
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:04
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:06
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:08
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.021001100540161s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:10
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:12
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0030012130737305s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:14
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:16
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.026001930236816s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:18
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:20
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0030009746551514s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:22
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:24
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:25
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:26
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0099999904632568s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:27
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:28
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:29
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:30
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:31
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:32
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:33
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:34
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:35
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:36
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:37
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.025002002716064s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.016000986099243s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:54:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.02000093460083s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.096004962921143s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050008296966553s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.002000093460083s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:25
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:25
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:27
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:27
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:29
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:29
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.018000841140747s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:31
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:31
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:33
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:33
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:35
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:35
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:37
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:37
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.012001037597656s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.018001079559326s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:55:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.016000986099243s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168782870')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.015000104904175s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:24
+====================================
+
+SELECT taskId,parentId,taskName,duration,complete FROM tasks
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.015001058578491s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:25
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:26
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168984529')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:27
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:28
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168984529')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:29
+====================================
+
+DataProcessor object initialized
+1000_gr_id => 1000
+1000_gr_pid => 0
+1000_c0 => dhtmlXGrid
+1000_c1 => 223.0
+1000_c2 => 50
+1000_!nativeeditor_status => updated
+1000_version => 10
+ids => 1000
+
+Row data [1000]
+taskId => 1000
+gr_pid => 0
+taskName => dhtmlXGrid
+duration => 223.0
+complete => 50
+!nativeeditor_status => updated
+version => 10
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Incorrect field name used: parentId
+
+data
+taskId => 1000
+gr_pid => 0
+taskName => dhtmlXGrid
+duration => 223.0
+complete => 50
+!nativeeditor_status => updated
+version => 10
+
+UPDATE tasks SET taskName='dhtmlXGrid',duration='223.0',complete='50',parentId='' WHERE taskId='1000'
+
+
+
+====================================
+Log started, 21/08/2015 04:56:29
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050008296966553s
+
+INSERT INTO actions_table (DATAID, TYPE, USER) VALUES ('1000', 'updated', '1440168984529')
+
+Edit operation finished
+0 => action:updated; sid:1000; tid:1000;
+
+Done in 0.058002948760986s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:30
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168984529')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:31
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '10' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:32
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168984529')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:33
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:34
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168984529')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:35
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:36
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168984529')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:37
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0060009956359863s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:56:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0059998035430908s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:25
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:27
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:29
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:31
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:33
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:35
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:37
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0060009956359863s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.019001007080078s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:57:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0070009231567383s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:25
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:27
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:29
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:31
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:33
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:35
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:37
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0050010681152344s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:58:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:25
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:27
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:29
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.003000020980835s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:31
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:33
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:35
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:37
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:39
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0030009746551514s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:41
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:43
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:45
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.005000114440918s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:47
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:49
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:51
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:53
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040011405944824s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:55
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:57
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 04:59:59
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:01
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:03
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:05
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:07
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:09
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:11
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:13
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:15
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0049998760223389s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:17
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:19
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0040009021759033s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:21
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.004000186920166s
+
+
+
+====================================
+Log started, 21/08/2015 05:00:23
+====================================
+
+SELECT  tasks.*, actions_table.id, actions_table.dataId, actions_table.type as action_table_type, actions_table.user FROM actions_table LEFT OUTER JOIN tasks ON actions_table.DATAID = tasks.taskId WHERE ( actions_table.ID > '11' AND actions_table.USER <> '1440168709107')
+
+SELECT MAX(id) as VERSION FROM actions_table
+
+Done in 0.0039999485015869s
+

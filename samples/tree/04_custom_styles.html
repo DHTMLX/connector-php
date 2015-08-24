@@ -1,25 +1,21 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>Filtering and Autocomplete mode</title>
-	<script>
-		window.dhx_globalImgPath="../common/imgs/";
-	</script>
-
-
-
-<script src="../dhtmlx/dhtmlx.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="../dhtmlx/dhtmlx.css" type="text/css" charset="utf-8">
+	<script src="../dhtmlx/dhtmlx.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="../dhtmlx/dhtmlx.css" type="text/css" charset="utf-8">
 </head>
+
 <body>
 <div id="treeboxbox_tree" style="width:300; height:218;background-color:#f5f5f5;border :1px solid Silver; "></div>
+
 <script type="text/javascript" charset="utf-8">
 	tree=new dhtmlXTreeObject("treeboxbox_tree","100%","100%",0);
 	tree.setImagePath("../dhtmlx/imgs/dhxtree_skyblue/");
-	//tree.enableSmartXMLParsing(true);
 	tree.enableCheckBoxes(true);
-    tree.loadXML("04_custom_styles_connector.php");       
+    tree.load("04_custom_styles_connector.php");       
 </script>
+
 <div class='code'><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php
 <br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">require_once(</span><span style="color: #DD0000">"../config.php"</span><span style="color: #007700">);
