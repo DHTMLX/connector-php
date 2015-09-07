@@ -19,7 +19,7 @@ class DataConnector extends Connector {
     */
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
         if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\CommonDataItem";
-        if (!$data_type) $data_type="Dhtmlx\\Connector\\Data\\CommonDataProcessor";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\DataProcessor\\CommonDataProcessor";
 
         $this->sections = array();
 
