@@ -1,16 +1,11 @@
 <?php
 namespace Dhtmlx\Connector;
-use Dhtmlx\Connector\Tools\LogMaster;
-use Dhtmlx\Connector\Tools\EventMaster;
 use Dhtmlx\Connector\Output\OutputWriter;
-use Dhtmlx\Connector\Event\SortInterface;
-use Dhtmlx\Connector\Event\FilterInterface;
-use Dhtmlx\Connector\DataStorage\ArrayDBDataWrapper;
-use Dhtmlx\Connector\DataStorage\ArrayQueryWrapper;
 
 class JSONGanttConnector extends GanttConnector {
 
     protected $data_separator = ",";
+    protected $live_update_data_type = "Dhtmlx\\Connector\\Data\\JSONGanttDataUpdate";
 
     /*! constructor
 
@@ -25,9 +20,9 @@ class JSONGanttConnector extends GanttConnector {
             name of class which will be used for dataprocessor calls handling, optional, DataProcessor class will be used by default.
     */
     public function __construct($res,$type=false,$item_type=false,$data_type=false,$render_type=false){
-        if (!$item_type) $item_type="JSONGanttDataItem";
-        if (!$data_type) $data_type="GanttDataProcessor";
-        if (!$render_type) $render_type="JSONRenderStrategy";
+        if (!$item_type) $item_type="Dhtmlx\\Connector\\Data\\JSONGanttDataItem";
+        if (!$data_type) $data_type="Dhtmlx\\Connector\\DataProcessor\\GanttDataProcessor";
+        if (!$render_type) $render_type="Dhtmlx\\Connector\\Output\\JSONRenderStrategy";
         parent::__construct($res,$type,$item_type,$data_type,$render_type);
     }
 
@@ -104,60 +99,12 @@ class JSONGanttConnector extends GanttConnector {
 
     public function render_links($table,$id="",$fields=false,$extra=false,$relation_id=false) {
         $links = new JSONGanttLinksConnector($this->get_connection(),$this->names["db_class"]);
+
+        if($this->live_update)
+            $links->enable_live_update($this->live_update->get_table());
+
         $links->render_table($table,$id,$fields,$extra);
         $this->set_options("links", $links);
     }
 
-
-    /*! render self
-		process commands, output requested data as XML
-	*/
-    public function render(){
-        $this->event->trigger("onInit", $this);
-        EventMaster::trigger_static("connectorInit",$this);
-
-        if (!$this->as_string)
-            $this->parse_request();
-        $this->set_relation();
-
-        if ($this->live_update !== false && $this->updating!==false) {
-            $this->live_update->get_updates();
-        } else {
-            if ($this->editing){
-                if ($this->links_mode && isset($this->options["links"])) {
-                    $this->options["links"]->save();
-                } else {
-                    $dp = new $this->names["data_class"]($this,$this->config,$this->request);
-                    $dp->process($this->config,$this->request);
-                }
-            } else {
-                if (!$this->access->check("read")){
-                    LogMaster::log("Access control: read operation blocked");
-                    echo "Access denied";
-                    die();
-                }
-                $wrap = new SortInterface($this->request);
-                $this->apply_sorts($wrap);
-                $this->event->trigger("beforeSort",$wrap);
-                $wrap->store();
-
-                $wrap = new FilterInterface($this->request);
-                $this->apply_filters($wrap);
-                $this->event->trigger("beforeFilter",$wrap);
-                $wrap->store();
-
-                if ($this->model && method_exists($this->model, "get")){
-                    $this->sql = new ArrayDBDataWrapper();
-                    $result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
-                    $out = $this->output_as_xml($result);
-                } else {
-                    $out = $this->output_as_xml($this->get_resource());
-
-                    if ($out !== null) return $out;
-                }
-
-            }
-        }
-        $this->end_run();
-    }
 }

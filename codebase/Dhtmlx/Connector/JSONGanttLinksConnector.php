@@ -2,6 +2,8 @@
 namespace Dhtmlx\Connector;
 
 class JSONGanttLinksConnector extends JSONOptionsConnector {
+    protected $live_update_data_type = "Dhtmlx\\Connector\\Data\\JSONGanttDataUpdate";
+
     public function render(){
         if (!$this->init_flag){
             $this->init_flag=true;

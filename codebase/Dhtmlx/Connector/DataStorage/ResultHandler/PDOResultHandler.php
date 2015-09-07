@@ -7,7 +7,7 @@ class PDOResultHandler {
 		$this->res = $res;
 	}
 	public function next(){
-		$data = $this->res->fetch(PDO::FETCH_ASSOC);
+		$data = $this->res->fetch(\PDO::FETCH_ASSOC);
 		if (!$data){
 			$this->res->closeCursor();
 			return null;

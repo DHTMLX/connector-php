@@ -1,10 +1,20 @@
 <?php
 namespace Dhtmlx\Connector;
+use Dhtmlx\Connector\Tools\LogMaster;
+use Dhtmlx\Connector\Tools\EventMaster;
+use Dhtmlx\Connector\Event\SortInterface;
+use Dhtmlx\Connector\Event\FilterInterface;
+use Dhtmlx\Connector\DataStorage\ArrayDBDataWrapper;
+use Dhtmlx\Connector\DataStorage\ArrayQueryWrapper;
+
 
 /*! Connector class for dhtmlxGantt
 **/
 class GanttConnector extends Connector {
+    private $action_mode = "";
+    public $links_table = "";
 
+    protected $live_update_data_type = "Dhtmlx\\Connector\\Data\\GanttDataUpdate";
     protected $extra_output="";//!< extra info which need to be sent to client side
     protected $options=array();//!< hash of OptionsConnector
     protected $links_mode = false;
@@ -56,8 +66,14 @@ class GanttConnector extends Connector {
     function parse_request(){
         parent::parse_request();
 
-        if (isset($_GET["gantt_mode"]) && $_GET["gantt_mode"] == "links")
-            $this->links_mode = true;
+        $action_links = "links";
+        if(isset($_GET["gantt_mode"]) && $_GET["gantt_mode"] == $action_links) {
+            $this->action_mode = $action_links;
+            $this->request->set_action_mode($action_links);
+            $this->options[$action_links]->request->set_action_mode($action_links);
+            $this->options[$action_links]->request->set_user($this->request->get_user());
+        }
+
 
         if (count($this->config->text)){
             if (isset($_GET["to"]))
@@ -88,9 +104,68 @@ class GanttConnector extends Connector {
         }
     }
 
-    public function render_links($table,$id="",$fields=false,$extra=false,$relation_id=false) {
+    public function render_links($table,$id="",$fields=false,$extra=false) {
         $links = new GanttLinksConnector($this->get_connection(),$this->names["db_class"]);
+
+        if($this->live_update)
+            $links->enable_live_update($this->live_update->get_table());
+
         $links->render_table($table,$id,$fields,$extra);
         $this->set_options("links", $links);
+        $this->links_table = $table;
     }
+
+    /*! render self
+    process commands, output requested data as XML
+*/
+    public function render(){
+        $this->event->trigger("onInit", $this);
+        EventMaster::trigger_static("connectorInit",$this);
+
+        if (!$this->as_string)
+            $this->parse_request();
+        $this->set_relation();
+
+        if ($this->live_update !== false && $this->updating!==false) {
+            $this->live_update->get_updates();
+        } else {
+            if ($this->editing){
+                if (($this->action_mode == "links") && isset($this->options["links"])) {
+                    $this->options["links"]->save();
+                } else {
+                    $dp = new $this->names["data_class"]($this,$this->config,$this->request);
+                    $dp->process($this->config,$this->request);
+                }
+            } else {
+                if (!$this->access->check("read")){
+                    LogMaster::log("Access control: read operation blocked");
+                    echo "Access denied";
+                    die();
+                }
+                $wrap = new SortInterface($this->request);
+                $this->apply_sorts($wrap);
+                $this->event->trigger("beforeSort",$wrap);
+                $wrap->store();
+
+                $wrap = new FilterInterface($this->request);
+                $this->apply_filters($wrap);
+                $this->event->trigger("beforeFilter",$wrap);
+                $wrap->store();
+
+                if ($this->model && method_exists($this->model, "get")){
+                    $this->sql = new ArrayDBDataWrapper();
+                    $result = new ArrayQueryWrapper(call_user_func(array($this->model, "get"), $this->request));
+                    $out = $this->output_as_xml($result);
+                } else {
+                    $out = $this->output_as_xml($this->get_resource());
+
+                    if ($out !== null) return $out;
+                }
+
+            }
+        }
+        $this->end_run();
+    }
+
+
 }
