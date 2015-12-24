@@ -9,9 +9,11 @@ class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
         $sourceData = $source->get_source();
         if(is_array($sourceData))	//result of find
             $res = $sourceData;
+        else if ($sourceData && method_exists($sourceData, "toArray"))
+        	$res = $sourceData->toArray();
         else {
-            $className = get_class($sourceData);
-            $res = $className::all()->toArray();
+        	$className = get_class($sourceData);
+        	$res = $className::all()->toArray();
         }
 
 		return new ArrayQueryWrapper($res);
