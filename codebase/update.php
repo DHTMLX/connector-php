@@ -223,7 +223,7 @@ class DataUpdate{
 		$output = $this->render_set($this->sql->select($sub_request), $this->item_class);
         
 		ob_clean();
-		header("Content-type:text/xml; charset=".$this->encoding;);
+		header("Content-type:text/xml; charset=".$this->encoding);
 
 		echo $this->updates_start();
 		echo $this->get_version();
