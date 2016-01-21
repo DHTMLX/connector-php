@@ -30,7 +30,7 @@ class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 
 	public function insert($data, $source) {
 		$className = get_class($source->get_source());
-        $obj = $className::create();
+        $obj = new $className();
         $this->fill_model($obj, $data)->save();
 
         $fieldPrimaryKey = $this->config->id["db_name"];
