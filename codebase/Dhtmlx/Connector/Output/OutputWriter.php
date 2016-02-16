@@ -22,7 +22,7 @@ class OutputWriter {
         $this->type=$add;
     }
     public function output($name="", $inline=true, $encoding=""){
-        ob_clean();
+        @ob_clean();
 
         if ($this->type == "xml"){
             $header = "Content-type: text/xml";
