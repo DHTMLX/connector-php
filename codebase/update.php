@@ -143,6 +143,10 @@ class DataUpdate{
     }
    	
 	protected function select_update($actions_table, $join_table, $id_field_name, $version, $user) {
+
+		if ($this->options["table"] !== false)
+			$join_table = $this->options["table"];
+
 		$sql = "SELECT $join_table.*, {$actions_table}.id, {$actions_table}.dataId, {$actions_table}.type as action_table_type, {$actions_table}.user FROM  {$actions_table}";
 		$sql .= " LEFT OUTER JOIN {$join_table} ON ";
 		$sql .= "{$actions_table}.DATAID = {$join_table}.{$id_field_name} ";

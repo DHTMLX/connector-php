@@ -854,8 +854,8 @@ class Connector {
 		@param url
 			url used for update notifications
 	*/	
-	public function enable_live_update($table, $url=false){
-        $this->live_update = new $this->live_update_data_type($this->sql, $this->config, $this->request, $table,$url, array("connector" => $this));
+	public function enable_live_update($table, $url=false, $origin_table = false){
+        $this->live_update = new $this->live_update_data_type($this->sql, $this->config, $this->request, $table,$url, array("connector" => $this, "table" => $origin_table));
         $this->live_update->set_event($this->event,$this->names["item_class"]);
 		$this->event->attach("beforeOutput", 		Array($this->live_update, "version_output"));
 		$this->event->attach("beforeFiltering", 	Array($this->live_update, "get_updates"));
