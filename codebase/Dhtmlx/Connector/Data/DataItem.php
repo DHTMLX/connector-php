@@ -59,10 +59,14 @@ class DataItem {
             id of element
     */
     public function get_id(){
+        $return = false;
         $id = $this->config->id["name"];
-        if (array_key_exists($id,$this->data))
-            return $this->data[$id];
-        return false;
+        if ((is_array($this->data) && array_key_exists($id,$this->data)) ||
+            (is_object($this->data) && property_exists($this->data,'attributes') && isset($this->data[$id]))
+        ){
+            $return =  $this->data[$id];
+        }
+        return $return;
     }
     /*! change id of element
 

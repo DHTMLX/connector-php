@@ -38,8 +38,14 @@ class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 	}
 
 	public function insert($data, $source) {
-		$className = get_class($source->get_source());
-		$obj = new $className();
+		$obj = null;
+		if(method_exists($source->get_source(), 'getModel')){
+			$obj = $source->get_source()->getModel()->newInstance();
+		} else {
+			$className = get_class($source->get_source());
+			$obj = new $className();
+		}
+
 		$this->fill_model($obj, $data)->save();
 
 		$fieldPrimaryKey = $this->config->id["db_name"];
@@ -47,14 +53,24 @@ class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 	}
 
 	public function delete($data, $source) {
-		$className = get_class($source->get_source());
-		$className::destroy($data->get_id());
+		if(method_exists($source->get_source(), 'getModel')){
+			$source->get_source()->getModel()->find($data->get_id())->delete();
+		} else {
+			$className = get_class($source->get_source());
+			$className::destroy($data->get_id());
+		}
 		$data->success();
 	}
 
 	public function update($data, $source) {
-		$className = get_class($source->get_source());
-		$obj = $className::find($data->get_id());
+		$obj = null;
+		if(method_exists($source->get_source(), 'getModel')){
+			$obj = $source->get_source()->getModel()->find($data->get_id());
+		} else {
+			$className = get_class($source->get_source());
+			$obj = $className::find($data->get_id());
+		}
+
 		$this->fill_model($obj, $data)->save();
 		$data->success();
 	}
