@@ -22,6 +22,9 @@ class PHPLaravelDBDataWrapper extends ArrayDBDataWrapper {
 			}
 		}
 
+		if (!is_array($res)) 
+			$res = $res->toArray();
+
 		return new ArrayQueryWrapper($res);
 	}
 
