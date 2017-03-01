@@ -1,6 +1,5 @@
 <?php
 	require_once("../config.php");
-	require_once('../../codebase/db_pdo.php');
 	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
 	
 	
@@ -12,9 +11,10 @@
 	$convert->excel();
 	
 	$grid = new GridConnector($res, "PDO");
+	$grid->set_limit(100);
 	$config = new GridConfiguration();
 	
 	$grid = new GridConnector($res, "PDO");
 	$grid->set_config($config);
-	$grid->render_table("grid50");
+	$grid->render_table("grid50000");
 ?>

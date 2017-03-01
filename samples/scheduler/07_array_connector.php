@@ -7,6 +7,6 @@
     	array("event_id" => 2, "start_date" => "2010-02-16", "end_date" => "2084-06-08", "event_name" => "second part")
     );
 
-	$scheduler = new SchedulerConnector();
+	$scheduler = new SchedulerConnector(null);
 	$scheduler->render_array($data,"event_id","start_date,end_date,event_name");
 ?>

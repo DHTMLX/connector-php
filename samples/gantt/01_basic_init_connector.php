@@ -1,7 +1,6 @@
 <?php
 
 	include ('../config.php');
-	require_once("../../codebase/db_pdo.php");
 	include ('../../codebase/gantt_connector.php');
 
     $res= new PDO($mysql_server,$mysql_user,$mysql_pass); 

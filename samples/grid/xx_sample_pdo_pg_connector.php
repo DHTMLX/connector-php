@@ -3,7 +3,6 @@
 	$dbh = new PDO('pgsql:host=localhost;dbname='.$mysql_db.";user=root;password=1234");
 	
 	require("../../codebase/grid_connector.php");
-	require("../../codebase/db_pdo.php");
 	
 	$grid = new GridConnector($dbh,"PDO");
 	

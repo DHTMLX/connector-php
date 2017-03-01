@@ -1,7 +1,6 @@
 <?php
 
 	require_once("../config.php");
-	require_once('../../codebase/db_pdo.php');
 	$res= new PDO($mysql_server,$mysql_user,$mysql_pass);
 	
 
@@ -15,7 +14,7 @@
 	$data2 = new JSONTreeDataConnector($res, "PDO");
 	$data2->configure("tasks","taskId","taskName","","parentId");
 
-	$conn = new MixedConnector($res, "PDO");
+	$conn = new MixedConnector("json");
 	$conn->add("country_data", $data1);
 	$conn->add("countries", $data2);
 	$conn->render();
