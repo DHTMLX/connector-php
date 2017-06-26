@@ -2,6 +2,8 @@
 
 /*! Implementation of DataWrapper for MySQL
 **/
+require_once("db_common.php");
+
 class MySQLDBDataWrapper extends DBDataWrapper{
 	protected $last_result;
 	public function query($sql){
