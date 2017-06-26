@@ -3,7 +3,7 @@
 	@author dhtmlx.com
 	@license GPL, see license.txt
 */
-require_once("db_common.php");
+require_once("db_mysql.php");
 
 class MySQLiDBDataWrapper extends MySQLDBDataWrapper{
 
