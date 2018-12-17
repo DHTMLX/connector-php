@@ -181,7 +181,7 @@ class JSONSchedulerConnector extends SchedulerConnector {
 		if (is_array($options)){
 			$str=array();
 			foreach($options as $k => $v)
-				$str[]='{"id":"'.$this->xmlentities($k).'", "value":"'.$this->xmlentities($v).'"}';
+				$str[]='{"id":"'.$this->xmlentities($k).'", "value":"'.$this->xmlentities($k).'", "label":"'.$this->xmlentities($v).'"}';
 			$options=implode(",",$str);
 		}
 		$this->options[$name]=$options;
