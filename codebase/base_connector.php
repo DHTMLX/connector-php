@@ -485,6 +485,7 @@ class Connector {
 		$this->set_relation();
 		
 		if ($this->live_update !== false && $this->updating!==false) {
+			$this->apply_filters();
 			$this->live_update->get_updates();
 		} else {
 			if ($this->editing){
@@ -501,10 +502,7 @@ class Connector {
 				$this->event->trigger("beforeSort",$wrap);
 				$wrap->store();
 				
-				$wrap = new FilterInterface($this->request);
-				$this->apply_filters($wrap);
-				$this->event->trigger("beforeFilter",$wrap);
-				$wrap->store();
+				$this->apply_filters();
 
 				if ($this->model && method_exists($this->model, "get")){
 					$this->sql = new ArrayDBDataWrapper();
@@ -887,11 +885,14 @@ class Connector {
 		$this->request->set_filters(array());
 	}
 
-	protected function apply_filters($wrap) {
+	protected function apply_filters() {
+		$wrap = new FilterInterface($this->request);
 		for ($i = 0; $i < count($this->filters); $i++) {
 			$f = $this->filters[$i];
 			$wrap->add($f['name'], $f['value'], $f['operation']);
 		}
+		$this->event->trigger("beforeFilter",$wrap);
+		$wrap->store();
 	}
 
 	public function sort($name, $direction = false) {
